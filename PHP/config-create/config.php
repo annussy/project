@@ -15,7 +15,7 @@ if ($connect->query($sql) === TRUE) {
 } else {
     echo "สร้างฐานข้อมูลไม่สำเร็จ: " . $connect->error . "<br>";
 }
-
+  
 //ตรวจสอบการเชื่อมต่อ
 if ($connect->connect_error) {
     die("การเชื่อมต่อล้มเหลว: " . $connect->connect_error);
