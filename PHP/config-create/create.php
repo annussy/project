@@ -15,7 +15,7 @@ if (!$db_selected) {
     die("Cannot select database: " . mysqli_error($connect));
 }
 
-// สร้างตาราง disabled
+/*// สร้างตาราง disabled
 $sql1 = "CREATE TABLE disabled (
     disabled_id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     disabled_name VARCHAR(255) NOT NULL,
@@ -70,7 +70,7 @@ $sql3 = "CREATE TABLE entrepreneur (
 if ($connect->query($sql3) === TRUE) {
     echo "Table entrepreneur created successfully<br>";
 } else {
-    echo "Error entrepreneur table employee: " . $connect->error . "<br>";
+    echo "Error entrepreneur table entrepreneur: " . $connect->error . "<br>";
 }
 
 // สร้างตาราง money
@@ -85,7 +85,7 @@ $sql4 = "CREATE TABLE money (
 if ($connect->query($sql4) === TRUE) {
     echo "Table money created successfully<br>";
 } else {
-    echo "Error money table employee: " . $connect->error . "<br>";
+    echo "Error money table money: " . $connect->error . "<br>";
 }
 
 // สร้างตาราง moneydetails
@@ -101,7 +101,7 @@ $sql5 = "CREATE TABLE moneydetails (
 if ($connect->query($sql5) === TRUE) {
     echo "Table moneydetails created successfully<br>";
 } else {
-    echo "Error moneydetails table employee: " . $connect->error . "<br>";
+    echo "Error moneydetails table moneydetails: " . $connect->error . "<br>";
 }
 
 // สร้างตาราง activity
@@ -116,7 +116,7 @@ $sql6 = "CREATE TABLE activity (
 if ($connect->query($sql6) === TRUE) {
     echo "Table activity created successfully<br>";
 } else {
-    echo "Error activity table employee: " . $connect->error . "<br>";
+    echo "Error activity table activity : " . $connect->error . "<br>";
 }
 
 // สร้างตาราง activitydetails
@@ -132,7 +132,7 @@ $sql7 = "CREATE TABLE activitydetails (
 if ($connect->query($sql7) === TRUE) {
     echo "Table activitydetails created successfully<br>";
 } else {
-    echo "Error activitydetails table employee: " . $connect->error . "<br>";
+    echo "Error activitydetails table activitydetails: " . $connect->error . "<br>";
 }
 
 // สร้างตาราง ability
@@ -144,7 +144,7 @@ $sql8 = "CREATE TABLE ability (
 if ($connect->query($sql8) === TRUE) {
     echo "Table ability created successfully<br>";
 } else {
-    echo "Error ability table employee: " . $connect->error . "<br>";
+    echo "Error ability table ability: " . $connect->error . "<br>";
 }
 
 // สร้างตาราง abilitydetails
@@ -160,10 +160,118 @@ $sql9 = "CREATE TABLE abilitydetails (
 if ($connect->query($sql9) === TRUE) {
     echo "Table abilitydetails created successfully<br>";
 } else {
-    echo "Error abilitydetails table employee: " . $connect->error . "<br>";
+    echo "Error abilitydetails table abilitydetails: " . $connect->error . "<br>";
 }
 
-// ปิดการเชื่อมต่อ
+// สร้างตาราง disease
+$sql10 = "CREATE TABLE disease (
+    disease_id INT(10) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    disease_name VARCHAR(255) NOT NULL,
+    disease_sugar INT NOT NULL,
+    disease_pressure INT NOT NULL,
+    disease_status VARCHAR(255) NOT NULL,
+    weight DOUBLE NOT NULL,
+    height INT NOT NULL
+)";
+
+if ($connect->query($sql10) === TRUE) {
+    echo "Table disease created successfully<br>";
+} else {
+    echo "Error disease table disease: " . $connect->error . "<br>";
+}
+
+// สร้างตาราง diseasedetails
+$sql11 = "CREATE TABLE diseasedetails (
+    diseasedetails_id INT(10) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    disease_id INT(10) UNSIGNED NOT NULL,
+    disabled_id INT(6) UNSIGNED NOT NULL,
+    FOREIGN KEY (disease_id) REFERENCES disease(disease_id),
+    FOREIGN KEY (disabled_id) REFERENCES disabled(disabled_id)
+    ON DELETE CASCADE
+)";
+
+if ($connect->query($sql11) === TRUE) {
+    echo "Table diseasedetails created successfully<br>";
+} else {
+    echo "Error diseasedetails table diseasedetails: " . $connect->error . "<br>";
+}
+
+// สร้างตาราง disabilitytype
+$sql12 = "CREATE TABLE disabilitype (
+    disabilitype_id INT(10) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    type_name VARCHAR(255) NOT NULL,
+    type_money VARCHAR(10) NOT NULL
+)";
+
+if ($connect->query($sql12) === TRUE) {
+    echo "Table disabilitype created successfully<br>";
+} else {
+    echo "Error disabilitype table disabilitype: " . $connect->error . "<br>";
+}
+
+// สร้างตาราง typedetails
+$sql13 = "CREATE TABLE typedetails (
+    typedetails_id INT(10) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    disabilitype_id INT(10) UNSIGNED NOT NULL,
+    disabled_id INT(6) UNSIGNED NOT NULL,
+    FOREIGN KEY (disabilitype_id) REFERENCES disabilitype(disabilitype_id),
+    FOREIGN KEY (disabled_id) REFERENCES disabled(disabled_id)
+    ON DELETE CASCADE
+)";
+
+if ($connect->query($sql13) === TRUE) {
+    echo "Table disabilitype created successfully<br>";
+} else {
+    echo "Error disabilitype table disabilitype: " . $connect->error . "<br>";
+}
+
+// สร้างตาราง estimate
+$sql14 = "CREATE TABLE estimate (
+    estimate_id INT(10) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    estimate_name VARCHAR(255) NOT NULL,
+    estimate_score INT NOT NULL
+)";
+
+if ($connect->query($sql14) === TRUE) {
+    echo "Table estimate created successfully<br>";
+} else {
+    echo "Error estimate table estimate: " . $connect->error . "<br>";
+}
+
+// สร้างตาราง estimatedetails
+$sql15 = "CREATE TABLE estimatedetails (
+    estimatedetails_id INT(10) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    estimate_id INT(10) UNSIGNED NOT NULL,
+    disabled_id INT(6) UNSIGNED NOT NULL,
+    FOREIGN KEY (estimate_id) REFERENCES estimate(estimate_id),
+    FOREIGN KEY (disabled_id) REFERENCES disabled(disabled_id)
+    ON DELETE CASCADE
+)";
+
+if ($connect->query($sql15) === TRUE) {
+    echo "Table estimatedetails  created successfully<br>";
+} else {
+    echo "Error estimatedetails table estimatedetails: " . $connect->error . "<br>";
+}
+
+// สร้างตาราง need
+$sql16 = "CREATE TABLE need (
+    need_id INT(10) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    entrepreneur_id INT(6) UNSIGNED NOT NULL,
+    disabled_id INT(6) UNSIGNED NOT NULL,
+    FOREIGN KEY (entrepreneur_id) REFERENCES entrepreneur(entrepreneur_id),
+    FOREIGN KEY (disabled_id) REFERENCES disabled(disabled_id)
+    ON DELETE CASCADE
+)";
+
+if ($connect->query($sql16) === TRUE) {
+    echo "Table need  created successfully<br>";
+} else {
+    echo "Error need table need: " . $connect->error . "<br>";
+}*/
+
+
+// ปิดการเชื่อมต่อ 
 /*$connect->close();*/ 
 
 
