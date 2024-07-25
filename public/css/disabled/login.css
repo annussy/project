@@ -1,7 +1,7 @@
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    background-color: #f0f4ff;
+    background-color: #ffffff;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -93,7 +93,7 @@ button:hover {
     left: 20px;
     background-color: transparent;
     border: none;
-    color: #6b78f7;
+    color: #030b07;
     font-size: 16px;
     cursor: pointer;
 }

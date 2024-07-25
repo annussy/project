@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Page</title>
+    <title>ระบบจัดการข้อมูลผู้พิการ ตำบลแค</title>
     <link rel="stylesheet" href="../../../public/css/disabled/login.css">
 </head>
 <body>
@@ -16,21 +16,26 @@
             <form action="login.php" method="post">
                 <div class="form-group">
                     <label for="email">อีเมล :</label>
-                    <input type="email" id="email" name="email"  required>
+                    <input type="email" id="email" name="email" required>
                 </div>
                 <div class="form-group">
                     <label for="password">รหัสผ่าน :</label>
-                    <input type="password" id="password" name="password"  required>
+                    <input type="password" id="password" name="password" required>
                     <span class="toggle-password"></span>
                 </div>
                 <button type="submit">เข้าสู่ระบบ</button>
             </form>
             <a href="#" class="forgot-password">ลืมรหัสผ่าน?</a>
         </div>
-        <button class="back-btn">ย้อนกลับ</button>
-        <img src="officer.png" alt="Officer" class="officer-image">
+        <button class="back-btn" onclick="goBack()">ย้อนกลับ</button>
+        <!--<img src="ผพก.jpg" alt="Officer" class="officer-image">-->
     </div>
 
     <script src="script.js"></script>
+    <script>
+        function goBack() {
+            window.location.href = "form_disabled.php";
+        }
+    </script>
 </body>
 </html>
