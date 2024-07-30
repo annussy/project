@@ -13,7 +13,7 @@
         </div>
         <div class="right-section">
             <h2>ยินดีต้อนรับ เข้าใช้งานผู้พิการ</h2>
-            <form action="login.php" method="post">
+            <form id="loginForm">
                 <div class="form-group">
                     <label for="email">อีเมล :</label>
                     <input type="email" id="email" name="email" required>
@@ -28,14 +28,17 @@
             <a href="#" class="forgot-password">ลืมรหัสผ่าน?</a>
         </div>
         <button class="back-btn" onclick="goBack()">ย้อนกลับ</button>
-        <!--<img src="ผพก.jpg" alt="Officer" class="officer-image">-->
     </div>
 
-    <script src="script.js"></script>
     <script>
-        function goBack() {
+        document.getElementById("loginForm").addEventListener("submit", function(event) {
+            event.preventDefault(); // ป้องกันการ submit form แบบเดิม
+            window.location.href = "form_disabled.php"; // เปลี่ยนหน้าไปยัง form_disabled.php
+        });
+
+        /*function goBack() {
             window.location.href = "form_disabled.php";
-        }
+        }*/
     </script>
 </body>
 </html>
