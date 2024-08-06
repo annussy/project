@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ระบบจัดการข้อมูลผู้พิการ ตำบลแค</title>
-    <link rel="stylesheet" href="">
+    <link rel="stylesheet" href="../../../public/css/admin/disabilitype/create.css">
 </head>
 <body>
     <div class="container">
@@ -13,7 +13,7 @@
         </div>-->
         <div class="right-section">
             <h2>ข้อมูลประเภทความพิการ</h2>
-            <form action="../controller/disabilitype/insert_disabilitype.php" method="post">
+            <form action="../controller/admin/disabilitype/insert_disabilitype.php" method="post">
                 <div class="form-group">
                     <label for="name">ประเภทความพิการ :</label>
                     <input type="text" id="name" name="type_name" required>

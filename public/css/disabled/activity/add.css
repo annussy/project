@@ -1,0 +1,102 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #e9f1f7; /* ฟ้าอ่อน */
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    display: flex;
+}
+
+.sidebar {
+    width: 250px;
+    background-color: #4a90e2; /* ฟ้าเข้ม */
+    color: white;
+    padding: 20px;
+    height: 100vh;
+}
+
+.sidebar .logo {
+    display: block;
+    margin: 0 auto 20px auto;
+    max-width: 100px;
+}
+
+.sidebar .nav {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar .nav li {
+    margin-bottom: 10px;
+}
+
+.sidebar .nav li a {
+    color: white;
+    text-decoration: none;
+    display: block;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.sidebar .nav li a:hover, .sidebar .nav li a.active {
+    background-color: #357abd; /* ฟ้าเข้มกว่า */
+}
+
+.main-content {
+    flex-grow: 1;
+    padding: 20px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.header .title {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.activity-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.activity-table th, .activity-table td {
+    border: 1px solid #ddd;
+    padding: 15px;
+    text-align: center;
+}
+
+.activity-table th {
+    background-color: #4a90e2; /* ฟ้าเข้ม */
+    color: white;
+}
+
+.activity-table tr:nth-child(odd) {
+    background-color: #f2f9fc; /* ฟ้าอ่อนกว่า */
+}
+
+.activity-table tr:nth-child(even) {
+    background-color: #ffffff;
+}
+
+.apply-button {
+    background-color: #4a90e2; /* ฟ้าเข้ม */
+    color: white;
+    padding: 10px 15px;
+    text-decoration: none;
+    border: 2px solid #4a90e2;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.apply-button:hover {
+    background-color: white;
+    color: #4a90e2; /* ฟ้าเข้ม */
+}

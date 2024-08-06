@@ -8,7 +8,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $password = $_POST['password'];
 
     // ตรวจสอบข้อมูลผู้ใช้
-    $sql = "SELECT * FROM disabled WHERE email = ? AND password = ?";
+    $sql = "SELECT * FROM employee WHERE email = ? AND password = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param('ss', $email, $password);
     $stmt->execute();
@@ -16,7 +16,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($result->num_rows > 0) {
         // ข้อมูลถูกต้อง
-        header("Location: ../../disabled/activity_disabled/add.php");
+        header("Location:");
         exit();
     } else {
         $error_message = "มีอีเมลหรือรหัสผ่านไม่ถูกต้อง";
@@ -41,7 +41,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <img src="logo.jpg" alt="CARE Logo" class="logo">
         </div>
         <div class="right-section">
-            <h2>ยินดีต้อนรับ เข้าใช้งานผู้พิการ</h2>
+            <h2>ยินดีต้อนรับ เข้าใช้งานพนักงาน</h2>
             <form id="loginForm" method="post">
                 <div class="form-group">
                     <label for="email">อีเมล :</label>
@@ -59,7 +59,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <?php endif; ?>
             </form>
             
-            <a href="showsignup_disabled.php" class="register-button">สมัครสมาชิก</a>
+            <a href="signup.php" class="register-button">สมัครสมาชิก</a>
         </div>
     </div>
 </body>

@@ -1,6 +1,7 @@
 <?php
 include 'C:\laragon\www\project\config\config.php';
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -63,34 +64,43 @@ include 'C:\laragon\www\project\config\config.php';
 </head>
 <body>
     <div class="container">    
-        <div class="alert alert-primary h4 text-center mt-4" role="alert">ข้อมูลประเภทความพิการ</div>
-        <a href="create_disabilitype.php"><button type="button" class="btn btn-primary">เพิ่มข้อมูล</button></a>
-
-        
+        <div class="alert alert-primary h4 text-center mt-4" role="alert">ข้อมูลโรคผู้พิการ</div>
+        <a href="create_disease.php"><button type="button" class="btn btn-primary">เพิ่มข้อมูล</button></a>
         <table class="table table-striped table-hover mt-4">
             <thead>
                 <tr>
                     <th>ลำดับ</th>
-                    <th>ชื่อประเภทความพิการ</th>
-                    <th>จำนวนเงินรับเบี้ยความพิการ</th>
+                    <th>โรคประจำตัว</th>
+                    <th>ระดับน้ำตาลในเลือด</th>
+                    <th>ชีพจร</th>         
+                    <th>น้ำหนัก</th>
+                    <th>ส่วนสูง</th>
+                    <th>แก้ไข</th>
+                    <th>ลบ</th>
                 </tr>
             </thead>
             <tbody>
                 <?php
-                    $sql = "SELECT * FROM disabilitype";
+                    $sql = "SELECT * FROM disease";
                     $result = mysqli_query($conn, $sql);
                     if ($result) {
                         while ($row = mysqli_fetch_array($result)) { 
                 ?>
                 <tr>
-                    <td><?php echo $row['disabilitype_id']; ?></td>
-                    <td><?php echo $row['type_name']; ?></td>
-                    <td><?php echo $row['type_money']; ?></td>
+                    <td><?php echo $row['disease_id']; ?></td>
+                    <td><?php echo $row['disease_name']; ?></td>
+                    <td><?php echo $row['disease_sugar']; ?></td>
+                    <td><?php echo $row['disease_pressure']; ?></td>
+                    <td><?php echo $row['weight']; ?></td>
+                    <td><?php echo $row['height']; ?></td>
+                    <td><a href="../controller/disease/update.php?id=<?php echo $row['disease_id']; ?>">แก้ไข</a></td>
+                    <td><a href="../controller/disease/delete.php?id=<?php echo $row['disease_id']; ?>">ลบ</a></td>
                 </tr>
+                
                 <?php 
                         } 
                     } else {
-                        echo "<tr><td colspan='3'>ไม่พบข้อมูล</td></tr>";
+                        echo "<tr><td colspan='5'>ไม่พบข้อมูล</td></tr>";
                     }
                     mysqli_close($conn);
                 ?>

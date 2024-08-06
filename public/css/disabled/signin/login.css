@@ -1,7 +1,7 @@
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    background-color: #ffffff;
+    background-color: #d8edf7;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -17,7 +17,7 @@ body {
 }
 
 .left-section {
-    background-color: #9ea10e;
+    background-color: #d8e7ff;
     padding: 20px;
     display: flex;
     align-items: center;
