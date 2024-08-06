@@ -1,8 +1,15 @@
 <?php
+<<<<<<< HEAD
 include '../config/config.php';
 
 // สร้างการเชื่อมต่อ MySQLi
 $connect = mysqli_connect($servername, $username, $password, $db);
+=======
+include 'config.php';
+
+// สร้างการเชื่อมต่อ MySQLi
+$connect = mysqli_connect($localhost, $username, $password, $db);
+>>>>>>> ee178c1f66a7b1d6c051dcfbb5ab53a4ce997501
 
 // ตรวจสอบการเชื่อมต่อ
 if (!$connect) {
@@ -15,8 +22,13 @@ if (!$db_selected) {
     die("Cannot select database: " . mysqli_error($connect));
 }
 
+<<<<<<< HEAD
 /* // สร้างตาราง disabled
 $sql1 = "CREATE TABLE IF NOT EXISTS disabled (
+=======
+/*// สร้างตาราง disabled
+$sql1 = "CREATE TABLE disabled (
+>>>>>>> ee178c1f66a7b1d6c051dcfbb5ab53a4ce997501
     disabled_id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     disabled_name VARCHAR(255) NOT NULL,
     disabled_card VARCHAR(13) NOT NULL,
@@ -39,7 +51,11 @@ if ($connect->query($sql1) === TRUE) {
 }
 
 // สร้างตาราง employee
+<<<<<<< HEAD
 $sql2 = "CREATE TABLE IF NOT EXISTS employee (
+=======
+$sql2 = "CREATE TABLE employee (
+>>>>>>> ee178c1f66a7b1d6c051dcfbb5ab53a4ce997501
     employee_id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     employee_name VARCHAR(255) NOT NULL,
     employee_department VARCHAR(255) NOT NULL,
@@ -56,7 +72,11 @@ if ($connect->query($sql2) === TRUE) {
 }
 
 // สร้างตาราง entrepreneur
+<<<<<<< HEAD
 $sql3 = "CREATE TABLE IF NOT EXISTS entrepreneur (
+=======
+$sql3 = "CREATE TABLE entrepreneur (
+>>>>>>> ee178c1f66a7b1d6c051dcfbb5ab53a4ce997501
     entrepreneur_id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     entrepreneur_name VARCHAR(255) NOT NULL,
     entrepreneur_agency VARCHAR(255) NOT NULL,
@@ -74,7 +94,11 @@ if ($connect->query($sql3) === TRUE) {
 }
 
 // สร้างตาราง money
+<<<<<<< HEAD
 $sql4 = "CREATE TABLE IF NOT EXISTS money (
+=======
+$sql4 = "CREATE TABLE money (
+>>>>>>> ee178c1f66a7b1d6c051dcfbb5ab53a4ce997501
     money_id INT(10) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     money_name VARCHAR(255) NOT NULL,
     document_home VARCHAR(255) NOT NULL,
@@ -89,7 +113,11 @@ if ($connect->query($sql4) === TRUE) {
 }
 
 // สร้างตาราง moneydetails
+<<<<<<< HEAD
 $sql5 = "CREATE TABLE IF NOT EXISTS moneydetails (
+=======
+$sql5 = "CREATE TABLE moneydetails (
+>>>>>>> ee178c1f66a7b1d6c051dcfbb5ab53a4ce997501
     moneydetails_id INT(10) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     money_id INT(10) UNSIGNED NOT NULL,
     disabled_id INT(6) UNSIGNED NOT NULL,
@@ -120,7 +148,11 @@ if ($connect->query($sql6) === TRUE) {
 }
 
 // สร้างตาราง activitydetails
+<<<<<<< HEAD
 $sql7 = "CREATE TABLE IF NOT EXISTS activitydetails (
+=======
+$sql7 = "CREATE TABLE activitydetails (
+>>>>>>> ee178c1f66a7b1d6c051dcfbb5ab53a4ce997501
     activitydetails_id INT(10) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     activity_id INT(10) UNSIGNED NOT NULL,
     disabled_id INT(6) UNSIGNED NOT NULL,
@@ -136,7 +168,11 @@ if ($connect->query($sql7) === TRUE) {
 }
 
 // สร้างตาราง ability
+<<<<<<< HEAD
 $sql8 = "CREATE TABLE IF NOT EXISTS ability (
+=======
+$sql8 = "CREATE TABLE ability (
+>>>>>>> ee178c1f66a7b1d6c051dcfbb5ab53a4ce997501
     ability_id INT(10) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     ability_name VARCHAR(255) NOT NULL
 )";
@@ -148,7 +184,11 @@ if ($connect->query($sql8) === TRUE) {
 }
 
 // สร้างตาราง abilitydetails
+<<<<<<< HEAD
 $sql9 = "CREATE TABLE IF NOT EXISTS abilitydetails (
+=======
+$sql9 = "CREATE TABLE abilitydetails (
+>>>>>>> ee178c1f66a7b1d6c051dcfbb5ab53a4ce997501
     abilitydetails_id INT(10) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     ability_id INT(10) UNSIGNED NOT NULL,
     disabled_id INT(6) UNSIGNED NOT NULL,
@@ -164,7 +204,11 @@ if ($connect->query($sql9) === TRUE) {
 }
 
 // สร้างตาราง disease
+<<<<<<< HEAD
 $sql10 = "CREATE TABLE IF NOT EXISTS disease (
+=======
+$sql10 = "CREATE TABLE disease (
+>>>>>>> ee178c1f66a7b1d6c051dcfbb5ab53a4ce997501
     disease_id INT(10) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     disease_name VARCHAR(255) NOT NULL,
     disease_sugar INT NOT NULL,
@@ -181,7 +225,11 @@ if ($connect->query($sql10) === TRUE) {
 }
 
 // สร้างตาราง diseasedetails
+<<<<<<< HEAD
 $sql11 = "CREATE TABLE IF NOT EXISTS diseasedetails (
+=======
+$sql11 = "CREATE TABLE diseasedetails (
+>>>>>>> ee178c1f66a7b1d6c051dcfbb5ab53a4ce997501
     diseasedetails_id INT(10) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     disease_id INT(10) UNSIGNED NOT NULL,
     disabled_id INT(6) UNSIGNED NOT NULL,
@@ -197,7 +245,11 @@ if ($connect->query($sql11) === TRUE) {
 }
 
 // สร้างตาราง disabilitytype
+<<<<<<< HEAD
 $sql12 = "CREATE TABLE IF NOT EXISTS disabilitype (
+=======
+$sql12 = "CREATE TABLE disabilitype (
+>>>>>>> ee178c1f66a7b1d6c051dcfbb5ab53a4ce997501
     disabilitype_id INT(10) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     type_name VARCHAR(255) NOT NULL,
     type_money VARCHAR(10) NOT NULL
@@ -210,7 +262,11 @@ if ($connect->query($sql12) === TRUE) {
 }
 
 // สร้างตาราง typedetails
+<<<<<<< HEAD
 $sql13 = "CREATE TABLE IF NOT EXISTS typedetails (
+=======
+$sql13 = "CREATE TABLE typedetails (
+>>>>>>> ee178c1f66a7b1d6c051dcfbb5ab53a4ce997501
     typedetails_id INT(10) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     disabilitype_id INT(10) UNSIGNED NOT NULL,
     disabled_id INT(6) UNSIGNED NOT NULL,
@@ -226,7 +282,11 @@ if ($connect->query($sql13) === TRUE) {
 }
 
 // สร้างตาราง estimate
+<<<<<<< HEAD
 $sql14 = "CREATE TABLE IF NOT EXISTS estimate (
+=======
+$sql14 = "CREATE TABLE estimate (
+>>>>>>> ee178c1f66a7b1d6c051dcfbb5ab53a4ce997501
     estimate_id INT(10) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     estimate_name VARCHAR(255) NOT NULL,
     estimate_score INT NOT NULL
@@ -239,7 +299,11 @@ if ($connect->query($sql14) === TRUE) {
 }
 
 // สร้างตาราง estimatedetails
+<<<<<<< HEAD
 $sql15 = "CREATE TABLE IF NOT EXISTS estimatedetails (
+=======
+$sql15 = "CREATE TABLE estimatedetails (
+>>>>>>> ee178c1f66a7b1d6c051dcfbb5ab53a4ce997501
     estimatedetails_id INT(10) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     estimate_id INT(10) UNSIGNED NOT NULL,
     disabled_id INT(6) UNSIGNED NOT NULL,
@@ -255,7 +319,11 @@ if ($connect->query($sql15) === TRUE) {
 }
 
 // สร้างตาราง need
+<<<<<<< HEAD
 $sql16 = "CREATE TABLE IF NOT EXISTS need (
+=======
+$sql16 = "CREATE TABLE need (
+>>>>>>> ee178c1f66a7b1d6c051dcfbb5ab53a4ce997501
     need_id INT(10) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     entrepreneur_id INT(6) UNSIGNED NOT NULL,
     disabled_id INT(6) UNSIGNED NOT NULL,
@@ -268,6 +336,7 @@ if ($connect->query($sql16) === TRUE) {
     echo "Table need  created successfully<br>";
 } else {
     echo "Error need table need: " . $connect->error . "<br>";
+<<<<<<< HEAD
 }
 
 
@@ -278,4 +347,14 @@ $connect->close();
 
 */
 
+=======
+}*/
+
+
+// ปิดการเชื่อมต่อ 
+/*$connect->close();*/ 
+
+
+
+>>>>>>> ee178c1f66a7b1d6c051dcfbb5ab53a4ce997501
 ?>
