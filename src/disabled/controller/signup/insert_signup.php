@@ -17,7 +17,7 @@ if(isset($_POST['disabled_name'], $_POST['disabled_card'], $_POST['birthday'], $
 
     $stmt = $conn->prepare("INSERT INTO disabled (disabled_name, disabled_card, birthday, age, status, address, job, income, tel, email, password, password_h) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
     $stmt->bind_param("ssssssssssss", $disabled_name, $disabled_card, $birthday, $age, $status, $address, $job , $income, $tel, $email, $password, $password_h);
-
+  
     if ($stmt->execute()) {
         echo "บันทึกข้อมูลเรียบร้อย";
     } else {

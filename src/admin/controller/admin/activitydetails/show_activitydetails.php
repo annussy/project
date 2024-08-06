@@ -69,7 +69,6 @@ include 'C:\laragon\www\project\config\config.php';
                 <a href="add_mat.php"><button type="button" class="btn btn-success">เพิ่มข้อมูล</button></a>
                     <table class="table table-striped table-hover mt-4">
                         <tr>
-                            <th>ลำดับ</th>
                             <th>รหัสกิจกรรม</th>
                             <th>รหัสผู้พิการ</th>
                             <th>แก้ไข</th>
@@ -77,17 +76,17 @@ include 'C:\laragon\www\project\config\config.php';
                         </tr>
                         
                         <?php
-                            $sql = "SELECT * FROM activity, disabled WHERE activity.activity_id = disabled.disabled_id";
+                            $sql = "SELECT  activity.activity_id , disabled.disabled_id FROM activity JOIN disabled ON activity.activity_id = disabled.disabled_id";
                             $result = mysqli_query($conn, $sql);
                             while($row = mysqli_fetch_array($result)){ 
                         ?>
 
                         <tr>
-                            <!-- <td><?php echo $row['activitydetails_id']; ?></td> -->
+                            <!-- <td></td>?php echo $row['activitydetails_id']; ?></td> -->
                             <td><?php echo $row['activity_id']; ?></td>
                             <td><?php echo $row['disabled_id']; ?></td>
-                            <!-- <td><a href="../controller/materials/edit_mat.php?material_id=<?=$row['material_id']?>" class="btn btn-warning">Edit</a></td>
-                            <td><a href="../controller/materials/delete_mat.php?material_id=<?=$row['material_id']?>" class="btn btn-danger" onclick="Del(this.href);return false;">Delete</a></td> -->
+                            <!-- <td><a href=""=<?=$row['material_id']?>" class="btn btn-warning">Edit</a></td>
+                            <td><a href=""=<?=$row['material_id']?>" class="btn btn-danger" onclick="Del(this.href);return false;">Delete</a></td> -->
                         </tr>
                         
                         <?php 
