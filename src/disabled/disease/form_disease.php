@@ -15,13 +15,57 @@ include 'C:\laragon\www\project\config\config.php';
         <div class="sidebar">
             <img src="logo.jpg" alt="CARE Logo" class="logo">
             <ul class="nav">
-                <li><a href="#">หน้าแรก</a></li>
-                <li><a href="#">ลงทะเบียนข้อมูลเบี้ยผู้พิการ</a></li>
-                <li><a href="#">ลงทะเบียนข้อมูลกิจกรรม</a></li>
-                <li><a href="#">ข้อมูลความสามารถ</a></li>
-                <li><a href="#">แบบประเมินการใช้ชีวิต</a></li>
-                <li><a href="#" class="active">ข้อมูลสุขภาพ</a></li>
-                <li><a href="#">ออกจากระบบ</a></li>
+
+            <li>
+                    <a href="">
+                        <span class="icon">
+                            <ion-icon name="storefront-outline"></ion-icon>
+                        </span>
+                        <span class="title">หน้าแรก</span>  <!-- ยังไม่เพิ่ม -->
+                    </a>
+            </li>
+
+            <li>
+                    <a href="../activity_disabled/apply.php">
+                        <span class="icon">
+                            <ion-icon name="storefront-outline"></ion-icon>
+                        </span>
+                        <span class="title">ลงทะเบียนข้อมูลกิจกรรม</span>
+                    </a>
+            </li>
+
+
+            <li>
+                    <a href="">
+                        <span class="icon">
+                            <ion-icon name="storefront-outline"></ion-icon>
+                        </span>
+                        <span class="title">ข้อมูลความสามารถ</span>  <!-- ยังไม่เพิ่ม หน้า-home-->
+                    </a>
+            </li>
+
+
+                <li>
+                    <a href="../disease/form_disease.php">
+                        <span class="icon">
+                            <ion-icon name="storefront-outline"></ion-icon>
+                        </span>
+                        <span class="title">แบบประเมินการใช้ชีวิต</span>
+                    </a>
+                </li>
+
+
+                <li>
+                    <a href="">
+                        <span class="icon">
+                            <ion-icon name="storefront-outline"></ion-icon>
+                        </span>
+                        <span class="title">ข้อมูลสุขภาพ</span>  <!-- ยังไม่เพิ่ม -->
+                    </a>
+                </li>
+
+                <li><a href="logout">ออกจากระบบ</a></li>
+
             </ul>
         </div>
 
@@ -64,9 +108,29 @@ include 'C:\laragon\www\project\config\config.php';
                 </div>
 
                 <div class="form-group">
-                    <label for="disease">โรคประจำตัว :</label>
-                    <textarea id="disease" name="disease_name" required></textarea>
+                    <label for="status">โรคประจำตัว :</label>
+                    <div id="status">
+                <label><input type="checkbox" name="disease_name[]" value="หูตึง/โรคหูอื่นๆ"> หูตึง/โรคหูอื่นๆ</label>
+                <label><input type="checkbox" name="disease_name[]" value="ต้อหิน/ต้อกระจก/โรคตาอื่นๆ"> ต้อหิน/ต้อกระจก/โรคตาอื่นๆ</label>
+                <label><input type="checkbox" name="disease_name[]" value="โรคหัวใจ"> โรคหัวใจ</label>
+                <label><input type="checkbox" name="disease_name[]" value="โรคไตวายเรื้อรัง"> โรคไตวายเรื้อรัง</label>
+                <label><input type="checkbox" name="disease_name[]" value="โรคลำไส้อักเสบเรื้อรัง"> โรคลำไส้อักเสบเรื้อรัง</label>
+                <label><input type="checkbox" name="disease_name[]" value="โรคความดันโลหิตสูง"> โรคความดันโลหิตสูง</label>
+                <label><input type="checkbox" name="disease_name[]" value="โรคมะเร็งทุกระบบ"> โรคมะเร็งทุกระบบ</label>
+                <label><input type="checkbox" name="disease_name[]" value="โรคเกี่ยวกับทางเดินปัสสาวะ"> โรคเกี่ยวกับทางเดินปัสสาวะ</label>
+                <label><input type="checkbox" name="disease_name[]" value="โรคไต"> โรคไต</label>
+                <label><input type="checkbox" name="disease_name[]" value="โรคกระเพาะอาหาร"> โรคกระเพาะอาหาร</label>
+                <label><input type="checkbox" name="disease_name[]" value="โรคไบโพลาร์"> โรคไบโพลาร์</label>
+                <label><input type="checkbox" name="disease_name[]" value="โรคซึมเศร้า"> โรคซึมเศร้า</label>
+                <label><input type="checkbox" name="disease_name[]" value="เส้นเลือดในสมองตีบหรือแตก"> เส้นเลือดในสมองตีบหรือแตก</label>
+                <label><input type="checkbox" name="disease_name[]" value="สมองพิการ"> สมองพิการ</label>
+                <label><input type="checkbox" name="disease_name[]" value="อัมพาตครึ่งซีก"> อัมพาตครึ่งซีก</label>
+                <label><input type="checkbox" name="disease_name[]" value="โรคต่อมไทรอยด์"> โรคต่อมไทรอยด์</label>
+                <label><input type="checkbox" name="disease_name[]" value="โรคตับ"> โรคตับ</label>
+                <label><input type="checkbox" name="disease_name[]" value="โรคเก๊าท์/กระดูก"> โรคเก๊าท์/กระดูก</label>
+                    </div>
                 </div>
+
 
                 <button type="submit" class="back-btn">บันทึก</button>
             </form>

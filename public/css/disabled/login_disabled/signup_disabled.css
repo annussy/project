@@ -1,0 +1,82 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #d8edf7; /* สีพื้นหลังฟ้าอ่อน */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* ให้เนื้อหาตรงกลางของหน้าจอ */
+}
+
+.container {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+    max-width: 620px;
+    width: 150%;
+    padding: 30px;
+    margin: auto; /* เพิ่ม margin เพื่อไม่ให้ฟอร์มติดขอบหน้าจอ */
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 25px;
+    color: #000000; /* สีหัวข้อฟ้าเข้ม */
+    font-size: 24px;
+}
+
+.form-group {
+    margin-bottom: 30px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #000000; /* สี label ฟ้าเข้ม */
+}
+
+input[type="text"],
+input[type="tel"],
+input[type="email"],
+input[type="password"],
+input[type="date"],
+input[type="number"],
+textarea,
+select {
+    width: 95%;
+    padding: 10px;
+    border: 1px solid #ccc; /* ขอบฟอร์มฟ้าอ่อน */
+    border-radius: 7px;
+    font-size: 15px;
+    background-color: #ffffff; /* สีพื้นหลังฟ้าอ่อน */
+    transition: border-color 0.3s ease-in-out; /* เพิ่ม transition เมื่อโฟกัส */
+}
+
+input[type="text"]:focus,
+input[type="tel"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+input[type="date"]:focus,
+input[type="number"]:focus,
+textarea:focus,
+select:focus {
+    border-color: #6fa3bd; /* เปลี่ยนขอบเป็นฟ้าเข้มเมื่อโฟกัส */
+    outline: none;
+}
+
+button[type="submit"] {
+    width: 100%;
+    padding: 15px;
+    background-color: #6b78f7; /* สีพื้นหลังปุ่มฟ้าเข้ม */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 18px;
+    transition: background-color 0.3s ease-in-out; /* เพิ่ม transition เมื่อ hover */
+}
+
+button[type="submit"]:hover {
+    background-color: #868bbd; /* สีพื้นหลังปุ่มเมื่อ hover ฟ้าเข้ม */
+}

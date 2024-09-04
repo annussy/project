@@ -1,4 +1,5 @@
 <?php
+session_start();
 // เชื่อมต่อฐานข้อมูล
 include 'C:\laragon\www\project\config\config.php';
 
@@ -15,8 +16,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $result = $stmt->get_result();
 
     if ($result->num_rows > 0) {
+
+        $_SESSION['disabled_id']; // เก็บ session สำหรับพนักงาน
         // ข้อมูลถูกต้อง
-        header("Location: ../../disabled/activity_disabled/add.php");
+        header("Location: ../activity_disabled/apply.php");
         exit();
     } else {
         $error_message = "มีอีเมลหรือรหัสผ่านไม่ถูกต้อง";
@@ -33,7 +36,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ระบบจัดการข้อมูลผู้พิการ ตำบลแค</title>
-    <link rel="stylesheet" href="../../../public/css/disabled/signin/login.css">
+    <link rel="stylesheet" href="../../../public/css/disabled/login_disabled/login_disabled.css">
 </head>
 <body>
     <div class="container">
@@ -59,7 +62,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <?php endif; ?>
             </form>
             
-            <a href="showsignup_disabled.php" class="register-button">สมัครสมาชิก</a>
+            <a href="signup_disabled.php" class="register-button">สมัครสมาชิก</a>
         </div>
     </div>
 </body>

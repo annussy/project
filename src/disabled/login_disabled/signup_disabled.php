@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ระบบจัดการข้อมูลผู้พิการ ตำบลแค</title>
-    <link rel="stylesheet" href="../../../public/css/disabled/signin/signup_disabled.css">
+    <link rel="stylesheet" href="../../../public/css/disabled/login_disabled/signup_disabled.css">
 </head>
 <body>
     <div class="container">

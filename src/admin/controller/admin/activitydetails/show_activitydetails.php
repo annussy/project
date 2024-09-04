@@ -66,17 +66,19 @@ include 'C:\laragon\www\project\config\config.php';
         
         <div class="container">    
             <div class="alert alert-success h4 text-center mt-4" role="alert">รายละเอียดกิจกรรม</div>
-                <a href="add_mat.php"><button type="button" class="btn btn-success">เพิ่มข้อมูล</button></a>
+                <!-- <a href="create_activity.php"><button type="" class="btn btn-success">เพิ่มข้อมูล</button></a> -->
                     <table class="table table-striped table-hover mt-4">
                         <tr>
                             <th>รหัสกิจกรรม</th>
+                            <th>ชื่อกิจกรรม</th>
                             <th>รหัสผู้พิการ</th>
+                            <th>ชื่อผู้พิการ</th>
                             <th>แก้ไข</th>
                             <th>ลบ</th>
                         </tr>
                         
                         <?php
-                            $sql = "SELECT  activity.activity_id , disabled.disabled_id FROM activity JOIN disabled ON activity.activity_id = disabled.disabled_id";
+                            $sql = "SELECT  activity.activity_id , activity.activity_name , disabled.disabled_id , disabled.disabled_name  FROM activity JOIN disabled ON activity.activity_id = activity.activity_name = disabled.disabled_id = disabled.disabled_name ";
                             $result = mysqli_query($conn, $sql);
                             while($row = mysqli_fetch_array($result)){ 
                         ?>
@@ -84,7 +86,9 @@ include 'C:\laragon\www\project\config\config.php';
                         <tr>
                             <!-- <td></td>?php echo $row['activitydetails_id']; ?></td> -->
                             <td><?php echo $row['activity_id']; ?></td>
+                            <td><?php echo $row['activity_name']; ?></td>
                             <td><?php echo $row['disabled_id']; ?></td>
+                            <td><?php echo $row['disabled_name']; ?></td>
                             <!-- <td><a href=""=<?=$row['material_id']?>" class="btn btn-warning">Edit</a></td>
                             <td><a href=""=<?=$row['material_id']?>" class="btn btn-danger" onclick="Del(this.href);return false;">Delete</a></td> -->
                         </tr>

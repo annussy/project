@@ -15,15 +15,61 @@ include 'C:\laragon\www\project\config\config.php';
         <div class="sidebar">
             <img src="logo.jpg" alt="CARE Logo" class="logo">
             <ul class="nav">
-                <li><a href="#">หน้าแรก</a></li>
-                <li><a href="#">ลงทะเบียนข้อมูลเบี้ยผู้พิการ</a></li>
-                <li><a href="#" class="active">ลงทะเบียนข้อมูลกิจกรรม</a></li>
-                <li><a href="#">ข้อมูลความสามารถ</a></li>
-                <li><a href="#">แบบประเมินการใช้ชีวิต</a></li>
-                <li><a href="#">ข้อมูลสุขภาพ</a></li>
-                <li><a href="#">ออกจากระบบ</a></li>
+
+            <li>
+                    <a href="">
+                        <span class="icon">
+                            <ion-icon name="storefront-outline"></ion-icon>
+                        </span>
+                        <span class="title">หน้าแรก</span>  <!-- ยังไม่เพิ่ม -->
+                    </a>
+            </li>
+
+            <li>
+                    <a href="../activity_disabled/apply.php">
+                        <span class="icon">
+                            <ion-icon name="storefront-outline"></ion-icon>
+                        </span>
+                        <span class="title">ลงทะเบียนข้อมูลกิจกรรม</span>
+                    </a>
+            </li>
+
+
+            <li>
+                    <a href="">
+                        <span class="icon">
+                            <ion-icon name="storefront-outline"></ion-icon>
+                        </span>
+                        <span class="title">ข้อมูลความสามารถ</span>  <!-- ยังไม่เพิ่ม -->
+                    </a>
+            </li>
+
+
+                <li>
+                    <a href="../disease/form_disease.php">   
+                        <span class="icon">
+                            <ion-icon name="storefront-outline"></ion-icon>
+                        </span>
+                        <span class="title">แบบประเมินการใช้ชีวิต</span>
+                    </a>
+                </li>
+
+
+                <li>
+                    <a href="">
+                        <span class="icon">
+                            <ion-icon name="storefront-outline"></ion-icon>
+                        </span>
+                        <span class="title">ข้อมูลสุขภาพ</span>  <!-- ยังไม่เพิ่ม -->
+                    </a>
+                </li>
+
+                <li><a href="logout">ออกจากระบบ</a></li>
+
             </ul>
         </div>
+
+
         <div class="main-content">
             <div class="header">
                 <div class="title">กิจกรรมสำหรับผู้พิการ</div>
@@ -55,7 +101,7 @@ include 'C:\laragon\www\project\config\config.php';
                              echo "<td>" . $row["activity_location"] . "</td>";
                              echo "<td>" . $row["activity_count"] . "</td>";
                              echo "<td>" . $row["details"] . "</td>";
-                             echo '<td> <a href="insert_activity.php" class="apply-button" onclick="applyForActivity(' . $row["activity_id"] . ')">สมัคร</a></td>';
+                             echo '<td> <a href="add.php" class="apply-button" onclick="applyForActivity(' . $row["activity_id"] . ')">สมัคร</a></td>';
                              echo "</tr>";
                          }
                      } else {
