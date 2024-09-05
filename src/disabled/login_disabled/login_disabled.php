@@ -19,7 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         $_SESSION['disabled_id']; // เก็บ session สำหรับพนักงาน
         // ข้อมูลถูกต้อง
-        header("Location: ../activity_disabled/apply.php");
+        header("Location: ../activity_disabled/apply.php");  //ส่งกลับไปหน้าแรก-home
         exit();
     } else {
         $error_message = "มีอีเมลหรือรหัสผ่านไม่ถูกต้อง";

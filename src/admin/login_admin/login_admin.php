@@ -1,4 +1,5 @@
 <?php
+session_start();
 // เชื่อมต่อฐานข้อมูล
 include 'C:\laragon\www\project\config\config.php';
 
@@ -15,8 +16,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $result = $stmt->get_result();
 
     if ($result->num_rows > 0) {
+        // ดึงข้อมูลผู้ใช้
+        $row = $result->fetch_assoc();
+        $employee_id = $row['employee_id']; // สมมุติว่า column นี้ชื่อว่า 'employee_id'
+
+        // กำหนดค่าให้กับเซสชัน
+        $_SESSION['employee_id'] = $employee_id;
+
         // ข้อมูลถูกต้อง
-        header("Location:");
+        header("Location: ../activity/show_activity.php"); // เปลี่ยน URL ไปยังหน้าเป้าหมายที่ต้องการ
         exit();
     } else {
         $error_message = "มีอีเมลหรือรหัสผ่านไม่ถูกต้อง";
@@ -26,6 +34,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $conn->close();
 }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -59,7 +68,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <?php endif; ?>
             </form>
             
-            <a href="signup.php" class="register-button">สมัครสมาชิก</a>
+            <a href="signup_admin.php" class="register-button">สมัครสมาชิก</a>
         </div>
     </div>
 </body>

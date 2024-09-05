@@ -8,23 +8,19 @@
 </head>
 <body>
     <div class="container">
-        <!--<div class="left-section">
-            <img src="logo.jpg" alt="CARE Logo" class="logo">
-        </div>-->
         <div class="right-section">
             <h2>ลงทะเบียนเข้าสู่ระบบพนักงาน</h2>
-            <form action="../../admin/controller/admin/login_admin/insert.php" method="post">
+            <form action="controller/insert_admin.php" method="post">
                 
                 <div class="form-group">
                     <label for="name">ชื่อ-สกุล :</label>
-                    <input type="text" id="name" name="employee_name" required>
+                    <input type="text" id="employee_name" name="employee_name" required>
                 </div>
 
-                <div class="form-group"
+                <div class="form-group">
                     <label for="card">ตำแหน่งงาน :</label>
-                    <input type="text" id="card" name="employee_department" required>
+                    <input type="text" id="employee_department" name="employee_department" required>
                 </div>
-
 
                 <div class="form-group">
                     <label for="tel">เบอร์โทรติดต่อ :</label>
@@ -39,41 +35,16 @@
                 <div class="form-group">
                     <label for="password">รหัสผ่าน :</label>
                     <input type="password" id="password" name="password" required>
-                    <!--<span class="toggle-password" onclick="togglePassword('password')">👁️</span>-->
                 </div>
 
                 <div class="form-group">
                     <label for="password_h">ยืนยันรหัสผ่าน :</label>
-                    <input type="password" id="password_h" name="password_h" required>
-                    <!--<span class="toggle-password" onclick="togglePassword('password_h')">👁️</span>-->
+                    <input type="password_h"1234 id="password_h" name="password_h" required>
                 </div>
 
-                <form action="login.php" method="get">
-                    <button type="submit">ลงทะเบียน</button>
-</form>
-
+                <button type="submit">ลงทะเบียน</button>
             </form>
         </div>
-       <!-- <button class="back-btn" onclick="goBack()">ย้อนกลับ</button> -->
-        <!--<img src="ผพก.jpg" alt="Officer" class="officer-image">-->
     </div>
-
-    <script>
-        function goBack() {
-            window.location.href = "";
-        }
-
-        function togglePassword(fieldId) {
-            var passwordInput = document.getElementById(fieldId);
-            var passwordToggle = passwordInput.nextElementSibling;
-            if (passwordInput.type === 'password') {
-                passwordInput.type = 'text';
-                passwordToggle.textContent = 'ปิด';
-            } else {
-                passwordInput.type = 'password';
-                passwordToggle.textContent = 'เปิด';
-            }
-        }
-    </script>
 </body>
 </html>
