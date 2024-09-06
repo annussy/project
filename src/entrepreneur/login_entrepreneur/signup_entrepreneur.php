@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ระบบจัดการข้อมูลผู้พิการ ตำบลแค</title>
-    <link rel="stylesheet" href="../../../public/css/disabled/login_disabled/signup_disabled.css">
+    <link rel="stylesheet" href="../../../public/css/entrepreneur/signup_entrepreneur.css">
 </head>
 <body>
     <div class="container">
@@ -12,51 +12,22 @@
             <img src="logo.jpg" alt="CARE Logo" class="logo">
         </div>-->
         <div class="right-section">
-            <h2>ลงทะเบียนเข้าสู่ระบบ</h2>
-            <form action="controller/insert_signup.php" method="post">
+            <h2>ลงทะเบียนเข้าสู่ระบบผู้ประกองบการ</h2>
+            <form action="controller/insert_entrepreneur.php" method="post">
                 
                 <div class="form-group">
                     <label for="name">ชื่อ-สกุล :</label>
-                    <input type="text" id="name" name="disabled_name" required>
+                    <input type="text" id="name" name="entrepreneur_name" required>
                 </div>
 
                 <div class="form-group"
-                    <label for="card">เลขบัตรประจำตัวประชาชน :</label>
-                    <input type="text" id="card" name="disabled_card" required>
+                    <label for="card">หน่วยงาน :</label>
+                    <input type="text" id="card" name="entrepreneur_agency" required>
                 </div>
 
-                <div class="form-group">
-                    <label for="dob">วันเดือนปีเกิด :</label>
-                    <input type="date" id="dob" name="birthday" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="age">อายุ :</label>
-                    <input type="number" id="age" name="age" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="status">สถานะภาพ :</label>
-                    <select id="status" name="status" required>
-                        <option value="single">โสด</option>
-                        <option value="married">แต่งงาน</option>
-                        <option value="divorced">หย่าร้าง</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label for="address">ที่อยู่ :</label>
-                    <textarea id="address" name="address" required></textarea>
-                </div>
-
-                <div class="form-group">
-                    <label for="occupation">อาชีพ :</label>
-                    <input type="text" id="occupation" name="job" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="income">รายได้ :</label>
-                    <input type="number" id="income" name="income" required>
+                <div class="form-group"
+                    <label for="card">ความต้องการ :</label>
+                    <input type="text" id="card" name="entrepreneur_need" required>
                 </div>
 
                 <div class="form-group">
@@ -93,7 +64,7 @@
 
     <script>
         function goBack() {
-            window.location.href = "form_disabled.php";
+            window.location.href = "";
         }
 
         function togglePassword(fieldId) {

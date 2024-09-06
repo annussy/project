@@ -34,6 +34,15 @@ include 'C:\laragon\www\project\config\config.php';
                     </a>
             </li>
 
+            <li>
+                    <a href="../activity_disabled/apply.php">
+                        <span class="icon">
+                            <ion-icon name="storefront-outline"></ion-icon>
+                        </span>
+                        <span class="title">ลงทะเบียนรับเบี้ยผู้พิการ</span>
+                    </a>
+            </li>
+
 
             <li>
                     <a href="">

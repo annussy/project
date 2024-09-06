@@ -13,7 +13,7 @@
         </div>-->
         <div class="right-section">
             <h2>กิจกรรมผู้พิการ</h2>
-            <form action="../controller/admin/activity/insert_activity.php" method="post">
+            <form action="controller/insert_activity.php" method="post">
                 <div class="form-group">
                     <label for="name">ชื่อกิจกรรม :</label>
                     <input type="text" id="name" name="activity_name" required>

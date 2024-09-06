@@ -1,0 +1,115 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+}
+
+/* รูปแบบของโลโก้ใน sidebar */
+.sidebar .logo {
+    display: block;
+    margin: 0 auto 20px auto;
+    max-width: 100px;
+}
+
+.sidebar .nav li a {
+    color: white;
+    text-decoration: none;
+    display: block;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.sidebar {
+    width: 270px;
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    background-color: #2fb42a;
+    color: #fff;
+    padding-top: 20px;
+}
+
+.sidebar .nav {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar .nav li {
+    margin-bottom: 10px;
+}
+
+.sidebar .nav li a {
+    color: white;
+    text-decoration: none;
+    display: block;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+/* รูปแบบของลิงก์ในเมนูเมื่อลอย */
+.sidebar .nav li a:hover, .sidebar .nav li a.active {
+    background-color: #2d9539; /* ฟ้าเข้มกว่า */
+}
+
+.main-content {
+    margin-left: 250px;
+    padding: 20px;
+}
+
+.alert {
+    padding: 20px;
+    background-color: #5dd477;
+    color: #333;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.btn {
+    background-color: #d42727;
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.btn:hover {
+    background-color: #b33c00;
+}
+
+table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background-color: #f4f4f4;
+}
+
+tr:hover {
+    background-color: #f1f1f1;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: #f9f9f9;
+}
+
+
