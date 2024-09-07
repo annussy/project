@@ -134,8 +134,10 @@ include 'C:\laragon\www\project\config\config.php';
                         <td><?php echo $row['activity_location']; ?></td>
                         <td><?php echo $row['activity_count']; ?></td>
                         <td><?php echo $row['details']; ?></td>
-                        <td><a href="../controller/activity/update.php?id=<?php echo $row['activity_id']; ?>">แก้ไข</a></td>
-                        <td><a href="../controller/activity/delete.php?id=<?php echo $row['activity_id']; ?>">ลบ</a></td>
+                        <td><a href="controller/edit_activity.php?activity_id=<?php echo $row['activity_id']; ?>">แก้ไข</a></td>
+                        <td><a href="controller/delete_activity.php?activity_id=<?php echo $row['activity_id']; ?>">ลบ</a>
+                        </td>
+
                     </tr>
                     
                     <?php 
