@@ -1,0 +1,134 @@
+/* Reset CSS เพื่อปรับรูปแบบเริ่มต้น */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* รูปแบบของโลโก้ใน sidebar */
+.sidebar .logo {
+    display: block;
+    margin: 0 auto 20px;
+    max-width: 120px; /* เพิ่มขนาดโลโก้เล็กน้อย */
+}
+
+/* Sidebar */
+.sidebar {
+    width: 250px;
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    background-color: #2fb42a;
+    color: #fff;
+    padding-top: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+/* รายการใน Sidebar */
+.sidebar .nav {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar .nav li {
+    margin-bottom: 10px;
+}
+
+.sidebar .nav li a {
+    color: white;
+    text-decoration: none;
+    display: block;
+    padding: 12px;
+    border-radius: 5px;
+    font-size: 16px; /* ขนาดตัวอักษรใหญ่ขึ้น */
+}
+
+/* รูปแบบของลิงก์ในเมนูเมื่อลอย */
+.sidebar .nav li a:hover,
+.sidebar .nav li a.active {
+    background-color: #2d9539; /* สีฟ้าเข้มกว่า */
+}
+
+/* รูปแบบเนื้อหาหลัก */
+.main-content {
+    margin-left: 270px; /* เว้นช่องด้านซ้ายให้พอดีกับ sidebar */
+    padding: 20px;
+    background-color: #f9f9f9;
+    min-height: 100vh;
+}
+
+/* ปุ่ม */
+.btn {
+    background-color: #d42727;
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.btn:hover {
+    background-color: #b33c00;
+}
+
+/* ตาราง */
+table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+    background-color: white; /* สีพื้นหลัง */
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+    font-size: 14px; /* ขนาดตัวอักษรตาราง */
+}
+
+th {
+    background-color: #f4f4f4;
+}
+
+tr:hover {
+    background-color: #f1f1f1;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: #f9f9f9;
+}
+
+/* กำหนดความกว้างเฉพาะสำหรับบางคอลัมน์ */
+th:nth-child(3), td:nth-child(3) {
+    width: 15%; /* เลขบัตรประชาชน */
+}
+
+th:nth-child(6), td:nth-child(6) {
+    width: 10%; /* สถานะ */
+}
+
+th:nth-child(8), td:nth-child(8) {
+    width: 12%; /* อาชีพ */
+}
+
+th:nth-child(9), td:nth-child(9) {
+    width: 10%; /* รายได้ */
+}
+
+th:nth-child(11), td:nth-child(11) {
+    width: 15%; /* อีเมล */
+}
+
+th:nth-child(12), td:nth-child(12) {
+    width: 10%; /* รหัสผ่าน */
+}
+
+

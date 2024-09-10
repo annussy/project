@@ -1,5 +1,37 @@
 <?php
 include 'C:\laragon\www\project\config\config.php';
+
+// ถ้ามีการส่งข้อมูล activity_id และ disabled_id ผ่าน POST เพื่อสมัครกิจกรรม
+if (isset($_POST['activity_id']) && isset($_POST['disabled_id'])) {
+    $activity_id = $_POST['activity_id'];
+    $disabled_id = $_POST['disabled_id'];
+
+    // ตรวจสอบว่าผู้ใช้สมัครกิจกรรมนี้ไปแล้วหรือยัง
+    $sql_check = "SELECT * FROM activitydetails WHERE activity_id = ? AND disabled_id = ?";
+    $stmt_check = $conn->prepare($sql_check);
+    $stmt_check->bind_param("ii", $activity_id, $disabled_id);
+    $stmt_check->execute();
+    $result_check = $stmt_check->get_result();
+
+    if ($result_check->num_rows > 0) {
+        echo "คุณได้สมัครกิจกรรมนี้แล้ว";
+    } else {
+        // ถ้ายังไม่ได้สมัคร บันทึกข้อมูลการสมัครลงใน activitydetails
+        $sql = "INSERT INTO activitydetails (activity_id, disabled_id) VALUES (?, ?)";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("ii", $activity_id, $disabled_id);
+
+        if ($stmt->execute()) {
+            echo "success";
+        } else {
+            echo "เกิดข้อผิดพลาดในการบันทึกข้อมูล";
+        }
+        $stmt->close();
+    }
+    $stmt_check->close();
+    exit(); // ออกเพื่อไม่ให้โหลด HTML ด้านล่าง
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -137,5 +169,6 @@ include 'C:\laragon\www\project\config\config.php';
             xhr.send("activity_id=" + activityId + "&disabled_id=YOUR_DISABLED_USER_ID"); // Replace with actual disabled user ID
         }
     </script>
+
 </body>
 </html>
