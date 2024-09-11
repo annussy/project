@@ -8,62 +8,104 @@ include 'C:\laragon\www\project\config\config.php';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ระบบจัดการข้อมูลผู้พิการ ตำบลแค</title>
-    <link rel="stylesheet" href="path/to/your/css/file.css"> <!-- เพิ่มลิงก์ไปยังไฟล์ CSS ถ้ามี -->
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-        }
-        .container {
-            width: 80%;
-            margin: auto;
-            overflow: hidden;
-        }
-        .alert {
-            padding: 20px;
-            background-color: #f4f4f4;
-            color: #333;
-            text-align: center;
-            margin-top: 20px;
-        }
-        .btn {
-            background-color: #007bff;
-            color: #fff;
-            padding: 10px 20px;
-            text-decoration: none;
-            display: inline-block;
-            margin-top: 20px;
-            border: none;
-            cursor: pointer;
-            font-size: 16px;
-        }
-        .btn:hover {
-            background-color: #0056b3;
-        }
-        table {
-            width: 100%;
-            margin-top: 20px;
-            border-collapse: collapse;
-        }
-        table, th, td {
-            border: 1px solid #ddd;
-        }
-        th, td {
-            padding: 10px;
-            text-align: left;
-        }
-        th {
-            background-color: #f4f4f4;
-        }
-        tr:hover {
-            background-color: #f1f1f1;
-        }
-        .table-striped tbody tr:nth-of-type(odd) {
-            background-color: #f9f9f9;
-        }
-    </style>
+    <link rel="stylesheet" href="../../../public/css/admin/disease/show_disease.css"> <!-- เพิ่มลิงก์ไปยังไฟล์ CSS ถ้ามี -->
 </head>
 <body>
+<div class="sidebar">
+        <img src="logo.jpg" alt="CARE Logo" class="logo">
+        <ul class="nav">
+            <li>
+                <a href="">
+                    <span class="icon">
+                        <ion-icon name="storefront-outline"></ion-icon>
+                    </span>
+                    <span class="title">หน้าแรก</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="../disabled/show_disabled.php"> <!-- ยังต้องเพิ่ม -->
+                    <span class="icon">
+                        <ion-icon name="storefront-outline"></ion-icon>
+                    </span>
+                    <span class="title">ข้อมูลผู้พิการ</span>
+                </a>
+            </li>
+            <li>
+                <a href="../activity/show_activity.php">
+                    <span class="icon">
+                        <ion-icon name="storefront-outline"></ion-icon>
+                    </span>
+                    <span class="title">ข้อมูลกิจกรรมผู้พิการ</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="">
+                    <span class="icon">
+                        <ion-icon name="storefront-outline"></ion-icon>
+                    </span>
+                    <span class="title">ข้อมูลรับเบี้ยผู้พิการ</span>
+                </a>
+            </li>
+
+            <li>
+                    <a href="">
+                        <span class="icon">
+                            <ion-icon name="storefront-outline"></ion-icon>
+                        </span>
+                        <span class="title">รายละเอียดประเภทความพิการ</span>  <!-- ยังไม่เพิ่ม -->
+                    </a>
+            </li>
+
+            <li>
+                <a href="../disease/form_disease.php">
+                    <span class="icon">
+                        <ion-icon name="storefront-outline"></ion-icon>
+                    </span>
+                    <span class="title">ข้อมูลความสามารถผู้พิการ</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="">
+                    <span class="icon">
+                        <ion-icon name="storefront-outline"></ion-icon>
+                    </span>
+                    <span class="title">ข้อมูลแบบประเมินผู้พิการ</span>
+                </a>
+
+            <li>
+                <a href="../disease/show_disease.php">
+                    <span class="icon">
+                        <ion-icon name="storefront-outline"></ion-icon>
+                    </span>
+                    <span class="title">ข้อมูลสุขภาพผู้พิการ</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="../disease/form_disease.php">
+                    <span class="icon">
+                        <ion-icon name="storefront-outline"></ion-icon>
+                    </span>
+                    <span class="title">ข้อมูลความต้องการผู้ประกอบการ</span>
+                </a>
+
+                <li>
+                <a href="">
+                    <span class="icon">
+                        <ion-icon name="storefront-outline"></ion-icon>
+                    </span>
+                    <span class="title">รายละเอียดความสามารถผู้พิการ</span>
+                </a>
+            </li>
+
+            <li><a href="logout">ออกจากระบบ</a></li>
+        </ul>
+    </div>
     <div class="container">    
+    <div class="main-content">
         <div class="alert alert-primary h4 text-center mt-4" role="alert">ข้อมูลโรคผู้พิการ</div>
         <a href="create_disease.php"><button type="button" class="btn btn-primary">เพิ่มข้อมูล</button></a>
         <table class="table table-striped table-hover mt-4">
@@ -72,7 +114,8 @@ include 'C:\laragon\www\project\config\config.php';
                     <th>ลำดับ</th>
                     <th>โรคประจำตัว</th>
                     <th>ระดับน้ำตาลในเลือด</th>
-                    <th>ชีพจร</th>         
+                    <th>ชีพจร</th> 
+                    <th>สถานะมีโรค</th>        
                     <th>น้ำหนัก</th>
                     <th>ส่วนสูง</th>
                     <th>แก้ไข</th>
@@ -91,10 +134,11 @@ include 'C:\laragon\www\project\config\config.php';
                     <td><?php echo $row['disease_name']; ?></td>
                     <td><?php echo $row['disease_sugar']; ?></td>
                     <td><?php echo $row['disease_pressure']; ?></td>
+                    <td><?php echo $row['disease_status']; ?></td>
                     <td><?php echo $row['weight']; ?></td>
                     <td><?php echo $row['height']; ?></td>
-                    <td><a href="../controller/disease/update.php?id=<?php echo $row['disease_id']; ?>">แก้ไข</a></td>
-                    <td><a href="../controller/disease/delete.php?id=<?php echo $row['disease_id']; ?>">ลบ</a></td>
+                    <td><a href="controller/edit_disease.php?disease_id=<?php echo $row['disease_id']; ?>">แก้ไข</a></td>
+                    <td><a href="controller/delete_disease.php?disease_id=<?php echo $row['disease_id']; ?>">ลบ</a></td>
                 </tr>
                 
                 <?php 

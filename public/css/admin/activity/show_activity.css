@@ -1,11 +1,14 @@
+/* ตั้งค่า font */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Kanit', sans-serif;
+    background-color: #eef0fd; /* พื้นหลังโทนสีอ่อนที่เข้ากับ #909cec */
 }
 
-.container {
-    width: 80%;
-    margin: auto;
-    overflow: hidden;
+/* Reset CSS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 /* รูปแบบของโลโก้ใน sidebar */
@@ -15,25 +18,19 @@ body {
     max-width: 100px;
 }
 
-.sidebar .nav li a {
-    color: white;
-    text-decoration: none;
-    display: block;
-    padding: 10px;
-    border-radius: 5px;
-}
-
+/* Sidebar */
 .sidebar {
     width: 270px;
     height: 100vh;
     position: fixed;
     left: 0;
     top: 0;
-    background-color: #2fb42a;
+    background-color: #909cec; /* สีหลักที่กำหนด */
     color: #fff;
-    padding-top: 20px;
+    padding: 10px;
 }
 
+/* รายการใน Sidebar */
 .sidebar .nav {
     list-style: none;
     padding: 0;
@@ -44,33 +41,31 @@ body {
 }
 
 .sidebar .nav li a {
-    color: white;
+    color: #fff; /* สีขาว */
     text-decoration: none;
     display: block;
-    padding: 10px;
+    padding: 12px;
     border-radius: 5px;
+    font-size: 16px;
 }
 
 /* รูปแบบของลิงก์ในเมนูเมื่อลอย */
-.sidebar .nav li a:hover, .sidebar .nav li a.active {
-    background-color: #2d9539; /* ฟ้าเข้มกว่า */
+.sidebar .nav li a:hover,
+.sidebar .nav li a.active {
+    background-color: #737edb; /* สีเข้มขึ้นเมื่อ hover */
 }
 
+/* รูปแบบเนื้อหาหลัก */
 .main-content {
-    margin-left: 250px;
+    margin-left: 270px;
     padding: 20px;
+    background-color: #f4f5fe; /* สีพื้นหลังเนื้อหาเป็นโทนสีอ่อน */
+    min-height: 100vh;
 }
 
-.alert {
-    padding: 20px;
-    background-color: #5dd477;
-    color: #333;
-    text-align: center;
-    margin-top: 20px;
-}
-
+/* ปุ่ม */
 .btn {
-    background-color: #d42727;
+    background-color: #737edb; /* ปุ่มใช้สีเข้มกว่า #909cec */
     color: #fff;
     padding: 10px 20px;
     text-decoration: none;
@@ -82,13 +77,15 @@ body {
 }
 
 .btn:hover {
-    background-color: #b33c00;
+    background-color: #5a66c2; /* ปุ่มเปลี่ยนเป็นเข้มกว่าเมื่อ hover */
 }
 
+/* ตาราง */
 table {
     width: 100%;
     margin-top: 20px;
     border-collapse: collapse;
+    background-color: #fff; /* พื้นหลังตารางเป็นสีขาว */
 }
 
 table, th, td {
@@ -101,15 +98,22 @@ th, td {
 }
 
 th {
-    background-color: #f4f4f4;
+    background-color: #c7ccf7; /* สีฟ้าอ่อนสำหรับหัวตาราง */
 }
 
 tr:hover {
-    background-color: #f1f1f1;
+    background-color: #e1e4fb; /* เมื่อ hover แถวจะเป็นสีฟ้าอ่อน */
 }
 
 .table-striped tbody tr:nth-of-type(odd) {
-    background-color: #f9f9f9;
+    background-color: #f2f3fd; /* แถบสีฟ้าอ่อนสำหรับแถวคู่คี่ */
 }
 
-
+/* การแจ้งเตือน */
+.alert {
+    padding: 20px;
+    background-color: #b2b9f0; /* สีฟ้าอ่อนสำหรับการแจ้งเตือน */
+    color: #fff;
+    text-align: center;
+    margin-top: 20px;
+}

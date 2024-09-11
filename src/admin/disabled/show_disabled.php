@@ -5,13 +5,13 @@ include 'C:\laragon\www\project\config\config.php';
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+<meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ระบบจัดการข้อมูลผู้พิการ ตำบลแค</title>
     <link rel="stylesheet" href="../../../public/css/admin/disabled/show.css"> <!-- ลิงก์ไฟล์ CSS ที่นี่ -->
 </head>
 <body>
-    <div class="sidebar">
+<div class="sidebar">
         <img src="logo.jpg" alt="CARE Logo" class="logo">
         <ul class="nav">
             <li>
@@ -24,7 +24,7 @@ include 'C:\laragon\www\project\config\config.php';
             </li>
 
             <li>
-                <a href="../disease/show_disease.php"> <!-- ยังต้องเพิ่ม -->
+                <a href="../disabled/show_disabled.php"> <!-- ยังต้องเพิ่ม -->
                     <span class="icon">
                         <ion-icon name="storefront-outline"></ion-icon>
                     </span>
@@ -32,7 +32,7 @@ include 'C:\laragon\www\project\config\config.php';
                 </a>
             </li>
             <li>
-                <a href="">
+                <a href="../activity/show_activity.php">
                     <span class="icon">
                         <ion-icon name="storefront-outline"></ion-icon>
                     </span>
@@ -41,7 +41,7 @@ include 'C:\laragon\www\project\config\config.php';
             </li>
 
             <li>
-                <a href="../disease/form_disease.php">
+                <a href="">
                     <span class="icon">
                         <ion-icon name="storefront-outline"></ion-icon>
                     </span>
@@ -68,7 +68,7 @@ include 'C:\laragon\www\project\config\config.php';
             </li>
 
             <li>
-                <a href="../disease/form_disease.php">
+                <a href="">
                     <span class="icon">
                         <ion-icon name="storefront-outline"></ion-icon>
                     </span>
@@ -76,7 +76,7 @@ include 'C:\laragon\www\project\config\config.php';
                 </a>
 
             <li>
-                <a href="">
+                <a href="../disease/show_disease.php">
                     <span class="icon">
                         <ion-icon name="storefront-outline"></ion-icon>
                     </span>
@@ -104,7 +104,6 @@ include 'C:\laragon\www\project\config\config.php';
             <li><a href="logout">ออกจากระบบ</a></li>
         </ul>
     </div>
-
     <div class="main-content">
         <div class="container">
             <div class="alert alert-primary h4 text-center mt-4" role="alert">ข้อมูลผู้พิการ</div>

@@ -36,6 +36,6 @@ if (isset($_POST['disabled_id']) && is_numeric($_POST['disabled_id'])) {
 
     mysqli_close($conn);
 } else {
-    echo "activity ID ไม่ถูกต้อง";
+    echo "disabled ID ไม่ถูกต้อง";
 }
 ?>

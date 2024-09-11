@@ -86,7 +86,7 @@ if (isset($_POST['activity_id']) && isset($_POST['disabled_id'])) {
 
 
                 <li>
-                    <a href="../disease/form_disease.php">   
+                    <a href="">   
                         <span class="icon">
                             <ion-icon name="storefront-outline"></ion-icon>
                         </span>
@@ -96,7 +96,7 @@ if (isset($_POST['activity_id']) && isset($_POST['disabled_id'])) {
 
 
                 <li>
-                    <a href="">
+                    <a href="../disease/form_disease.php">
                         <span class="icon">
                             <ion-icon name="storefront-outline"></ion-icon>
                         </span>
