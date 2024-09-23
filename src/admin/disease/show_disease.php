@@ -50,7 +50,7 @@ include 'C:\laragon\www\project\config\config.php';
             </li>
 
             <li>
-                    <a href="">
+                    <a href="../disabilitype/show_disabilitype.php">
                         <span class="icon">
                             <ion-icon name="storefront-outline"></ion-icon>
                         </span>
@@ -80,7 +80,7 @@ include 'C:\laragon\www\project\config\config.php';
                     <span class="icon">
                         <ion-icon name="storefront-outline"></ion-icon>
                     </span>
-                    <span class="title">ข้อมูลสุขภาพผู้พิการ</span>
+                    <span class="title">ข้อมูลโรคประจำตัวผู้พิการ</span>
                 </a>
             </li>
 
@@ -106,18 +106,13 @@ include 'C:\laragon\www\project\config\config.php';
     </div>
     <div class="container">    
     <div class="main-content">
-        <div class="alert alert-primary h4 text-center mt-4" role="alert">ข้อมูลโรคผู้พิการ</div>
+        <div class="alert alert-primary h4 text-center mt-4" role="alert">ข้อมูลโรคประจำตัวผู้พิการ</div>
         <a href="create_disease.php"><button type="button" class="btn btn-primary">เพิ่มข้อมูล</button></a>
         <table class="table table-striped table-hover mt-4">
             <thead>
                 <tr>
                     <th>ลำดับ</th>
                     <th>โรคประจำตัว</th>
-                    <th>ระดับน้ำตาลในเลือด</th>
-                    <th>ชีพจร</th> 
-                    <th>สถานะมีโรค</th>        
-                    <th>น้ำหนัก</th>
-                    <th>ส่วนสูง</th>
                     <th>แก้ไข</th>
                     <th>ลบ</th>
                 </tr>
@@ -132,11 +127,6 @@ include 'C:\laragon\www\project\config\config.php';
                 <tr>
                     <td><?php echo $row['disease_id']; ?></td>
                     <td><?php echo $row['disease_name']; ?></td>
-                    <td><?php echo $row['disease_sugar']; ?></td>
-                    <td><?php echo $row['disease_pressure']; ?></td>
-                    <td><?php echo $row['disease_status']; ?></td>
-                    <td><?php echo $row['weight']; ?></td>
-                    <td><?php echo $row['height']; ?></td>
                     <td><a href="controller/edit_disease.php?disease_id=<?php echo $row['disease_id']; ?>">แก้ไข</a></td>
                     <td><a href="controller/delete_disease.php?disease_id=<?php echo $row['disease_id']; ?>">ลบ</a></td>
                 </tr>

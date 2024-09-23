@@ -1,11 +1,11 @@
 <?php
 include 'C:\laragon\www\project\config\config.php';
 
-if(isset($_POST['disease_name'])) {
-    $disease_name = $_POST['disease_name'];
+if(isset($_POST['ability_name'])) {
+    $ability_name = $_POST['ability_name'];
 
-    $stmt = $conn->prepare("INSERT INTO disease (disease_name) VALUES (?)");
-    $stmt->bind_param("s", $disease_name);
+    $stmt = $conn->prepare("INSERT INTO ability (ability_name) VALUES (?)");
+    $stmt->bind_param("s", $ability_name);
 
     if ($stmt->execute()) {
         echo "บันทึกข้อมูลเรียบร้อย";

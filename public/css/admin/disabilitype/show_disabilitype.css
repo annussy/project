@@ -117,3 +117,49 @@ tr:hover {
     text-align: center;
     margin-top: 20px;
 }
+
+/* รูปแบบของ checkbox */
+input[type="checkbox"] {
+    appearance: none; /* ปิดการแสดงผลพื้นฐาน */
+    width: 20px;
+    height: 20px;
+    border: 2px solid #4a90e2; /* ขอบของ checkbox */
+    border-radius: 5px; /* มุมโค้ง */
+    cursor: pointer; /* เปลี่ยนเป็นมือเมื่อวางเมาส์ */
+    outline: none; /* ไม่ให้มีขอบ */
+    position: relative; /* ใช้สำหรับการสร้างช่องที่ถูกเลือก */
+}
+
+input[type="checkbox"]:checked {
+    background-color: #4a90e2; /* สีพื้นหลังเมื่อเลือก */
+}
+
+input[type="checkbox"]:checked::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 10px;
+    height: 10px;
+    background-color: white; /* สีของเครื่องหมาย */
+    border-radius: 2px; /* ทำให้เครื่องหมายเป็นวงกลม */
+    transform: translate(-50%, -50%); /* กึ่งกลาง */
+}
+
+/* รูปแบบของตาราง */
+table {
+    border-radius: 10px; /* มุมโค้งของตาราง */
+    overflow: hidden; /* ซ่อนมุมที่เกินออก */
+}
+
+/* รูปแบบของ header ตาราง */
+table th {
+    background-color: #4a90e2;
+    color: white;
+    text-align: center;
+}
+
+/* รูปแบบของแถวตาราง */
+table tr:nth-child(even) {
+    background-color: #f9f9f9; /* แถวที่คู่ให้สีพื้นหลังที่แตกต่าง */
+}

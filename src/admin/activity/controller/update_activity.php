@@ -18,7 +18,7 @@ if (isset($_POST['activity_id']) && is_numeric($_POST['activity_id'])) {
                 
         if (mysqli_query($conn, $sql)) {
             echo "ข้อมูลถูกอัปเดตเรียบร้อยแล้ว";
-            header("Location: ../show_activity.php");
+            header("Location: ../show_activity  .php");
         } else {
             echo "Error updating record: " . mysqli_error($conn);
         }

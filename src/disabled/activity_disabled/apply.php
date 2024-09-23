@@ -40,7 +40,7 @@ if (isset($_POST['activity_id']) && isset($_POST['disabled_id'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>กิจกรรมสำหรับผู้พิการ</title>
-    <link rel="stylesheet" href="../../../public/css/disabled/activity/add.css">
+    <link rel="stylesheet" href="../../../public/css/disabled/activity/apply.css">
 </head>
 <body>
     <div class="container">
@@ -76,7 +76,7 @@ if (isset($_POST['activity_id']) && isset($_POST['disabled_id'])) {
             </li>
 
             <li>
-                    <a href="">
+                    <a href="../ability/form_ability.php">
                         <span class="icon">
                             <ion-icon name="storefront-outline"></ion-icon>
                         </span>
@@ -100,7 +100,7 @@ if (isset($_POST['activity_id']) && isset($_POST['disabled_id'])) {
                         <span class="icon">
                             <ion-icon name="storefront-outline"></ion-icon>
                         </span>
-                        <span class="title">ข้อมูลสุขภาพ</span>  <!-- ยังไม่เพิ่ม -->
+                        <span class="title">ข้อมูลโรคประจำตัว</span>  <!-- ยังไม่เพิ่ม -->
                     </a>
                 </li>
 
@@ -141,7 +141,7 @@ if (isset($_POST['activity_id']) && isset($_POST['disabled_id'])) {
                              echo "<td>" . $row["activity_location"] . "</td>";
                              echo "<td>" . $row["activity_count"] . "</td>";
                              echo "<td>" . $row["details"] . "</td>";
-                             echo '<td> <a href="add.php" class="apply-button" onclick="applyForActivity(' . $row["activity_id"] . ')">สมัคร</a></td>';
+                             echo '<td> <a href="" class="apply-button" onclick="applyForActivity(' . $row["activity_id"] . ')">สมัคร</a></td>';
                              echo "</tr>";
                          }
                      } else {

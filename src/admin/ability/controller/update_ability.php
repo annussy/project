@@ -1,22 +1,22 @@
 <?php
 include 'C:\laragon\www\project\config\config.php';
 
-// ตรวจสอบว่ามีการส่ง disease_id มาหรือไม่
-if (isset($_POST['disease_id']) && is_numeric($_POST['disease_id'])) {
-    $disease_id = $_POST['disease_id'];
-    $disease_name = isset($_POST['disease_name']) ? $_POST['disease_name'] : '';
+// ตรวจสอบว่ามีการส่ง ability_id มาหรือไม่
+if (isset($_POST['ability_id']) && is_numeric($_POST['ability_id'])) {
+    $ability_id = $_POST['ability_id'];
+    $ability_name = isset($_POST['ability_name']) ? $_POST['ability_name'] : '';
 
     // ตรวจสอบว่าค่าทั้งหมดมีอยู่และไม่เป็นค่าว่าง
-    if ($disease_name ) {
+    if ($ability_name ) {
 
         // คำสั่ง SQL สำหรับอัปเดตข้อมูล (แก้ไข comma ที่ขาดหาย)
-        $sql = "UPDATE disease
-                SET disease_name = '$disease_name' 
-                WHERE disease_id = $disease_id";
+        $sql = "UPDATE ability
+                SET ability_name = '$ability_name' 
+                WHERE ability_id = $ability_id";
                 
         if (mysqli_query($conn, $sql)) {
             echo "ข้อมูลถูกอัปเดตเรียบร้อยแล้ว";
-            header("Location: ../show_disease.php");
+            header("Location: ../show_ability.php");
         } else {
             // ส่วนนี้จะแสดงข้อผิดพลาดจาก SQL
             echo "Error! " . mysqli_error($conn);
@@ -27,6 +27,6 @@ if (isset($_POST['disease_id']) && is_numeric($_POST['disease_id'])) {
 
     mysqli_close($conn);
 } else {
-    echo "disease ID ไม่ถูกต้อง";
+    echo "ability ID ไม่ถูกต้อง";
 }
 ?>

@@ -13,7 +13,7 @@
         </div>-->
         <div class="right-section">
             <h2>ข้อมูลประเภทความพิการ</h2>
-            <form action="../controller/admin/disabilitype/insert_disabilitype.php" method="post">
+            <form action="controller/insert_disabilitype.php" method="post">
                 <div class="form-group">
                     <label for="name">ประเภทความพิการ :</label>
                     <input type="text" id="name" name="type_name" required>

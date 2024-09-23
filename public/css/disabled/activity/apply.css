@@ -40,9 +40,23 @@ body {
     border-radius: 5px;
 }
 
-.sidebar .nav li a:hover, .sidebar .nav li a.active {
+.sidebar .nav li a:hover, 
+.sidebar .nav li a.active {
     background-color: #357abd; /* ฟ้าเข้มกว่า */
 }
+
+.title {
+    font-size: 2rem; /* ขนาดตัวอักษร */
+    font-weight: bold; /* ตัวอักษรหนา */
+    color: #ffffff; /* สีของข้อความเป็นสีขาว */
+    background-color: #4a90e2; /* พื้นหลังสีฟ้า */
+    text-align: center; /* จัดข้อความให้อยู่ตรงกลาง */
+    padding: 15px; /* เพิ่มพื้นที่รอบข้อความ */
+    border-radius: 8px; /* มุมโค้งมน */
+    margin-top: 20px; /* ระยะห่างด้านบน */
+    margin-bottom: 20px; /* ระยะห่างด้านล่าง */
+}
+
 
 .main-content {
     flex-grow: 1;

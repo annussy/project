@@ -32,16 +32,25 @@ include 'C:\laragon\www\project\config\config.php';
                 </a>
             </li>
             <li>
-                <a href="">
+                <a href="../activity/show_activity.php">
                     <span class="icon">
                         <ion-icon name="storefront-outline"></ion-icon>
                     </span>
-                    <span class="title">ข้อมูลกิจกรรมผู้พิการ</span>
+                    <span class="title">ข้อมูลกิจกรรมผู้พิการ</span>     
                 </a>
             </li>
 
             <li>
-                <a href="../disease/form_disease.php">
+                <a href="../activitydetails/show_activitydetails.php">
+                    <span class="icon">
+                        <ion-icon name="storefront-outline"></ion-icon>
+                    </span>
+                    <span class="title">รายละเอียดกิจกรรม</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="">
                     <span class="icon">
                         <ion-icon name="storefront-outline"></ion-icon>
                     </span>
@@ -50,7 +59,7 @@ include 'C:\laragon\www\project\config\config.php';
             </li>
 
             <li>
-                    <a href="">
+                    <a href="../disabilitype/show_disabilitype.php">
                         <span class="icon">
                             <ion-icon name="storefront-outline"></ion-icon>
                         </span>
@@ -59,7 +68,7 @@ include 'C:\laragon\www\project\config\config.php';
             </li>
 
             <li>
-                <a href="../disease/form_disease.php">
+                <a href="../ability/show_ability.php">
                     <span class="icon">
                         <ion-icon name="storefront-outline"></ion-icon>
                     </span>
@@ -80,7 +89,7 @@ include 'C:\laragon\www\project\config\config.php';
                     <span class="icon">
                         <ion-icon name="storefront-outline"></ion-icon>
                     </span>
-                    <span class="title">ข้อมูลสุขภาพผู้พิการ</span>
+                    <span class="title">ข้อมูลโรคประจำตัวผู้พิการ</span>
                 </a>
             </li>
 
@@ -135,8 +144,7 @@ include 'C:\laragon\www\project\config\config.php';
                         <td><?php echo $row['activity_count']; ?></td>
                         <td><?php echo $row['details']; ?></td>
                         <td><a href="controller/edit_activity.php?activity_id=<?php echo $row['activity_id']; ?>">แก้ไข</a></td>
-                        <td><a href="controller/delete_activity.php?activity_id=<?php echo $row['activity_id']; ?>">ลบ</a>
-                        </td>
+                        <td><a href="controller/delete_activity.php?activity_id=<?php echo $row['activity_id']; ?>">ลบ</a></td>
 
                     </tr>
                     

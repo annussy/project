@@ -11,14 +11,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>อัปเดตกิจกรรม</title>
+    <title>แก้ไขข้อมูลกิจกรรมของผู้พิการ</title>
     <!-- ลิงก์ไฟล์ CSS ที่แยกออกมา -->
     <link rel="stylesheet" href="../../../../public/css/admin/activity/edit.css"> 
 </head>
 
 <body>
     <div class="container">
-        <h2>อัปเดตกิจกรรม</h2>
+        <h2>แก้ไขข้อมูลกิจกรรมของผู้พิการ</h2>
 
         <div class="content">
         <form action="update_activity.php" method="post">

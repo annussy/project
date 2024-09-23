@@ -130,3 +130,13 @@ table tr:nth-child(even) {
 table tr:nth-child(odd) {
     background-color: #ffffff;
 }
+
+/* การแจ้งเตือน */
+.alert {
+    padding: 20px;
+    background-color: #4792ed; /* สีฟ้าสำหรับการแจ้งเตือน */
+    color: #fff;
+    text-align: center;
+    margin-top: 20px;
+    margin-left: 60px; /* เพิ่มระยะห่างจาก sidebar */
+}

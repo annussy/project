@@ -7,72 +7,127 @@ include 'C:\laragon\www\project\config\config.php';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ระบบจัดการข้อมูลผู้พิการ ตำบลแค</title>
-    <link rel="stylesheet" href="path/to/your/css/file.css"> <!-- เพิ่มลิงก์ไปยังไฟล์ CSS ถ้ามี -->
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-        }
-        .container {
-            width: 80%;
-            margin: auto;
-            overflow: hidden;
-        }
-        .alert {
-            padding: 20px;
-            background-color: #f4f4f4;
-            color: #333;
-            text-align: center;
-            margin-top: 20px;
-        }
-        .btn {
-            background-color: #007bff;
-            color: #fff;
-            padding: 10px 20px;
-            text-decoration: none;
-            display: inline-block;
-            margin-top: 20px;
-            border: none;
-            cursor: pointer;
-            font-size: 16px;
-        }
-        .btn:hover {
-            background-color: #0056b3;
-        }
-        table {
-            width: 100%;
-            margin-top: 20px;
-            border-collapse: collapse;
-        }
-        table, th, td {
-            border: 1px solid #ddd;
-        }
-        th, td {
-            padding: 10px;
-            text-align: left;
-        }
-        th {
-            background-color: #f4f4f4;
-        }
-        tr:hover {
-            background-color: #f1f1f1;
-        }
-        .table-striped tbody tr:nth-of-type(odd) {
-            background-color: #f9f9f9;
-        }
-    </style>
+    <link rel="stylesheet" href="../../../public/css/admin/activity/show_activity.css"> <!-- ลิงก์ไปยังไฟล์ CSS ที่แยกออกมา -->
 </head>
 <body>
+
+    <div class="sidebar">
+        <img src="logo.jpg" alt="CARE Logo" class="logo">
+        <ul class="nav">
+            <li>
+                <a href="">
+                    <span class="icon">
+                        <ion-icon name="storefront-outline"></ion-icon>
+                    </span>
+                    <span class="title">หน้าแรก</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="../disabled/show_disabled.php">
+                    <span class="icon">
+                        <ion-icon name="storefront-outline"></ion-icon>
+                    </span>
+                    <span class="title">ข้อมูลผู้พิการ</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="">
+                    <span class="icon">
+                        <ion-icon name="storefront-outline"></ion-icon>
+                    </span>
+                    <span class="title">ข้อมูลกิจกรรมผู้พิการ</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="../activitydetails/show_activitydetails.php">
+                    <span class="icon">
+                        <ion-icon name="storefront-outline"></ion-icon>
+                    </span>
+                    <span class="title">รายละเอียดกิจกรรม</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="">
+                    <span class="icon">
+                        <ion-icon name="storefront-outline"></ion-icon>
+                    </span>
+                    <span class="title">ข้อมูลรับเบี้ยผู้พิการ</span>
+                </a>
+            </li>
+
+            <li>
+                    <a href="../disabilitype/show_disabilitype.php">
+                        <span class="icon">
+                            <ion-icon name="storefront-outline"></ion-icon>
+                        </span>
+                        <span class="title">รายละเอียดประเภทความพิการ</span>  <!-- ยังไม่เพิ่ม -->
+                    </a>
+            </li>
+
+            <li>
+                <a href="../ability/show_ability.php">
+                    <span class="icon">
+                        <ion-icon name="storefront-outline"></ion-icon>
+                    </span>
+                    <span class="title">ข้อมูลความสามารถผู้พิการ</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="">
+                    <span class="icon">
+                        <ion-icon name="storefront-outline"></ion-icon>
+                    </span>
+                    <span class="title">ข้อมูลแบบประเมินผู้พิการ</span>
+                </a>
+
+            <li>
+                <a href="../disease/show_disease.php">
+                    <span class="icon">
+                        <ion-icon name="storefront-outline"></ion-icon>
+                    </span>
+                    <span class="title">ข้อมูลโรคประจำตัวผู้พิการ</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="">
+                    <span class="icon">
+                        <ion-icon name="storefront-outline"></ion-icon>
+                    </span>
+                    <span class="title">ข้อมูลความต้องการผู้ประกอบการ</span>
+                </a>
+
+                <li>
+                <a href="">
+                    <span class="icon">
+                        <ion-icon name="storefront-outline"></ion-icon>
+                    </span>
+                    <span class="title">รายละเอียดความสามารถผู้พิการ</span>
+                </a>
+            </li>
+
+            <li><a href="logout">ออกจากระบบ</a></li>
+        </ul>
+    </div>
+
+    <div class="main-content">
     <div class="container">    
         <div class="alert alert-primary h4 text-center mt-4" role="alert">ข้อมูลประเภทความพิการ</div>
         <a href="create_disabilitype.php"><button type="button" class="btn btn-primary">เพิ่มข้อมูล</button></a>
 
-        
         <table class="table table-striped table-hover mt-4">
             <thead>
                 <tr>
                     <th>ลำดับ</th>
                     <th>ชื่อประเภทความพิการ</th>
                     <th>จำนวนเงินรับเบี้ยความพิการ</th>
+                    <th>แก้ไข</th>
+                    <th>ลบ</th>
                 </tr>
             </thead>
             <tbody>
@@ -86,6 +141,8 @@ include 'C:\laragon\www\project\config\config.php';
                     <td><?php echo $row['disabilitype_id']; ?></td>
                     <td><?php echo $row['type_name']; ?></td>
                     <td><?php echo $row['type_money']; ?></td>
+                    <td><a href="controller/edit_disabilitype.php?disabilitype_id=<?php echo $row['disabilitype_id']; ?>">แก้ไข</a></td>
+                    <td><a href="controller/delete_disabilitype.php?disabilitype_id=<?php echo $row['disabilitype_id']; ?>">ลบ</a></td>
                 </tr>
                 <?php 
                         } 
@@ -96,6 +153,7 @@ include 'C:\laragon\www\project\config\config.php';
                 ?>
             </tbody>
         </table>
+    </div>
     </div>
 </body>
 </html>
