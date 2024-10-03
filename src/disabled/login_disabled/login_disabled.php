@@ -11,15 +11,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // ตรวจสอบข้อมูลผู้ใช้
     $sql = "SELECT * FROM disabled WHERE email = ? AND password = ?";
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param('ss', $email, $password);
+    $stmt->bind_param('ss', $email, $password); // เตรียมการป้องกัน SQL Injection
     $stmt->execute();
     $result = $stmt->get_result();
 
     if ($result->num_rows > 0) {
-
-        $_SESSION['disabled_id']; // เก็บ session สำหรับพนักงาน
+        $user = $result->fetch_assoc();
+        $_SESSION['disabled_id'] = $user['disabled_id']; // เก็บ session สำหรับผู้พิการ
         // ข้อมูลถูกต้อง
-        header("Location: ../activity_disabled/apply.php");  //ส่งกลับไปหน้าแรก-home
+        header("Location: ../disease/form_disease.php");  //ส่งกลับไปหน้าแรก-home
         exit();
     } else {
         $error_message = "มีอีเมลหรือรหัสผ่านไม่ถูกต้อง";

@@ -1,4 +1,5 @@
 <?php
+session_start();
 include 'C:\laragon\www\project\config\config.php';
 ?>
 
@@ -9,6 +10,7 @@ include 'C:\laragon\www\project\config\config.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ระบบจัดการข้อมูลผู้พิการ ตำบลแค</title>
     <link rel="stylesheet" href="../../../public/css/admin/disease/show_disease.css"> <!-- เพิ่มลิงก์ไปยังไฟล์ CSS ถ้ามี -->
+    
 </head>
 <body>
 <div class="sidebar">
@@ -41,6 +43,15 @@ include 'C:\laragon\www\project\config\config.php';
             </li>
 
             <li>
+                <a href="../activitydetails/show_activitydetails.php">
+                    <span class="icon">
+                        <ion-icon name="storefront-outline"></ion-icon>
+                    </span>
+                    <span class="title">รายละเอียดกิจกรรม</span>
+                </a>
+            </li>
+
+            <li>
                 <a href="">
                     <span class="icon">
                         <ion-icon name="storefront-outline"></ion-icon>
@@ -59,7 +70,7 @@ include 'C:\laragon\www\project\config\config.php';
             </li>
 
             <li>
-                <a href="../disease/form_disease.php">
+                <a href="../ability/show_ability.php">
                     <span class="icon">
                         <ion-icon name="storefront-outline"></ion-icon>
                     </span>
@@ -76,7 +87,7 @@ include 'C:\laragon\www\project\config\config.php';
                 </a>
 
             <li>
-                <a href="../disease/show_disease.php">
+                <a href="../ability/show_ability.php">
                     <span class="icon">
                         <ion-icon name="storefront-outline"></ion-icon>
                     </span>
@@ -102,6 +113,7 @@ include 'C:\laragon\www\project\config\config.php';
             </li>
 
             <li><a href="logout">ออกจากระบบ</a></li>
+            
         </ul>
     </div>
     <div class="container">    

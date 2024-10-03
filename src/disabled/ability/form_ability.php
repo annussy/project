@@ -1,5 +1,15 @@
 <?php
 include 'C:\laragon\www\project\config\config.php';
+session_start();
+
+// ตรวจสอบว่าผู้ใช้เข้าสู่ระบบหรือยัง
+if (!isset($_SESSION['disabled_id'])) {
+    // ถ้าไม่ได้เข้าสู่ระบบ ให้นำไปหน้าเข้าสู่ระบบ
+    header("Location: ../login_disabled/login_disabled.php");
+    exit();
+}
+// ดึง ID ผู้ใช้จากเซสชัน
+$disabled_id = $_SESSION['disabled_id'];
 ?>
 
 <!DOCTYPE html>
@@ -25,7 +35,7 @@ include 'C:\laragon\www\project\config\config.php';
                 </li>
 
                 <li>
-                    <a href="../activity_disabled/apply.php">
+                    <a href="../activity/form_activity.php">
                         <span class="icon">
                             <ion-icon name="storefront-outline"></ion-icon>
                         </span>
@@ -69,44 +79,49 @@ include 'C:\laragon\www\project\config\config.php';
                     </a>
                 </li>
 
-                <li><a href="logout">ออกจากระบบ</a></li>
+                <li><a href="../login_disabled/logout_disabled.php">ออกจากระบบ</a></li>
             </ul>
         </div>
 
-        <form action="ability-table" method="post">
-        <div class="alert alert-primary h4 text-center mt-4" role="alert">ข้อมูลความสามารถผู้พิการ</div>
-            <table>
-                <thead>
-                    <tr>
-                        <th>เลือกความสามารถ</th>
-                        <th>ความสามารถ</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php
-                    // ดึงข้อมูลจากฐานข้อมูล
-                    $sql = "SELECT ability_id, ability_name FROM ability";
-                    $result = $conn->query($sql);
+        <div class="main-content">
+        <form action="join_abilitydetails.php" method="post">
+        <div class="header">
+    <div class="alert alert-primary h4 text-center mt-4" role="alert">ข้อมูลความสามารถผู้พิการ</div>
+        </div>
+    <table>
+        <thead>
+            <tr>
+                <th>เลือกความสามารถ</th>
+                <th>ความสามารถ</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php
+            // ดึงข้อมูลจากฐานข้อมูล
+            $sql = "SELECT ability_id, ability_name FROM ability";
+            $result = $conn->query($sql);
 
-                    if ($result->num_rows > 0) {
-                        // แสดงข้อมูลในตาราง
-                        while($row = $result->fetch_assoc()) {
-                            echo "<tr>";
-                            echo '<td><input type="checkbox" name="ability[]" value="' . $row["ability_id"] . '"></td>';
-                            echo "<td>" . $row["ability_name"] . "</td>";
-                            echo "</tr>";
-                        }
-                    } else {
-                        echo "<tr><td colspan='2'>ไม่มีข้อมูลโรค</td></tr>";
-                    }
+            if ($result->num_rows > 0) {
+                // แสดงข้อมูลในตาราง
+                while($row = $result->fetch_assoc()) {
+                    echo "<tr>";
+                    echo '<td><input type="checkbox" name="ability[]" value="' . $row["ability_id"] . '"></td>';
+                    echo "<td>" . $row["ability_name"] . "</td>";
+                    echo "</tr>";
+                }
+            } else {
+                echo "<tr><td colspan='2'>ไม่มีข้อมูลความสามารถ</td></tr>";
+            }
 
-                    // ปิดการเชื่อมต่อ
-                    $conn->close();
-                    ?>
-                </tbody>
-            </table>
-            <button type="submit">ยืนยันการเลือกความสามารถ</button>
-        </form>
+            // ปิดการเชื่อมต่อ
+            $conn->close();
+            ?>
+        </tbody>
+    </table>
+    <input type="hidden" name="disabled_id" value="<?php echo $disabled_id; ?>"> <!-- ใช้ค่า disabled_id จากเซสชัน -->
+    <button type="submit">ยืนยันการเลือกความสามารถ</button>
+</form>
+
     </div>
 
     <script>

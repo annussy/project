@@ -41,6 +41,15 @@ include 'C:\laragon\www\project\config\config.php';
             </li>
 
             <li>
+                <a href="../activitydetails/show_activitydetails.php">
+                    <span class="icon">
+                        <ion-icon name="storefront-outline"></ion-icon>
+                    </span>
+                    <span class="title">รายละเอียดกิจกรรม</span>
+                </a>
+            </li>
+
+            <li>
                 <a href="">
                     <span class="icon">
                         <ion-icon name="storefront-outline"></ion-icon>

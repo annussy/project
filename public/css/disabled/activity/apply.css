@@ -1,12 +1,13 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #e9f1f7; /* ฟ้าอ่อน */
+    background-color: #f0f0f0; /* พื้นหลังโทนสีอ่อน */
     margin: 0;
     padding: 0;
 }
 
 .container {
     display: flex;
+    min-height: 100vh; /* ให้ container ครอบคลุมทั้งหน้า  (เพิ่มใหม่) */
 }
 
 .sidebar {
@@ -35,34 +36,25 @@ body {
 .sidebar .nav li a {
     color: white;
     text-decoration: none;
-    display: block;
-    padding: 10px;
+    display: flex; /* ใช้ flex เพื่อให้การจัดวางภายในเป็นระเบียบ */
+    align-items: center; /* จัดให้ไอคอนหรือข้อความอยู่ตรงกลาง */
+    padding: 10px; /* ขยาย padding เพื่อให้ปุ่มใหญ่ขึ้น */
     border-radius: 5px;
 }
 
-.sidebar .nav li a:hover, 
+.sidebar .nav li a:hover,
 .sidebar .nav li a.active {
-    background-color: #357abd; /* ฟ้าเข้มกว่า */
+    background-color: #357abd; /* สีเข้มขึ้นเมื่อ hover */
 }
-
-.title {
-    font-size: 2rem; /* ขนาดตัวอักษร */
-    font-weight: bold; /* ตัวอักษรหนา */
-    color: #ffffff; /* สีของข้อความเป็นสีขาว */
-    background-color: #4a90e2; /* พื้นหลังสีฟ้า */
-    text-align: center; /* จัดข้อความให้อยู่ตรงกลาง */
-    padding: 15px; /* เพิ่มพื้นที่รอบข้อความ */
-    border-radius: 8px; /* มุมโค้งมน */
-    margin-top: 20px; /* ระยะห่างด้านบน */
-    margin-bottom: 20px; /* ระยะห่างด้านล่าง */
-}
-
 
 .main-content {
     flex-grow: 1;
     padding: 20px;
+    margin-left: 40px; /* ปรับระยะห่างสำหรับ sidebar ที่ fix ไว้ */
+    background-color: white;
 }
 
+/* Header */
 .header {
     display: flex;
     justify-content: space-between;
@@ -73,6 +65,7 @@ body {
 .header .title {
     font-size: 1.5rem;
     font-weight: bold;
+    color: #4a90e2; /* สีฟ้าเดียวกับ sidebar */
 }
 
 .activity-table {
@@ -100,6 +93,7 @@ body {
     background-color: #ffffff;
 }
 
+/* Apply Button */
 .apply-button {
     background-color: #4a90e2; /* ฟ้าเข้ม */
     color: white;
@@ -107,10 +101,11 @@ body {
     text-decoration: none;
     border: 2px solid #4a90e2;
     border-radius: 5px;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease; /* เพิ่ม transition */
 }
 
 .apply-button:hover {
     background-color: white;
     color: #4a90e2; /* ฟ้าเข้ม */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* เพิ่มเงาเมื่อ hover */
 }

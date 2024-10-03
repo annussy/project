@@ -18,7 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($result->num_rows > 0) {
         // ดึงข้อมูลผู้ใช้
         $row = $result->fetch_assoc();
-        $employee_id = $row['employee_id']; // สมมุติว่า column นี้ชื่อว่า 'employee_id'
+        $employee_id = $row['employee_id'];
 
         // กำหนดค่าให้กับเซสชัน
         $_SESSION['employee_id'] = $employee_id;

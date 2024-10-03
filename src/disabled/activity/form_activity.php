@@ -14,18 +14,20 @@ $disabled_id = $_SESSION['disabled_id'];
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ระบบจัดการข้อมูลผู้พิการ ตำบลแค</title>
-    <link rel="stylesheet" href="../../../public/css/disabled/disease/form_disease.css"> <!-- แก้ไข path ให้ตรงกับที่เก็บไฟล์ CSS ของคุณ -->
+    <title>กิจกรรมสำหรับผู้พิการ</title>
+    <link rel="stylesheet" href="../../../public/css/disabled/activity/apply.css">
 </head>
+
 <body>
     <div class="container">
         <div class="sidebar">
             <img src="logo.jpg" alt="CARE Logo" class="logo">
             <ul class="nav">
-                <li>
+            <li>
                     <a href="">
                         <span class="icon">
                             <ion-icon name="storefront-outline"></ion-icon>
@@ -83,47 +85,76 @@ $disabled_id = $_SESSION['disabled_id'];
             </ul>
         </div>
 
-        <form action="join_diseasedetails.php" method="post">
-        <div class="alert alert-primary h4 text-center mt-4" role="alert">ข้อมูลโรคประจำตัวผู้พิการ</div>
-            <table>
+        <div class="main-content">
+            <div class="header">
+                <div class="title">กิจกรรมสำหรับผู้พิการ</div>
+            </div>
+            <table class="activity-table">
                 <thead>
                     <tr>
-                        <th>เลือกโรคประจำตัว</th>
-                        <th>ชื่อโรค</th>
+                        <th>ชื่อกิจกรรม</th>
+                        <th>สถานที่จัด</th>
+                        <th>จำนวนรับ</th>
+                        <th>รายละเอียดกิจกรรม</th>
+                        <th>สถานะ</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php
-                    // ดึงข้อมูลจากฐานข้อมูล
-                    $sql = "SELECT disease_id, disease_name FROM disease";
+                    $sql = "SELECT activity_id, activity_name, activity_location, activity_count, details FROM activity";
                     $result = $conn->query($sql);
 
                     if ($result->num_rows > 0) {
-                        // แสดงข้อมูลในตาราง
-                        while($row = $result->fetch_assoc()) {
+                        while ($row = $result->fetch_assoc()) {
                             echo "<tr>";
-                            echo '<td><input type="checkbox" name="disease[]" value="' . $row["disease_id"] . '"></td>';
-                            echo "<td>" . $row["disease_name"] . "</td>";
+                            echo "<td>" . $row["activity_name"] . "</td>";
+                            echo "<td>" . $row["activity_location"] . "</td>";
+                            echo "<td>" . $row["activity_count"] . "</td>";
+                            echo "<td>" . $row["details"] . "</td>";
+
+                            // ฟอร์มสำหรับการสมัครกิจกรรม
+                            echo '<td>';
+                            echo '<form action="join_activity.php" method="POST">';
+                            echo '<input type="hidden" name="activity_id" value="' . $row["activity_id"] . '">';
+                            echo '<input type="hidden" name="disabled_id" value="' . $disabled_id . '">';  // ส่ง disabled_id จาก session
+                            echo '<button type="submit">สมัคร</button>';
+                            echo '</form>';
+                            echo '</td>';
+
                             echo "</tr>";
                         }
                     } else {
-                        echo "<tr><td colspan='2'>ไม่มีข้อมูลโรค</td></tr>";
+                        echo "<tr><td colspan='5'>ไม่มีข้อมูลกิจกรรม</td></tr>";
                     }
 
-                    // ปิดการเชื่อมต่อ
                     $conn->close();
                     ?>
                 </tbody>
             </table>
-            <input type="hidden" name="disabled_id" value="<?php echo $disabled_id; ?>"> <!-- ใช้ค่า disabled_id จากเซสชัน -->
-            <button type="submit">ยืนยันการเลือกโรคประจำตัว</button>
-        </form>
+        </div>
     </div>
 
     <script>
-        function goBack() {
-            window.location.href = "form_disease.php";
+    // ฟังก์ชันตรวจสอบค่าจาก URL และแสดงข้อความแจ้งเตือน
+    function getMessageFromUrl() {
+        const params = new URLSearchParams(window.location.search);
+        const message = params.get('message');
+
+        if (message === 'success') {
+            alert("สมัครกิจกรรมสำเร็จ!");
+        } else if (message === 'already_registered') {
+            alert("คุณได้สมัครกิจกรรมนี้แล้ว");
+        } else if (message === 'error') {
+            alert("เกิดข้อผิดพลาดในการสมัครกิจกรรม");
+        } else if (message === 'no_data') {
+            alert("ไม่มีข้อมูลที่ส่งมา");
         }
+    }
+
+    // เรียกใช้ฟังก์ชันเมื่อโหลดหน้าเว็บ
+    getMessageFromUrl();
     </script>
+
 </body>
+
 </html>

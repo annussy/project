@@ -8,6 +8,7 @@ body {
 
 .container {
     display: flex;
+    min-height: 100vh; /* ให้ container ครอบคลุมทั้งหน้า  (เพิ่มใหม่) */
 }
 
 .sidebar {
@@ -49,9 +50,9 @@ body {
 
 /* Main content */
 .main-content {
-    flex-grow: 1;
-    padding: 20px;
-    margin-left: 40px; /* เพิ่มระยะห่างจาก sidebar */
+    flex-grow: 0;
+    padding: 10px;
+    margin-left: 20px; /* เพิ่มระยะห่างจาก sidebar */
     background-color: white;
 }
 
@@ -60,7 +61,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 .header .title {
