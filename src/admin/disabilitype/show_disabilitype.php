@@ -1,6 +1,17 @@
 <?php
 include 'C:\laragon\www\project\config\config.php';
+session_start();
+
+// ตรวจสอบว่าผู้ใช้เข้าสู่ระบบหรือยัง
+if (!isset($_SESSION['employee_id'])) {
+    // ถ้าไม่ได้เข้าสู่ระบบ ให้นำไปหน้าเข้าสู่ระบบ
+    header("Location: ../login_admin/login_admin.php");
+    exit();
+}
+// ดึง ID ผู้ใช้จากเซสชัน
+$employee_id = $_SESSION['employee_id'];
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -42,15 +53,6 @@ include 'C:\laragon\www\project\config\config.php';
             </li>
 
             <li>
-                <a href="../activitydetails/show_activitydetails.php">
-                    <span class="icon">
-                        <ion-icon name="storefront-outline"></ion-icon>
-                    </span>
-                    <span class="title">รายละเอียดกิจกรรม</span>
-                </a>
-            </li>
-
-            <li>
                 <a href="">
                     <span class="icon">
                         <ion-icon name="storefront-outline"></ion-icon>
@@ -64,7 +66,7 @@ include 'C:\laragon\www\project\config\config.php';
                         <span class="icon">
                             <ion-icon name="storefront-outline"></ion-icon>
                         </span>
-                        <span class="title">รายละเอียดประเภทความพิการ</span>  <!-- ยังไม่เพิ่ม -->
+                        <span class="title">ประเภทความพิการ</span>  <!-- ยังไม่เพิ่ม -->
                     </a>
             </li>
 
@@ -102,16 +104,7 @@ include 'C:\laragon\www\project\config\config.php';
                     <span class="title">ข้อมูลความต้องการผู้ประกอบการ</span>
                 </a>
 
-                <li>
-                <a href="">
-                    <span class="icon">
-                        <ion-icon name="storefront-outline"></ion-icon>
-                    </span>
-                    <span class="title">รายละเอียดความสามารถผู้พิการ</span>
-                </a>
-            </li>
-
-            <li><a href="logout">ออกจากระบบ</a></li>
+                <li><a href="../login_admin/logout_admin.php">ออกจากระบบ</a></li>
         </ul>
     </div>
 

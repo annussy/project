@@ -1,6 +1,15 @@
 <?php
-session_start();
 include 'C:\laragon\www\project\config\config.php';
+session_start();
+
+// ตรวจสอบว่าผู้ใช้เข้าสู่ระบบหรือยัง
+if (!isset($_SESSION['employee_id'])) {
+    // ถ้าไม่ได้เข้าสู่ระบบ ให้นำไปหน้าเข้าสู่ระบบ
+    header("Location: ../login_admin/login_admin.php");
+    exit();
+}
+// ดึง ID ผู้ใช้จากเซสชัน
+$employee_id = $_SESSION['employee_id'];
 ?>
 
 <!DOCTYPE html>
@@ -43,15 +52,6 @@ include 'C:\laragon\www\project\config\config.php';
             </li>
 
             <li>
-                <a href="../activitydetails/show_activitydetails.php">
-                    <span class="icon">
-                        <ion-icon name="storefront-outline"></ion-icon>
-                    </span>
-                    <span class="title">รายละเอียดกิจกรรม</span>
-                </a>
-            </li>
-
-            <li>
                 <a href="">
                     <span class="icon">
                         <ion-icon name="storefront-outline"></ion-icon>
@@ -65,7 +65,7 @@ include 'C:\laragon\www\project\config\config.php';
                         <span class="icon">
                             <ion-icon name="storefront-outline"></ion-icon>
                         </span>
-                        <span class="title">รายละเอียดประเภทความพิการ</span>  <!-- ยังไม่เพิ่ม -->
+                        <span class="title">ประเภทความพิการ</span>  <!-- ยังไม่เพิ่ม -->
                     </a>
             </li>
 
@@ -103,16 +103,7 @@ include 'C:\laragon\www\project\config\config.php';
                     <span class="title">ข้อมูลความต้องการผู้ประกอบการ</span>
                 </a>
 
-                <li>
-                <a href="">
-                    <span class="icon">
-                        <ion-icon name="storefront-outline"></ion-icon>
-                    </span>
-                    <span class="title">รายละเอียดความสามารถผู้พิการ</span>
-                </a>
-            </li>
-
-            <li><a href="logout">ออกจากระบบ</a></li>
+                <li><a href="../login_admin/logout_admin.php">ออกจากระบบ</a></li>
             
         </ul>
     </div>
@@ -125,6 +116,7 @@ include 'C:\laragon\www\project\config\config.php';
                 <tr>
                     <th>ลำดับ</th>
                     <th>โรคประจำตัว</th>
+                    <th>เรียกดูข้อมูล</th>
                     <th>แก้ไข</th>
                     <th>ลบ</th>
                 </tr>
@@ -139,6 +131,7 @@ include 'C:\laragon\www\project\config\config.php';
                 <tr>
                     <td><?php echo $row['disease_id']; ?></td>
                     <td><?php echo $row['disease_name']; ?></td>
+                    <td><a href="controller/browse_diseasedetails.php?disease_id=<?php echo $row['disease_id']; ?>">เรียกดูรายละเอียด</a></td>
                     <td><a href="controller/edit_disease.php?disease_id=<?php echo $row['disease_id']; ?>">แก้ไข</a></td>
                     <td><a href="controller/delete_disease.php?disease_id=<?php echo $row['disease_id']; ?>">ลบ</a></td>
                 </tr>

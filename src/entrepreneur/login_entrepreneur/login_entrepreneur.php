@@ -20,7 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_SESSION['entrepreneur_id'] = $row['entrepreneur_id']; // เก็บ session สำหรับพนักงาน
 
         // ข้อมูลถูกต้อง ส่งกลับไปหน้าแรก
-        header("Location: home.php");  //ส่งกลับไปหน้าแรก-home
+        header("Location: ../need/form_need.php");  //ส่งกลับไปหน้าแรก-home
         exit();
     } else {
         $error_message = "มีอีเมลหรือรหัสผ่านไม่ถูกต้อง";
@@ -36,7 +36,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ระบบจัดการข้อมูลผู้พิการ ตำบลแค</title>
+    <title>ระบบจัดการข้อมูลผู้ประกอบการ</title>
     <link rel="stylesheet" href="../../../public/css/entrepreneur/login_entrepreneur.css">
 </head>
 <body>

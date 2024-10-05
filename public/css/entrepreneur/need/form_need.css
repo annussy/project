@@ -1,0 +1,119 @@
+/* ตั้งค่า font */
+body {
+    font-family: 'Kanit', sans-serif;
+    background-color: #f4eafc; /* พื้นหลังโทนสีม่วงพาสเทลอ่อน */
+}
+
+/* Reset CSS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* รูปแบบของโลโก้ใน sidebar */
+.sidebar .logo {
+    display: block;
+    margin: 0 auto 20px auto;
+    max-width: 100px;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 270px;
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    background-color: #d6b3e8; /* สีหลักม่วงพาสเทล */
+    color: #fff;
+    padding: 10px;
+}
+
+/* รายการใน Sidebar */
+.sidebar .nav {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar .nav li {
+    margin-bottom: 10px;
+}
+
+.sidebar .nav li a {
+    color: #fff; /* สีขาว */
+    text-decoration: none;
+    display: block;
+    padding: 12px;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+/* รูปแบบของลิงก์ในเมนูเมื่อลอย */
+.sidebar .nav li a:hover,
+.sidebar .nav li a.active {
+    background-color: #b28bc7; /* สีเข้มขึ้นเมื่อ hover (ม่วงเข้ม) */
+}
+
+/* รูปแบบเนื้อหาหลัก */
+.main-content {
+    margin-left: 270px;
+    padding: 20px;
+    background-color: #f8e8ff; /* สีพื้นหลังเนื้อหาเป็นโทนสีอ่อนม่วง */
+    min-height: 100vh;
+}
+
+/* ปุ่ม */
+.btn {
+    background-color: #c08cd4; /* ปุ่มสีม่วงเข้ม */
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.btn:hover {
+    background-color: #946aa8; /* ปุ่มเปลี่ยนเป็นเข้มกว่าเมื่อ hover */
+}
+
+/* ตาราง */
+table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+    background-color: #fff; /* พื้นหลังตารางเป็นสีขาว */
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background-color: #edd3f7; /* สีม่วงอ่อนสำหรับหัวตาราง */
+}
+
+tr:hover {
+    background-color: #f2e2fc; /* เมื่อ hover แถวจะเป็นสีม่วงอ่อน */
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: #f6e9fd; /* แถบสีม่วงอ่อนสำหรับแถวคู่คี่ */
+}
+
+/* การแจ้งเตือน */
+.alert {
+    padding: 20px;
+    background-color: #d9a7e1; /* สีม่วงอ่อนสำหรับการแจ้งเตือน */
+    color: #fff;
+    text-align: center;
+    margin-top: 20px;
+}

@@ -1,7 +1,7 @@
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    background-color: #d8edf7;
+    background-color: #f3e8f8; /* พื้นหลังโทนม่วงพาสเทล */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -17,7 +17,7 @@ body {
 }
 
 .left-section {
-    background-color: #d8e7ff;
+    background-color: #e3d4f9; /* สีม่วงพาสเทลสำหรับซ้าย */
     padding: 20px;
     display: flex;
     align-items: center;
@@ -37,7 +37,7 @@ body {
 
 .right-section h2 {
     margin-bottom: 20px;
-    color: #333;
+    color: #5c4a72; /* สีม่วงเข้ม */
 }
 
 .form-group {
@@ -48,7 +48,7 @@ body {
 .form-group label {
     display: block;
     margin-bottom: 5px;
-    color: #555;
+    color: #7d6a94; /* สีม่วงเข้ม */
 }
 
 .form-group input {
@@ -67,7 +67,7 @@ body {
 }
 
 button {
-    background-color: #6b78f7;
+    background-color: #b891e3; /* สีม่วงพาสเทล */
     color: white;
     border: none;
     padding: 10px;
@@ -77,11 +77,11 @@ button {
 }
 
 button:hover {
-    background-color: #5a67d8;
+    background-color: #9c74cc; /* สีม่วงเข้มกว่าเมื่อ hover */
 }
 
 .forgot-password {
-    color: #6b78f7;
+    color: #b891e3; /* ลิงก์สีม่วงพาสเทล */
     text-decoration: none;
     text-align: center;
     display: block;
@@ -93,7 +93,7 @@ button:hover {
     left: 20px;
     background-color: transparent;
     border: none;
-    color: #030b07;
+    color: #5c4a72; /* สีม่วงเข้ม */
     font-size: 16px;
     cursor: pointer;
 }

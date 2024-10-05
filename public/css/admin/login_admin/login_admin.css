@@ -1,7 +1,7 @@
 body {
     margin: 0;
-    font-family: Arial, sans-serif;
-    background-color: #d8edf7;
+    font-family: 'Kanit', sans-serif;
+    background-color: #eef0fd; /* โทนสีฟ้าอ่อน */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -17,7 +17,7 @@ body {
 }
 
 .left-section {
-    background-color: #d8e7ff;
+    background-color: #909cec; /* สีฟ้าพาสเทล */
     padding: 20px;
     display: flex;
     align-items: center;
@@ -33,6 +33,7 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    background-color: #f4f5fe; /* สีพื้นหลังเนื้อหาเป็นโทนสีอ่อน */
 }
 
 .right-section h2 {
@@ -67,7 +68,7 @@ body {
 }
 
 button {
-    background-color: #6b78f7;
+    background-color: #737edb; /* ปุ่มสีฟ้าพาสเทลเข้ม */
     color: white;
     border: none;
     padding: 10px;
@@ -81,7 +82,7 @@ button:hover {
 }
 
 .forgot-password {
-    color: #6b78f7;
+    color: #737edb;
     text-decoration: none;
     text-align: center;
     display: block;

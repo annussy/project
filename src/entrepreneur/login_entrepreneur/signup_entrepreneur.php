@@ -25,11 +25,6 @@
                     <input type="text" id="card" name="entrepreneur_agency" required>
                 </div>
 
-                <div class="form-group"
-                    <label for="card">ความต้องการ :</label>
-                    <input type="text" id="card" name="entrepreneur_need" required>
-                </div>
-
                 <div class="form-group">
                     <label for="tel">เบอร์โทรติดต่อ :</label>
                     <input type="tel" id="tel" name="tel" required>

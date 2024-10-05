@@ -129,16 +129,20 @@ include 'C:\laragon\www\project\config\config.php';
                 <th>ลบ</th>
             </tr>
             <?php
-                $sql = "SELECT activity.activity_id, activity.activity_name, disabled.disabled_id, disabled.disabled_name FROM activity JOIN disabled ON activity.activity_id = disabled.disabled_id";
-                $result = mysqli_query($conn, $sql);
-                while($row = mysqli_fetch_array($result)){ 
-            ?>
+    $sql = "SELECT activitydetails.activity_id, activity.activity_name, activitydetails.disabled_id, disabled.disabled_name 
+            FROM activitydetails 
+            JOIN activity ON activitydetails.activity_id = activity.activity_id
+            JOIN disabled ON activitydetails.disabled_id = disabled.disabled_id";
+    $result = mysqli_query($conn, $sql);
+    while($row = mysqli_fetch_array($result)){ 
+?>
+
             <tr>
                 <td><?php echo $row['activity_id']; ?></td>
                 <td><?php echo $row['activity_name']; ?></td>
                 <td><?php echo $row['disabled_id']; ?></td>
                 <td><?php echo $row['disabled_name']; ?></td>
-                <td><a href="controller/edit_activitydetails.php?activitydetails_id=<?php echo $row['activity_id']; ?>">แก้ไข</a></td>
+                <td><a href="controller/browse_activitydetails.php?activitydetails_id=<?php echo $row['activity_id']; ?>">เรียกดูข้อมูล</a></td>
                 <td><a href="controller/delete_activitydetails.php?activitydetails_id=<?php echo $row['activity_id']; ?>" onclick="Del(this.href); return false;">ลบ</a></td>
             </tr>
 

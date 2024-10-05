@@ -1,25 +1,17 @@
 <?php
 include 'C:\laragon\www\project\config\config.php';
-session_start();
-
-// ตรวจสอบว่าผู้ใช้เข้าสู่ระบบหรือยัง
-if (!isset($_SESSION['employee_id'])) {
-    // ถ้าไม่ได้เข้าสู่ระบบ ให้นำไปหน้าเข้าสู่ระบบ
-    header("Location: ../login_admin/login_admin.php");
-    exit();
-}
-// ดึง ID ผู้ใช้จากเซสชัน
-$employee_id = $_SESSION['employee_id'];
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+<meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ระบบจัดการข้อมูลผู้พิการ ตำบลแค</title>
-    <link rel="stylesheet" href="../../../public/css/admin/activity/show_activity.css"> <!-- ลิงก์ไฟล์ CSS ที่นี่ -->
+    <link rel="stylesheet" href="../../../../public/css/admin/activitydetails/show_activitydetails.css"> <!-- ลิงก์ไฟล์ CSS ที่นี่ -->
 </head>
+<body>
+
 <body>
     <div class="sidebar">
         <img src="logo.jpg" alt="CARE Logo" class="logo">
@@ -51,6 +43,15 @@ $employee_id = $_SESSION['employee_id'];
             </li>
 
             <li>
+                <a href="../activitydetails/show_activitydetails.php">
+                    <span class="icon">
+                        <ion-icon name="storefront-outline"></ion-icon>
+                    </span>
+                    <span class="title">รายละเอียดกิจกรรม</span>
+                </a>
+            </li>
+
+            <li>
                 <a href="">
                     <span class="icon">
                         <ion-icon name="storefront-outline"></ion-icon>
@@ -64,7 +65,7 @@ $employee_id = $_SESSION['employee_id'];
                         <span class="icon">
                             <ion-icon name="storefront-outline"></ion-icon>
                         </span>
-                        <span class="title">ประเภทความพิการ</span>  <!-- ยังไม่เพิ่ม -->
+                        <span class="title">รายละเอียดประเภทความพิการ</span>  <!-- ยังไม่เพิ่ม -->
                     </a>
             </li>
 
@@ -102,56 +103,63 @@ $employee_id = $_SESSION['employee_id'];
                     <span class="title">ข้อมูลความต้องการผู้ประกอบการ</span>
                 </a>
 
-                <li><a href="../login_admin/logout_admin.php">ออกจากระบบ</a></li>
+                <li>
+                <a href="">
+                    <span class="icon">
+                        <ion-icon name="storefront-outline"></ion-icon>
+                    </span>
+                    <span class="title">รายละเอียดความสามารถผู้พิการ</span>
+                </a>
+            </li>
+
+            <li><a href="logout">ออกจากระบบ</a></li>
         </ul>
     </div>
 
     <div class="main-content">
-        <div class="container">
-            <div class="alert alert-primary h4 text-center mt-4" role="alert">ข้อมูลกิจกรรม</div>
-            <a href="create_activity.php"><button type="button" class="btn btn-primary">เพิ่มข้อมูล</button></a>
-            <table class="table table-striped table-hover mt-4">
-                <thead>
-                    <tr>
-                        <th>ลำดับ</th>
-                        <th>ชื่อกิจกรรม</th>
-                        <th>สถานที่</th>
-                        <th>จำนวนรับ</th>
-                        <th>รายละเอียดกิจกรรม</th>
-                        <th>เรียกดูกิจกรรม</th>
-                        <th>แก้ไข</th>
-                        <th>ลบ</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php
-                        $sql = "SELECT * FROM activity";
-                        $result = mysqli_query($conn, $sql);
-                        if ($result) {
-                            while ($row = mysqli_fetch_array($result)) { 
-                    ?>
-                    <tr>
-                        <td><?php echo $row['activity_id']; ?></td>
-                        <td><?php echo $row['activity_name']; ?></td>
-                        <td><?php echo $row['activity_location']; ?></td>
-                        <td><?php echo $row['activity_count']; ?></td>
-                        <td><?php echo $row['details']; ?></td>
-                        <td><a href="controller/browse_activitydetails.php?activity_id=<?php echo $row['activity_id']; ?>">เรียกดูรายละเอียด</a></td>
-                        <td><a href="controller/edit_activity.php?activity_id=<?php echo $row['activity_id']; ?>">แก้ไข</a></td>
-                        <td><a href="controller/delete_activity.php?activity_id=<?php echo $row['activity_id']; ?>">ลบ</a></td>
+    <div class="container">    
+        <div class="alert alert-success h4 text-center mt-4" role="alert">รายละเอียดกิจกรรม</div>
+        <a href="../show_activitydetails.php"><button type="button" class="btn btn-primary">ย้อนกลับ</button></a>
+        <table class="table table-striped table-hover mt-4">
+            <tr>
+                <th>รหัสกิจกรรม</th>
+                <th>ชื่อกิจกรรม</th>
+                <th>รหัสผู้พิการ</th>
+                <th>ชื่อผู้พิการ</th>
+                <th>ลบ</th>
+            </tr>
+            <?php
+    $sql = "SELECT activitydetails.activity_id, activity.activity_name, activitydetails.disabled_id, disabled.disabled_name 
+            FROM activitydetails 
+            JOIN activity ON activitydetails.activity_id = activity.activity_id
+            JOIN disabled ON activitydetails.disabled_id = disabled.disabled_id";
+    $result = mysqli_query($conn, $sql);
+    while($row = mysqli_fetch_array($result)){ 
+?>
 
-                    </tr>
-                    
-                    <?php 
-                            } 
-                        } else {
-                            echo "<tr><td colspan='7'>ไม่พบข้อมูล</td></tr>";
-                        }
-                        mysqli_close($conn);
-                    ?>
-                </tbody>
-            </table>
-        </div>
+            <tr>
+                <td><?php echo $row['activity_id']; ?></td>
+                <td><?php echo $row['activity_name']; ?></td>
+                <td><?php echo $row['disabled_id']; ?></td>
+                <td><?php echo $row['disabled_name']; ?></td>
+                <td><a href="controller/delete_activitydetails.php?activitydetails_id=<?php echo $row['activity_id']; ?>" onclick="Del(this.href); return false;">ลบ</a></td>
+            </tr>
+
+            <?php 
+                } 
+                mysqli_close($conn);
+            ?>
+        </table>
+    </div>
+
+    <script language="Javascript">
+        function Del(mypage){
+            var agree = confirm("คุณต้องการลบข้อมูลนี้ใช่หรือไม่?");
+            if(agree){
+                window.location = mypage;
+            }
+        }
+    </script>
     </div>
 </body>
 </html>
