@@ -45,7 +45,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <img src="logo.jpg" alt="CARE Logo" class="logo">
         </div>
         <div class="right-section">
-            <h2>ยินดีต้อนรับ เข้าใช้งานผู้พิการ</h2>
+            <h2>ยินดีต้อนรับ เข้าใช้งานผู้ประกอบการ</h2>
             <form id="loginForm" method="post">
                 <div class="form-group">
                     <label for="email">อีเมล :</label>

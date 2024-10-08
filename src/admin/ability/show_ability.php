@@ -95,11 +95,11 @@ $employee_id = $_SESSION['employee_id'];
             </li>
 
             <li>
-                <a href="">
+                <a href="../entrepreneur/show_entrepreneur.php">
                     <span class="icon">
                         <ion-icon name="storefront-outline"></ion-icon>
                     </span>
-                    <span class="title">ข้อมูลความต้องการผู้ประกอบการ</span>
+                    <span class="title">ข้อมูลผู้ประกอบการ</span>
                 </a>
 
                 <li><a href="../login_admin/logout_admin.php">ออกจากระบบ</a></li>
@@ -113,6 +113,7 @@ $employee_id = $_SESSION['employee_id'];
             <thead>
                 <tr>
                     <th>ลำดับ</th>
+                    <th>ชื่อสถานประกอลการ</th>
                     <th>ประเภทความสามารถ</th>
                     <th>เรียกดูข้อมูล</th>
                     <th>แก้ไข</th>

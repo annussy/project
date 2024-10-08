@@ -19,14 +19,13 @@ $employee_id = $_SESSION['employee_id'];
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ระบบจัดการข้อมูลผู้พิการ ตำบลแค</title>
     <link rel="stylesheet" href="../../../public/css/admin/disease/show_disease.css"> <!-- เพิ่มลิงก์ไปยังไฟล์ CSS ถ้ามี -->
-    
 </head>
 <body>
 <div class="sidebar">
         <img src="logo.jpg" alt="CARE Logo" class="logo">
         <ul class="nav">
         <li>
-                <a href="">
+                <a href="../page/show_page.php">
                     <span class="icon">
                         <ion-icon name="storefront-outline"></ion-icon>
                     </span>
@@ -53,7 +52,7 @@ $employee_id = $_SESSION['employee_id'];
             </li>
 
             <li>
-                <a href="">
+                <a href="../money/show_money.php">
                     <span class="icon">
                         <ion-icon name="storefront-outline"></ion-icon>
                     </span>
@@ -110,13 +109,13 @@ $employee_id = $_SESSION['employee_id'];
 
     <div class="container">    
     <div class="main-content">
-        <div class="alert alert-primary h4 text-center mt-4" role="alert">ข้อมูลโรคประจำตัวผู้พิการ</div>
-        <a href="create_disease.php"><button type="button" class="btn btn-primary">เพิ่มข้อมูล</button></a>
+        <div class="alert alert-primary h4 text-center mt-4" role="alert">ข้อมูลความต้องการผู้ประกอบการ</div>
+        <a href="create_need.php"><button type="button" class="btn btn-primary">เพิ่มข้อมูล</button></a>
         <table class="table table-striped table-hover mt-4">
             <thead>
                 <tr>
                     <th>ลำดับ</th>
-                    <th>โรคประจำตัว</th>
+                    <th>ประเภทความสามารถ</th>
                     <th>เรียกดูข้อมูล</th>
                     <th>แก้ไข</th>
                     <th>ลบ</th>
@@ -124,17 +123,17 @@ $employee_id = $_SESSION['employee_id'];
             </thead>
             <tbody>
                 <?php
-                    $sql = "SELECT * FROM disease";
+                    $sql = "SELECT * FROM ability";
                     $result = mysqli_query($conn, $sql);
                     if ($result) {
                         while ($row = mysqli_fetch_array($result)) { 
                 ?>
                 <tr>
-                    <td><?php echo $row['disease_id']; ?></td>
-                    <td><?php echo $row['disease_name']; ?></td>
-                    <td><a href="controller/browse_diseasedetails.php?disease_id=<?php echo $row['disease_id']; ?>">เรียกดูรายละเอียด</a></td>
-                    <td><a href="controller/edit_disease.php?disease_id=<?php echo $row['disease_id']; ?>">แก้ไข</a></td>
-                    <td><a href="controller/delete_disease.php?disease_id=<?php echo $row['disease_id']; ?>">ลบ</a></td>
+                    <td><?php echo $row['ability_id']; ?></td>
+                    <td><?php echo $row['ability_name']; ?></td>
+                    <td><a href="controller/browse_abilitydetails.php?ability_id=<?php echo $row['ability_id']; ?>">เรียกดูรายละเอียด</a></td>
+                    <td><a href="controller/edit_ability.php?ability_id=<?php echo $row['ability_id']; ?>">แก้ไข</a></td>
+                    <td><a href="controller/delete_ability.php?ability_id=<?php echo $row['ability_id']; ?>">ลบ</a></td>
                 </tr>
                 
                 <?php 

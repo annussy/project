@@ -44,7 +44,7 @@ $employee_id = $_SESSION['employee_id'];
             </li>
 
             <li>
-                <a href="">
+                <a href="../activity/show_activity.php">
                     <span class="icon">
                         <ion-icon name="storefront-outline"></ion-icon>
                     </span>
@@ -101,7 +101,7 @@ $employee_id = $_SESSION['employee_id'];
                     <span class="icon">
                         <ion-icon name="storefront-outline"></ion-icon>
                     </span>
-                    <span class="title">ข้อมูลความต้องการผู้ประกอบการ</span>
+                    <span class="title">ข้อมูลผู้ประกอบการ</span>
                 </a>
 
                 <li><a href="../login_admin/logout_admin.php">ออกจากระบบ</a></li>
@@ -119,6 +119,7 @@ $employee_id = $_SESSION['employee_id'];
                     <th>ลำดับ</th>
                     <th>ชื่อประเภทความพิการ</th>
                     <th>จำนวนเงินรับเบี้ยความพิการ</th>
+                    <th>ดูรายละเอียด</th>
                     <th>แก้ไข</th>
                     <th>ลบ</th>
                 </tr>
@@ -134,6 +135,7 @@ $employee_id = $_SESSION['employee_id'];
                     <td><?php echo $row['disabilitype_id']; ?></td>
                     <td><?php echo $row['type_name']; ?></td>
                     <td><?php echo $row['type_money']; ?></td>
+                    <td><a href="controller/browse_disabilitype.php?disabilitype_id=<?php echo $row['disabilitype_id']; ?>">เรียกดูรายละเอียด</a></td>
                     <td><a href="controller/edit_disabilitype.php?disabilitype_id=<?php echo $row['disabilitype_id']; ?>">แก้ไข</a></td>
                     <td><a href="controller/delete_disabilitype.php?disabilitype_id=<?php echo $row['disabilitype_id']; ?>">ลบ</a></td>
                 </tr>

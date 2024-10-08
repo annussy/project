@@ -44,6 +44,15 @@ $disabled_id = $_SESSION['disabled_id'];
                 </li>
 
                 <li>
+                    <a href="../disabilitype/form_disabilitype.php">
+                        <span class="icon">
+                            <ion-icon name="storefront-outline"></ion-icon>
+                        </span>
+                        <span class="title">ลงทะเบียนประเภทความพิการ</span>
+                    </a>
+                </li>
+
+                <li>
                     <a href="">
                         <span class="icon">
                             <ion-icon name="storefront-outline"></ion-icon>
@@ -84,10 +93,10 @@ $disabled_id = $_SESSION['disabled_id'];
         </div>
 
         <div class="main-content">
+            <div class="header">
+                <div class="alert alert-primary h4 text-center mt-4" role="alert">ข้อมูลความสามารถผู้พิการ</div>
+            </div>
         <form action="join_abilitydetails.php" method="post">
-        <div class="header">
-    <div class="alert alert-primary h4 text-center mt-4" role="alert">ข้อมูลความสามารถผู้พิการ</div>
-        </div>
     <table>
         <thead>
             <tr>

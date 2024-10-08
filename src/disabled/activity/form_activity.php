@@ -64,7 +64,7 @@ $disabled_id = $_SESSION['disabled_id'];
                 </li>
 
                 <li>
-                    <a href="../disease/form_disease.php">
+                    <a href="">
                         <span class="icon">
                             <ion-icon name="storefront-outline"></ion-icon>
                         </span>
@@ -73,7 +73,7 @@ $disabled_id = $_SESSION['disabled_id'];
                 </li>
 
                 <li>
-                    <a href="">
+                    <a href="../disease/form_disease.php">
                         <span class="icon">
                             <ion-icon name="storefront-outline"></ion-icon>
                         </span>
@@ -87,7 +87,7 @@ $disabled_id = $_SESSION['disabled_id'];
 
         <div class="main-content">
             <div class="header">
-                <div class="title">กิจกรรมสำหรับผู้พิการ</div>
+                <div class="alert" role="alert">กิจกรรมผู้พิการ</div>
             </div>
             <table class="activity-table">
                 <thead>

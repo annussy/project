@@ -1,22 +1,25 @@
 /* รูปแบบสำหรับส่วนต่างๆ */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f0f0; /* พื้นหลังโทนสีอ่อน */
+    font-family: 'Kanit', sans-serif;
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
 .container {
     display: flex;
-    min-height: 100vh; /* ให้ container ครอบคลุมทั้งหน้า  (เพิ่มใหม่) */
+    min-height: 100vh;
 }
 
 .sidebar {
     width: 250px;
-    background-color: #4a90e2; /* สีฟ้าหลัก */
+    background-color: #4a90e2;
     color: white;
     padding: 20px;
     height: 100vh;
+    position: fixed; /* ให้ sidebar เลื่อนตามหน้าได้ */
+    overflow-y: auto; /* เพิ่มการเลื่อนเมื่อเนื้อหายาว */
+    margin-right: 20px; /* เพิ่มระยะห่างระหว่าง sidebar และ main-content */
 }
 
 .sidebar .logo {
@@ -45,29 +48,30 @@ body {
 
 .sidebar .nav li a:hover,
 .sidebar .nav li a.active {
-    background-color: #357abd; /* สีเข้มขึ้นเมื่อ hover */
+    background-color: #357abd;
 }
 
 /* Main content */
 .main-content {
-    flex-grow: 0;
-    padding: 10px;
-    margin-left: 20px; /* เพิ่มระยะห่างจาก sidebar */
+    flex-grow: 1;
+    padding: 20px;
+    margin-left: 290px; /* เพิ่ม margin-left ให้ห่างจาก sidebar มากขึ้น */
     background-color: white;
+    width: calc(100% - 290px); /* ลดขนาดตาม sidebar และระยะห่าง */
 }
 
 /* Header */
-.header {
+/*.header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 10px;
-}
+}*/
 
 .header .title {
     font-size: 1.5rem;
     font-weight: bold;
-    color: #4a90e2; /* ใช้สีฟ้าเดียวกับ sidebar */
+    color: #4a90e2;
 }
 
 button[type="submit"] {
@@ -77,11 +81,9 @@ button[type="submit"] {
     border: none;
     border-radius: 5px;
     font-size: 1rem;
-    margin-left: 100px; /* เพิ่มระยะห่างตารางจาก sidebar */
-    margin-top: 20px; /* เพิ่มระยะห่างด้านบน */
-    margin-bottom: 20px; /* เพิ่มระยะห่างด้านล่าง */
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
-
 
 button[type="submit"]:hover {
     background-color: #3572bd;
@@ -106,22 +108,23 @@ table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
-    margin-left: 60px; /* เพิ่มระยะห่างตารางจาก sidebar */
     background-color: white;
+    table-layout: fixed;
+}
+
+table th, table td {
+    background-color: #ffffff;
+    padding: 15px; /* เพิ่ม padding ให้มากขึ้น */
+    text-align: center;
+    border: 1px solid #ddd;
+    word-wrap: break-word; /* ให้เนื้อหาตัดบรรทัดเมื่อยาวเกินไป */
+    vertical-align: middle;
 }
 
 table th {
     background-color: #357abd;
     color: white;
-    text-align: center;
-    padding: 10px;
     font-size: 1rem;
-}
-
-table td {
-    padding: 10px;
-    text-align: center;
-    border: 1px solid #ddd;
 }
 
 table tr:nth-child(even) {
@@ -135,9 +138,8 @@ table tr:nth-child(odd) {
 /* การแจ้งเตือน */
 .alert {
     padding: 20px;
-    background-color: #4792ed; /* สีฟ้าสำหรับการแจ้งเตือน */
+    background-color: #4792ed;
     color: #fff;
     text-align: center;
     margin-top: 20px;
-    margin-left: 60px; /* เพิ่มระยะห่างจาก sidebar */
 }

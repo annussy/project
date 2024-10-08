@@ -1,28 +1,22 @@
 <?php
 include 'C:\laragon\www\project\config\config.php';
-session_start();
 
-// ตรวจสอบว่าผู้ใช้เข้าสู่ระบบหรือยัง
-if (!isset($_SESSION['employee_id'])) {
-    // ถ้าไม่ได้เข้าสู่ระบบ ให้นำไปหน้าเข้าสู่ระบบ
-    header("Location: ../login_admin/login_admin.php");
-    exit();
-}
-// ดึง ID ผู้ใช้จากเซสชัน
-$employee_id = $_SESSION['employee_id'];
+// ดึง disabilitype_id จาก URL
+$disabilitype_id = isset($_GET['disabilitype_id']) ? intval($_GET['disabilitype_id']) : 0;
+
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+<meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ระบบจัดการข้อมูลผู้พิการ ตำบลแค</title>
-    <link rel="stylesheet" href="../../../public/css/admin/disease/show_disease.css"> <!-- เพิ่มลิงก์ไปยังไฟล์ CSS ถ้ามี -->
-    
+    <link rel="stylesheet" href="../../../../public/css/admin/activitydetails/show_activitydetails.css"> <!-- ลิงก์ไฟล์ CSS ที่นี่ -->
 </head>
 <body>
-<div class="sidebar">
+
+    <div class="sidebar">
         <img src="logo.jpg" alt="CARE Logo" class="logo">
         <ul class="nav">
         <li>
@@ -108,44 +102,64 @@ $employee_id = $_SESSION['employee_id'];
         </ul>
     </div>
 
-    <div class="container">    
     <div class="main-content">
-        <div class="alert alert-primary h4 text-center mt-4" role="alert">ข้อมูลโรคประจำตัวผู้พิการ</div>
-        <a href="create_disease.php"><button type="button" class="btn btn-primary">เพิ่มข้อมูล</button></a>
+    <div class="container">    
+        <div class="alert alert-success h4 text-center mt-4" role="alert">รายละเอียดประเภทความผู้พิการ</div>
+        <a href="../show_disabilitype.php"><button type="button" class="btn btn-primary">ย้อนกลับ</button></a>
         <table class="table table-striped table-hover mt-4">
-            <thead>
-                <tr>
-                    <th>ลำดับ</th>
-                    <th>โรคประจำตัว</th>
-                    <th>เรียกดูข้อมูล</th>
-                    <th>แก้ไข</th>
-                    <th>ลบ</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php
-                    $sql = "SELECT * FROM disease";
-                    $result = mysqli_query($conn, $sql);
-                    if ($result) {
-                        while ($row = mysqli_fetch_array($result)) { 
-                ?>
-                <tr>
-                    <td><?php echo $row['disease_id']; ?></td>
-                    <td><?php echo $row['disease_name']; ?></td>
-                    <td><a href="controller/browse_diseasedetails.php?disease_id=<?php echo $row['disease_id']; ?>">เรียกดูรายละเอียด</a></td>
-                    <td><a href="controller/edit_disease.php?disease_id=<?php echo $row['disease_id']; ?>">แก้ไข</a></td>
-                    <td><a href="controller/delete_disease.php?disease_id=<?php echo $row['disease_id']; ?>">ลบ</a></td>
-                </tr>
-                
-                <?php 
-                        } 
-                    } else {
-                        echo "<tr><td colspan='5'>ไม่พบข้อมูล</td></tr>";
+            <tr>
+                <th>รหัสประเภทความผู้พิการ</th>
+                <th>ชื่อประเภทความผู้พิการ</th>
+                <th>รหัสผู้พิการ</th>
+                <th>ชื่อผู้พิการ</th>
+                <th>ลบ</th>
+            </tr>
+
+            <?php
+            // ตรวจสอบว่ามีการส่ง disabilitype_id มาหรือไม่
+           if ($disabilitype_id > 0) {
+    // ปรับ SQL query ให้แสดงข้อมูลตาม disabilitype_id
+    $sql = "SELECT disabilitypedetails.disabilitype_id, disabilitype.type_name, disabilitypedetails.disabled_id, disabled.disabled_name 
+            FROM disabilitypedetails 
+            JOIN disabilitype ON disabilitypedetails.disabilitype_id = disabilitype.disabilitype_id
+            JOIN disabled ON disabilitypedetails.disabled_id = disabled.disabled_id
+            WHERE disabilitypedetails.disabilitype_id = $disabilitype_id";
+                $result = mysqli_query($conn, $sql);
+
+                // ตรวจสอบว่ามีข้อมูลหรือไม่
+                if (mysqli_num_rows($result) > 0) {
+                    while($row = mysqli_fetch_array($result)){ 
+            ?>
+                        <tr>
+                            <td><?php echo $row['disabilitype_id']; ?></td>
+                            <td><?php echo $row['type_name']; ?></td>
+                            <td><?php echo $row['disabled_id']; ?></td>
+                            <td><?php echo $row['disabled_name']; ?></td>
+                            <td><a href="controller/delete_disabilitypedetails.php?disabilitypedetails_id=<?php echo $row['disabilitype_id']; ?>" onclick="Del(this.href); return false;">ลบ</a></td>
+                        </tr>
+            <?php 
                     }
-                    mysqli_close($conn);
-                ?>
-            </tbody>
+                } else {
+                    echo "<tr><td colspan='5' class='text-center'>ไม่พบข้อมูลสำหรับโรคนี้นี้</td></tr>";
+                }
+            } else {
+                echo "<tr><td colspan='5' class='text-center'>กรุณาระบุรหัสโรคที่ถูกต้อง</td></tr>";
+            }
+
+            // ปิดการเชื่อมต่อฐานข้อมูล
+            mysqli_close($conn);
+            ?>
         </table>
+    </div>
+
+    <script language="Javascript">
+        function Del(mypage){
+            var agree = confirm("คุณต้องการลบข้อมูลนี้ใช่หรือไม่?");
+            if(agree){
+                window.location = mypage;
+            }
+        }
+    </script>
     </div>
 </body>
 </html>

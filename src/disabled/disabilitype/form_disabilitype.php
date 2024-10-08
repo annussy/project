@@ -18,7 +18,7 @@ $disabled_id = $_SESSION['disabled_id'];
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ระบบจัดการข้อมูลผู้พิการ ตำบลแค</title>
-    <link rel="stylesheet" href="../../../public/css/disabled/disease/form_disease.css"> <!-- แก้ไข path ให้ตรงกับที่เก็บไฟล์ CSS ของคุณ -->
+    <link rel="stylesheet" href="../../../public/css/disabled/ability/form_ability.css"> <!-- แก้ไข path ให้ตรงกับที่เก็บไฟล์ CSS ของคุณ -->
 </head>
 <body>
     <div class="container">
@@ -85,28 +85,28 @@ $disabled_id = $_SESSION['disabled_id'];
 
         <div class="main-content">
             <div class="header">
-                <div class="alert alert-primary h4 text-center mt-4" role="alert">ข้อมูลโรคประจำตัวผู้พิการ</div>
-            </div> 
-        <form action="join_diseasedetails.php" method="post">
-            <table>
-                <thead>
-                    <tr>
-                        <th>เลือกโรคประจำตัว</th>
-                        <th>ชื่อโรค</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php
+                <div class="alert alert-primary h4 text-center mt-4" role="alert">ข้อมูลประเภทความพิการ</div>
+            </div>
+        <form action="join_disabilitypedetails.php" method="post">
+    <table>
+        <thead>
+            <tr>
+                <th>เลือกความสามารถ</th>
+                <th>ความสามารถ</th>
+            </tr>
+        </thead>
+        <tbody>
+        <?php
                     // ดึงข้อมูลจากฐานข้อมูล
-                    $sql = "SELECT disease_id, disease_name FROM disease";
+                    $sql = "SELECT disabilitype_id, type_name FROM disabilitype";
                     $result = $conn->query($sql);
 
                     if ($result->num_rows > 0) {
                         // แสดงข้อมูลในตาราง
                         while($row = $result->fetch_assoc()) {
                             echo "<tr>";
-                            echo '<td><input type="checkbox" name="disease[]" value="' . $row["disease_id"] . '"></td>';
-                            echo "<td>" . $row["disease_name"] . "</td>";
+                            echo '<td><input type="checkbox" name="disabilitype[]" value="' . $row["disabilitype_id"] . '"></td>';
+                            echo "<td>" . $row["type_name"] . "</td>";
                             echo "</tr>";
                         }
                     } else {
@@ -116,17 +116,17 @@ $disabled_id = $_SESSION['disabled_id'];
                     // ปิดการเชื่อมต่อ
                     $conn->close();
                     ?>
-                </tbody>
-            </table>
-            <input type="hidden" name="disabled_id" value="<?php echo $disabled_id; ?>"> <!-- ใช้ค่า disabled_id จากเซสชัน -->
-            <button type="submit">ยืนยันการเลือกโรคประจำตัว</button>
-            </form>
-        </div>
+        </tbody>
+    </table>
+    <input type="hidden" name="disabled_id" value="<?php echo $disabled_id; ?>"> <!-- ใช้ค่า disabled_id จากเซสชัน -->
+    <button type="submit">ยืนยันการเลือกความสามารถ</button>
+</form>
+
     </div>
 
     <script>
         function goBack() {
-            window.location.href = "form_disease.php";
+            window.location.href = "form_ability.php";
         }
     </script>
 </body>

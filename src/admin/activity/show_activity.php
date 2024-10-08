@@ -24,7 +24,7 @@ $employee_id = $_SESSION['employee_id'];
     <div class="sidebar">
         <img src="logo.jpg" alt="CARE Logo" class="logo">
         <ul class="nav">
-            <li>
+        <li>
                 <a href="">
                     <span class="icon">
                         <ion-icon name="storefront-outline"></ion-icon>
@@ -41,12 +41,13 @@ $employee_id = $_SESSION['employee_id'];
                     <span class="title">ข้อมูลผู้พิการ</span>
                 </a>
             </li>
+
             <li>
                 <a href="../activity/show_activity.php">
                     <span class="icon">
                         <ion-icon name="storefront-outline"></ion-icon>
                     </span>
-                    <span class="title">ข้อมูลกิจกรรมผู้พิการ</span>     
+                    <span class="title">ข้อมูลกิจกรรมผู้พิการ</span>
                 </a>
             </li>
 
@@ -99,7 +100,7 @@ $employee_id = $_SESSION['employee_id'];
                     <span class="icon">
                         <ion-icon name="storefront-outline"></ion-icon>
                     </span>
-                    <span class="title">ข้อมูลความต้องการผู้ประกอบการ</span>
+                    <span class="title">ข้อมูลผู้ประกอบการ</span>
                 </a>
 
                 <li><a href="../login_admin/logout_admin.php">ออกจากระบบ</a></li>

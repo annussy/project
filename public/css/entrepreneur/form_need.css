@@ -13,13 +13,13 @@ body {
 
 .sidebar {
     width: 250px;
-    background-color: #4a90e2;
+    background-color: #b3a1d7; /* สีม่วงสุภาพ */
     color: white;
     padding: 20px;
     height: 100vh;
     position: fixed; /* ให้ sidebar เลื่อนตามหน้าได้ */
     overflow-y: auto; /* เพิ่มการเลื่อนเมื่อเนื้อหายาว */
-    margin-right: 20px;
+    margin-right: 20px; /* เพิ่มระยะห่างระหว่าง sidebar และ main-content */
 }
 
 .sidebar .logo {
@@ -48,42 +48,27 @@ body {
 
 .sidebar .nav li a:hover,
 .sidebar .nav li a.active {
-    background-color: #357abd; /* สีเข้มขึ้นเมื่อ hover */
+    background-color: #a385c1; /* สีม่วงเข้มขึ้นเมื่อ hover */
 }
 
 /* Main content */
 .main-content {
     flex-grow: 1;
     padding: 20px;
-    margin-left: 290px; /* กำหนดระยะห่างจาก sidebar */
-    background-color: white;
-    width: calc(100% - 290px); /* ลดขนาดตาม sidebar */
+    margin-left: 290px; /* เพิ่ม margin-left ให้ห่างจาก sidebar มากขึ้น */
+    background-color: #f2e9f5; /* สีพื้นหลังเนื้อหาเป็นโทนสีม่วงอ่อน */
+    width: calc(100% - 290px); /* ลดขนาดตาม sidebar และระยะห่าง */
 }
 
-/* การแจ้งเตือน */
-.alert {
-    padding: 20px;
-    background-color: #4792ed;
-    color: #fff;
-    text-align: center;
-    margin-top: 20px;
-}
 /* Header */
-/* .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 10px;
-} */
-
 .header .title {
     font-size: 1.5rem;
     font-weight: bold;
-    color: #4a90e2;
+    color: #b3a1d7; /* สีม่วงสุภาพ */
 }
 
 button[type="submit"] {
-    background-color: #339dd6;
+    background-color: #a27cc2; /* ปุ่มสีม่วงสุภาพ */
     color: white;
     padding: 10px 20px;
     border: none;
@@ -94,31 +79,30 @@ button[type="submit"] {
 }
 
 button[type="submit"]:hover {
-    background-color: #3572bd;
+    background-color: #9c6fb5; /* สีม่วงเข้มขึ้นเมื่อ hover */
 }
 
 /* Checkbox styling */
 input[type="checkbox"] {
     width: 20px;
     height: 20px;
-    border: 1px solid #357abd;
+    border: 1px solid #9c6fb5; /* สีม่วงเข้ม */
     border-radius: 3px;
     cursor: pointer;
     margin-right: 10px;
 }
 
 input[type="checkbox"]:checked {
-    background-color: #357abd;
+    background-color: #9c6fb5; /* สีม่วงเข้ม */
 }
 
 /* Table styling */
 table {
-    width: 100%; /* ลดขนาดตาม sidebar โดยมี margin left 20px */
+    width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
-    /*margin-left: 50px; /* เพิ่ม margin เพื่อเว้นระยะจาก sidebar */
     background-color: white;
-    table-layout: fixed; /* ใช้ fixed เพื่อให้ตารางมีขนาดที่เหมาะสม */
+    table-layout: fixed;
 }
 
 table th, table td {
@@ -131,15 +115,24 @@ table th, table td {
 }
 
 table th {
-    background-color: #357abd;
+    background-color: #a27cc2; /* สีม่วงสุภาพสำหรับหัวตาราง */
     color: white;
     font-size: 1rem;
 }
 
 table tr:nth-child(even) {
-    background-color: #f2f9fc;
+    background-color: #f5f0f8; /* สีม่วงอ่อนสำหรับแถวคู่ */
 }
 
 table tr:nth-child(odd) {
     background-color: #ffffff;
+}
+
+/* การแจ้งเตือน */
+.alert {
+    padding: 20px;
+    background-color: #b3a1d7; /* สีม่วงสุภาพสำหรับการแจ้งเตือน */
+    color: #fff;
+    text-align: center;
+    margin-top: 20px;
 }

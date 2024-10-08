@@ -36,12 +36,13 @@ $activity_id = isset($_GET['activity_id']) ? intval($_GET['activity_id']) : 0;
                     <span class="title">ข้อมูลผู้พิการ</span>
                 </a>
             </li>
+
             <li>
                 <a href="../activity/show_activity.php">
                     <span class="icon">
                         <ion-icon name="storefront-outline"></ion-icon>
                     </span>
-                    <span class="title">ข้อมูลกิจกรรมผู้พิการ</span>     
+                    <span class="title">ข้อมูลกิจกรรมผู้พิการ</span>
                 </a>
             </li>
 
@@ -94,19 +95,10 @@ $activity_id = isset($_GET['activity_id']) ? intval($_GET['activity_id']) : 0;
                     <span class="icon">
                         <ion-icon name="storefront-outline"></ion-icon>
                     </span>
-                    <span class="title">ข้อมูลความต้องการผู้ประกอบการ</span>
+                    <span class="title">ข้อมูลผู้ประกอบการ</span>
                 </a>
 
-                <li>
-                <a href="">
-                    <span class="icon">
-                        <ion-icon name="storefront-outline"></ion-icon>
-                    </span>
-                    <span class="title">รายละเอียดความสามารถผู้พิการ</span>
-                </a>
-            </li>
-
-            <li><a href="logout">ออกจากระบบ</a></li>
+                <li><a href="../login_admin/logout_admin.php">ออกจากระบบ</a></li>
         </ul>
     </div>
 

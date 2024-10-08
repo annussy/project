@@ -50,23 +50,32 @@ body {
 .main-content {
     flex-grow: 1;
     padding: 20px;
-    margin-left: 40px; /* ปรับระยะห่างสำหรับ sidebar ที่ fix ไว้ */
     background-color: white;
 }
-
+/* การแจ้งเตือน */
+.alert {
+    padding: 20px;
+    background-color: #4792ed;
+    color: #fff;
+    text-align: center;
+    margin-top: 20px;
+}
 /* Header */
 .header {
-    display: flex;
-    justify-content: space-between;
     align-items: center;
     margin-bottom: 20px;
+    background-color:#4a90e2
 }
 
 .header .title {
-    font-size: 1.5rem;
+    font-size: 2rem; /* ปรับขนาดให้ใหญ่ขึ้น */
     font-weight: bold;
-    color: #4a90e2; /* สีฟ้าเดียวกับ sidebar */
+    color: #ffffff; 
+    text-transform: uppercase; /* แปลงข้อความให้เป็นตัวพิมพ์ใหญ่ */
+    letter-spacing: 2px; /* เพิ่มระยะห่างระหว่างตัวอักษร */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); /* เพิ่มเงาให้ตัวอักษร */
 }
+
 
 .activity-table {
     width: 100%;
