@@ -13,7 +13,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>แก้ไขข้อมูลความสามารถของผู้พิการ</title>
     <!-- ลิงก์ไฟล์ CSS ที่แยกออกมา -->
-    <link rel="stylesheet" href=""> 
+    <link rel="stylesheet" href="../../../../public/css/admin/activity/edit.css"> 
 </head>
 
 <body>

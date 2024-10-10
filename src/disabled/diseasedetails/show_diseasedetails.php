@@ -8,8 +8,7 @@ if (!isset($_SESSION['disabled_id'])) {
     header("Location: ../login_disabled/login_disabled.php");
     exit();
 }
-// ดึง ID ผู้ใช้จากเซสชัน
-$disabled_id = $_SESSION['disabled_id'];
+
 ?>
 
 <!DOCTYPE html>
@@ -18,7 +17,7 @@ $disabled_id = $_SESSION['disabled_id'];
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ระบบจัดการข้อมูลผู้พิการ ตำบลแค</title>
-    <link rel="stylesheet" href="../../../public/css/disabled/ability/form_ability.css"> <!-- แก้ไข path ให้ตรงกับที่เก็บไฟล์ CSS ของคุณ -->
+    <link rel="stylesheet" href="../../../public/css/disabled/homepage/show_homepage.css"> <!-- แก้ไข path ให้ตรงกับที่เก็บไฟล์ CSS ของคุณ -->
 </head>
 <body>
     <div class="container">
@@ -120,51 +119,49 @@ $disabled_id = $_SESSION['disabled_id'];
             </ul>
         </div>
 
-
         <div class="main-content">
             <div class="header">
-                <div class="alert alert-primary h4 text-center mt-4" role="alert">ข้อมูลความสามารถผู้พิการ</div>
+                <div class="alert alert-primary h4 text-center mt-4" role="alert">รายละเอียดข้อมูลความสามารถ</div>
             </div>
-        <form action="join_abilitydetails.php" method="post">
-    <table>
-        <thead>
-            <tr>
-                <th>เลือกความสามารถ</th>
-                <th>ความสามารถ</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php
-            // ดึงข้อมูลจากฐานข้อมูล
-            $sql = "SELECT ability_id, ability_name FROM ability";
-            $result = $conn->query($sql);
 
-            if ($result->num_rows > 0) {
-                // แสดงข้อมูลในตาราง
-                while($row = $result->fetch_assoc()) {
-                    echo "<tr>";
-                    echo '<td><input type="checkbox" name="ability[]" value="' . $row["ability_id"] . '"></td>';
-                    echo "<td>" . $row["ability_name"] . "</td>";
-                    echo "</tr>";
-                }
-            } else {
-                echo "<tr><td colspan='2'>ไม่มีข้อมูลความสามารถ</td></tr>";
-            }
+            <!-- แสดงข้อมูลส่วนตัวของผู้ใช้งาน -->
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>โครประจำตัว</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <?php
+                            // ดึงข้อมูลจากฐานข้อมูล
+                        $disease_id = $_SESSION['disabled_id'];
+                        $sql = "SELECT disease.disease_name 
+                        FROM disease 
+                        JOIN diseasedetails  ON diseasedetails.disease_id = disease.disease_id 
+                        WHERE diseasedetails.disabled_id = $disease_id";
 
-            // ปิดการเชื่อมต่อ
-            $conn->close();
-            ?>
-        </tbody>
-    </table>
-    <input type="hidden" name="disabled_id" value="<?php echo $disabled_id; ?>"> <!-- ใช้ค่า disabled_id จากเซสชัน -->
-    <button type="submit">ยืนยันการเลือกความสามารถ</button>
-</form>
+                        $result = mysqli_query($conn, $sql);
+
+                        if ($result && mysqli_num_rows($result) > 0) {
+                        // แสดงข้อมูลของผู้ใช้งานในตาราง
+                             while ($row = mysqli_fetch_assoc($result)) {
+                             echo "<tr><td>" . $row['disease_name'] . "</td></tr>";
+                        }
+                    } else {
+                        echo "<tr><td colspan='3'>ไม่พบข้อมูลกิจกรรม</td></tr>";
+                    }
+                    ?>
+
+
+                </tbody>
+            </table>
+        </div>
 
     </div>
 
     <script>
         function goBack() {
-            window.location.href = "form_ability.php";
+            window.location.href = "";
         }
     </script>
 </body>

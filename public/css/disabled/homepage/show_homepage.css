@@ -1,0 +1,175 @@
+/* รูปแบบสำหรับส่วนต่างๆ */
+body {
+    font-family: 'Kanit', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    display: flex;
+    min-height: 100vh;
+}
+
+.sidebar {
+    width: 250px;
+    background-color: #4a90e2;
+    color: white;
+    padding: 20px;
+    height: 100vh;
+    position: fixed; /* ให้ sidebar เลื่อนตามหน้าได้ */
+    overflow-y: auto; /* เพิ่มการเลื่อนเมื่อเนื้อหายาว */
+    margin-right: 20px; /* เพิ่มระยะห่างระหว่าง sidebar และ main-content */
+}
+
+.sidebar .logo {
+    display: block;
+    margin: 0 auto 20px auto;
+    max-width: 100px;
+}
+
+.sidebar .nav {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar .nav li {
+    margin-bottom: 10px;
+}
+
+.sidebar .nav li a {
+    color: white;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.sidebar .nav li a:hover,
+.sidebar .nav li a.active {
+    background-color: #357abd;
+}
+
+/* Main content */
+.main-content {
+    flex-grow: 1;
+    padding: 20px;
+    margin-left: 290px; /* เพิ่ม margin-left ให้ห่างจาก sidebar มากขึ้น */
+    background-color: white;
+    width: calc(100% - 290px); /* ลดขนาดตาม sidebar และระยะห่าง */
+}
+
+/* Header */
+/*.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}*/
+
+.header .title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #4a90e2;
+}
+
+button[type="submit"] {
+    background-color: #339dd6;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+button[type="submit"]:hover {
+    background-color: #3572bd;
+}
+
+/* Checkbox styling */
+input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    border: 1px solid #357abd;
+    border-radius: 3px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+input[type="checkbox"]:checked {
+    background-color: #357abd;
+}
+
+/* Table styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: white;
+    table-layout: fixed;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* เพิ่มเงาให้ตาราง */
+    /*border-radius: 10px; /* ปรับมุมให้โค้งมน */
+    overflow: hidden; /* ซ่อนส่วนที่เกินมุมโค้ง */
+}
+
+table th, table td {
+    padding: 15px;
+    text-align: center;
+    border: 1px solid #ddd;
+    word-wrap: break-word;
+    vertical-align: middle;
+    transition: background-color 0.3s ease; /* เพิ่มการเปลี่ยนสีเมื่อ hover */
+}
+
+table th {
+    background-color: #357abd; /* สีน้ำเงินที่เข้ากัน */
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    text-transform: uppercase; /* เปลี่ยนข้อความให้เป็นตัวพิมพ์ใหญ่ */
+}
+
+table td {
+    background-color: #ffffff;
+    color: #333;
+}
+
+table tr:nth-child(even) {
+    background-color: #f2f9fc; /* เพิ่มสีพื้นหลังสลับแถว */
+}
+
+table tr:nth-child(odd) {
+    background-color: #ffffff;
+}
+
+/* เน้นแถวเมื่อ hover */
+table tr:hover td {
+    background-color: #e9f3f9; /* สีฟ้าอ่อนเมื่อ hover */
+}
+
+/* เพิ่มเส้นขอบให้ดูเด่น */
+table th, table td {
+    border: 1px solid #ddd;
+}
+
+/* ปรับขอบด้านบน */
+table th:first-child, table td:first-child {
+    border-left: none;
+}
+
+table th:last-child, table td:last-child {
+    border-right: none;
+}
+
+
+/* การแจ้งเตือน */
+.alert {
+    padding: 20px;
+    background-color: #4792ed;
+    color: #fff;
+    text-align: center;
+    margin-top: 20px;
+}

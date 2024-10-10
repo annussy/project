@@ -28,11 +28,11 @@ $disabled_id = $_SESSION['disabled_id'];
             <img src="logo.jpg" alt="CARE Logo" class="logo">
             <ul class="nav">
             <li>
-                    <a href="">
+                    <a href="../homepage/show_homepage.php">
                         <span class="icon">
                             <ion-icon name="storefront-outline"></ion-icon>
                         </span>
-                        <span class="title">หน้าแรก</span>  <!-- ยังไม่เพิ่ม -->
+                        <span class="title">หน้าแรก</span> 
                     </a>
                 </li>
 
@@ -46,7 +46,26 @@ $disabled_id = $_SESSION['disabled_id'];
                 </li>
 
                 <li>
-                    <a href="">
+                    <a href="../activitydetails/show_activitydetails.php">
+                        <span class="icon">
+                            <ion-icon name="storefront-outline"></ion-icon>
+                        </span>
+                        <span class="title">รายละเอียดข้อมูลกิจกรรม</span>
+                    </a>
+                </li>
+
+
+                <li>
+                    <a href="../disabilitype/form_disabilitype.php">
+                        <span class="icon">
+                            <ion-icon name="storefront-outline"></ion-icon>
+                        </span>
+                        <span class="title">ลงทะเบียนประเภทความพิการ</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
                         <span class="icon">
                             <ion-icon name="storefront-outline"></ion-icon>
                         </span>
@@ -59,12 +78,21 @@ $disabled_id = $_SESSION['disabled_id'];
                         <span class="icon">
                             <ion-icon name="storefront-outline"></ion-icon>
                         </span>
-                        <span class="title">ข้อมูลความสามารถ</span>  <!-- ยังไม่เพิ่ม หน้า-home-->
+                        <span class="title">ข้อมูลความสามารถ</span>
                     </a>
                 </li>
 
                 <li>
-                    <a href="">
+                    <a href="../abilitydetalis/show_abilitydetails.php">
+                        <span class="icon">
+                            <ion-icon name="storefront-outline"></ion-icon>
+                        </span>
+                        <span class="title">รายละเอียดข้อมูลความสามารถ</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
                         <span class="icon">
                             <ion-icon name="storefront-outline"></ion-icon>
                         </span>
@@ -77,7 +105,16 @@ $disabled_id = $_SESSION['disabled_id'];
                         <span class="icon">
                             <ion-icon name="storefront-outline"></ion-icon>
                         </span>
-                        <span class="title">ข้อมูลโรคประจำตัว</span>  <!-- ยังไม่เพิ่ม -->
+                        <span class="title">ข้อมูลโรคประจำตัว</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="../diseasedetails/show_diseasedetails.php">
+                        <span class="icon">
+                            <ion-icon name="storefront-outline"></ion-icon>
+                        </span>
+                        <span class="title">รายละเอียดข้อมูลโรคประจำตัว</span>
                     </a>
                 </li>
 

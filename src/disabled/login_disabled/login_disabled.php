@@ -19,7 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $user = $result->fetch_assoc();
         $_SESSION['disabled_id'] = $user['disabled_id']; // เก็บ session สำหรับผู้พิการ
         // ข้อมูลถูกต้อง
-        header("Location: ../disease/form_disease.php");  //ส่งกลับไปหน้าแรก-home
+        header("Location: ../homepage/show_homepage.php");  //ส่งกลับไปหน้าแรก-home
         exit();
     } else {
         $error_message = "มีอีเมลหรือรหัสผ่านไม่ถูกต้อง";
