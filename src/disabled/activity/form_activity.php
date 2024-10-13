@@ -65,6 +65,15 @@ $disabled_id = $_SESSION['disabled_id'];
                 </li>
 
                 <li>
+                    <a href="../disabilitypedetails/show_disabilitypedetails.php">
+                        <span class="icon">
+                            <ion-icon name="storefront-outline"></ion-icon>
+                        </span>
+                        <span class="title">รายละเอียดประเภทความพิการ</span>
+                    </a>
+                </li>
+
+                <li>
                     <a href="#">
                         <span class="icon">
                             <ion-icon name="storefront-outline"></ion-icon>

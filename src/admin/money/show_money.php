@@ -51,7 +51,7 @@ $employee_id = $_SESSION['employee_id'];
             </li>
 
             <li>
-                <a href="../money/from_money.php">
+                <a href="">
                     <span class="icon">
                         <ion-icon name="storefront-outline"></ion-icon>
                     </span>
@@ -129,9 +129,9 @@ $employee_id = $_SESSION['employee_id'];
                 <tr>
                     <td><?php echo $row['ability_id']; ?></td>
                     <td><?php echo $row['ability_name']; ?></td>
-                    <td><a href="controller/browse_abilitydetails.php?ability_id=<?php echo $row['ability_id']; ?>">เรียกดูรายละเอียด</a></td>
-                    <td><a href="controller/edit_ability.php?ability_id=<?php echo $row['ability_id']; ?>">แก้ไข</a></td>
-                    <td><a href="controller/delete_ability.php?ability_id=<?php echo $row['ability_id']; ?>">ลบ</a></td>
+                    <td><a href="controller/browse_.php?ability_id=<?php echo $row['ability_id']; ?>">เรียกดูรายละเอียด</a></td>
+                    <td><a href="controller/edit_.php?ability_id=<?php echo $row['ability_id']; ?>">แก้ไข</a></td>
+                    <td><a href="controller/delete_.php?ability_id=<?php echo $row['ability_id']; ?>">ลบ</a></td>
                 </tr>
                 
                 <?php 

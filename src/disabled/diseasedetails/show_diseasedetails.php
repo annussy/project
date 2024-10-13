@@ -62,6 +62,15 @@ if (!isset($_SESSION['disabled_id'])) {
                 </li>
 
                 <li>
+                    <a href="../disabilitypedetails/show_disabilitypedetails.php">
+                        <span class="icon">
+                            <ion-icon name="storefront-outline"></ion-icon>
+                        </span>
+                        <span class="title">รายละเอียดประเภทความพิการ</span>
+                    </a>
+                </li>
+
+                <li>
                     <a href="#">
                         <span class="icon">
                             <ion-icon name="storefront-outline"></ion-icon>
@@ -121,14 +130,14 @@ if (!isset($_SESSION['disabled_id'])) {
 
         <div class="main-content">
             <div class="header">
-                <div class="alert alert-primary h4 text-center mt-4" role="alert">รายละเอียดข้อมูลความสามารถ</div>
+                <div class="alert alert-primary h4 text-center mt-4" role="alert">รายละเอียดข้อมูลโรคประจำตัว</div>
             </div>
 
             <!-- แสดงข้อมูลส่วนตัวของผู้ใช้งาน -->
             <table class="table">
                 <thead>
                     <tr>
-                        <th>โครประจำตัว</th>
+                        <th>โรคประจำตัว</th>
                     </tr>
                 </thead>
                 <tbody>

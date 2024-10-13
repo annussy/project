@@ -56,51 +56,63 @@ $entrepreneur_id = $_SESSION['entrepreneur_id'];
             </ul>
         </div>
 
-        <div class="main-content">
-        <form action="join_needdetails.php" method="post">
-        <div class="header">
-    <div class="alert alert-primary h4 text-center mt-4" role="alert">ข้อมูลความสามารถที่ต้องการ</div>
-        </div>
-    <table>
-        <thead>
+    <div class="main-content">
+    <div class="container">    
+        <div class="alert alert-success h4 text-center mt-4" role="alert">รายละเอียดความสามารถ</div>
+        <a href="../show_ability.php"><button type="button" class="btn btn-primary">ย้อนกลับ</button></a>
+        <table class="table table-striped table-hover mt-4">
             <tr>
-                <th>เลือกความสามารถที่ต้องการ</th>
+                <th>รหัสความสามารถ</th>
                 <th>ความสามารถ</th>
+                <th>รหัสผู้พิการ</th>
+                <th>ชื่อผู้พิการ</th>
             </tr>
-        </thead>
-        <tbody>
-            <?php
-            // ดึงข้อมูลจากฐานข้อมูล
-            $sql = "SELECT ability_id, ability_name FROM ability";
-            $result = $conn->query($sql);
 
-            if ($result->num_rows > 0) {
-                // แสดงข้อมูลในตาราง
-                while($row = $result->fetch_assoc()) {
-                    echo "<tr>";
-                    echo '<td><input type="checkbox" name="ability[]" value="' . $row["ability_id"] . '"></td>';
-                    echo "<td>" . $row["ability_name"] . "</td>";
-                    echo "</tr>";
+            <?php
+            // ตรวจสอบว่ามีการส่ง ability_id มาหรือไม่
+            if ($ability_id > 0) {
+                // ปรับ SQL query ให้แสดงข้อมูลตาม ability_id
+                $sql = "SELECT abilitydetails.ability_id, ability.ability_name, abilitydetails.disabled_id, disabled.disabled_name 
+                        FROM abilitydetails 
+                        JOIN ability ON abilitydetails.ability_id = ability.ability_id
+                        JOIN disabled ON abilitydetails.disabled_id = disabled.disabled_id
+                        WHERE abilitydetails.ability_id = $ability_id";
+
+                $result = mysqli_query($conn, $sql);
+
+                // ตรวจสอบว่ามีข้อมูลหรือไม่
+                if (mysqli_num_rows($result) > 0) {
+                    while($row = mysqli_fetch_array($result)){ 
+            ?>
+                        <tr>
+                            <td><?php echo $row['ability_id']; ?></td>
+                            <td><?php echo $row['ability_name']; ?></td>
+                            <td><?php echo $row['disabled_id']; ?></td>
+                            <td><?php echo $row['disabled_name']; ?></td>
+                        </tr>
+            <?php 
+                    }
+                } else {
+                    echo "<tr><td colspan='5' class='text-center'>ไม่พบข้อมูลสำหรับความสามารถนี้</td></tr>";
                 }
             } else {
-                echo "<tr><td colspan='2'>ไม่มีข้อมูลความสามารถ</td></tr>";
+                echo "<tr><td colspan='5' class='text-center'>กรุณาระบุรหัสความสามารถถูกต้อง</td></tr>";
             }
 
-            // ปิดการเชื่อมต่อ
-            $conn->close();
+            // ปิดการเชื่อมต่อฐานข้อมูล
+            mysqli_close($conn);
             ?>
-        </tbody>
-    </table>
-    <input type="hidden" name="disabled_id" value="<?php echo $disabled_id; ?>"> <!-- ใช้ค่า disabled_id จากเซสชัน -->
-    <button type="submit">ยืนยันการเลือกความสามารถ</button>
-</form>
-
+        </table>
     </div>
 
-    <script>
-        function goBack() {
-            window.location.href = "form_ability.php";
+    <script language="Javascript">
+        function Del(mypage){
+            var agree = confirm("คุณต้องการลบข้อมูลนี้ใช่หรือไม่?");
+            if(agree){
+                window.location = mypage;
+            }
         }
     </script>
+    </div>
 </body>
 </html>

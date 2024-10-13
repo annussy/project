@@ -57,49 +57,48 @@ $entrepreneur_id = $_SESSION['entrepreneur_id'];
         </div>
 
         <div class="main-content">
-        <form action="join_needdetails.php" method="post">
-        <div class="header">
-    <div class="alert alert-primary h4 text-center mt-4" role="alert">ข้อมูลความสามารถที่ต้องการ</div>
+            <div class="header">
+                <div class="alert alert-primary h4 text-center mt-4" role="alert">รายละเอียดประเภทความพิการ</div>
+            </div>
+
+            <!-- แสดงข้อมูลส่วนตัวของผู้ใช้งาน -->
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>ประเภทความพิการ</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <?php
+                            // ดึงข้อมูลจากฐานข้อมูล
+                        $ability_id = $_SESSION['entrepreneur_id'];
+                        $sql = "SELECT ability.ability_name 
+                        FROM ability
+                        JOIN need  ON need.ability_id = ability.ability_id 
+                        WHERE need.entrepreneur_id = $ability_id";
+
+                        $result = mysqli_query($conn, $sql);
+
+                        if ($result && mysqli_num_rows($result) > 0) {
+                        // แสดงข้อมูลของผู้ใช้งานในตาราง
+                             while ($row = mysqli_fetch_assoc($result)) {
+                             echo "<tr><td>" . $row['ability_name'] . "</td></tr>";
+                        }
+                    } else {
+                        echo "<tr><td colspan='3'>ไม่พบข้อมูลกิจกรรม</td></tr>";
+                    }
+                    ?>
+
+
+                </tbody>
+            </table>
         </div>
-    <table>
-        <thead>
-            <tr>
-                <th>เลือกความสามารถที่ต้องการ</th>
-                <th>ความสามารถ</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php
-            // ดึงข้อมูลจากฐานข้อมูล
-            $sql = "SELECT ability_id, ability_name FROM ability";
-            $result = $conn->query($sql);
-
-            if ($result->num_rows > 0) {
-                // แสดงข้อมูลในตาราง
-                while($row = $result->fetch_assoc()) {
-                    echo "<tr>";
-                    echo '<td><input type="checkbox" name="ability[]" value="' . $row["ability_id"] . '"></td>';
-                    echo "<td>" . $row["ability_name"] . "</td>";
-                    echo "</tr>";
-                }
-            } else {
-                echo "<tr><td colspan='2'>ไม่มีข้อมูลความสามารถ</td></tr>";
-            }
-
-            // ปิดการเชื่อมต่อ
-            $conn->close();
-            ?>
-        </tbody>
-    </table>
-    <input type="hidden" name="disabled_id" value="<?php echo $disabled_id; ?>"> <!-- ใช้ค่า disabled_id จากเซสชัน -->
-    <button type="submit">ยืนยันการเลือกความสามารถ</button>
-</form>
 
     </div>
 
     <script>
         function goBack() {
-            window.location.href = "form_ability.php";
+            window.location.href = "";
         }
     </script>
 </body>

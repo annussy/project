@@ -62,6 +62,15 @@ if (!isset($_SESSION['disabled_id'])) {
                 </li>
 
                 <li>
+                    <a href="../disabilitypedetails/show_disabilitypedetails.php">
+                        <span class="icon">
+                            <ion-icon name="storefront-outline"></ion-icon>
+                        </span>
+                        <span class="title">รายละเอียดประเภทความพิการ</span>
+                    </a>
+                </li>
+
+                <li>
                     <a href="#">
                         <span class="icon">
                             <ion-icon name="storefront-outline"></ion-icon>
@@ -121,31 +130,31 @@ if (!isset($_SESSION['disabled_id'])) {
 
         <div class="main-content">
             <div class="header">
-                <div class="alert alert-primary h4 text-center mt-4" role="alert">รายละเอียดข้อมูลความสามารถ</div>
+                <div class="alert alert-primary h4 text-center mt-4" role="alert">รายละเอียดประเภทความพิการ</div>
             </div>
 
             <!-- แสดงข้อมูลส่วนตัวของผู้ใช้งาน -->
             <table class="table">
                 <thead>
                     <tr>
-                        <th>โครประจำตัว</th>
+                        <th>ประเภทความพิการ</th>
                     </tr>
                 </thead>
                 <tbody>
                 <?php
                             // ดึงข้อมูลจากฐานข้อมูล
-                        $disease_id = $_SESSION['disabled_id'];
-                        $sql = "SELECT disease.disease_name 
-                        FROM disease 
-                        JOIN diseasedetails  ON diseasedetails.disease_id = disease.disease_id 
-                        WHERE diseasedetails.disabled_id = $disease_id";
+                        $disabilitype_id = $_SESSION['disabled_id'];
+                        $sql = "SELECT disabilitype.type_name 
+                        FROM disabilitype
+                        JOIN disabilitypedetails  ON disabilitypedetails.disabilitype_id = disabilitype.disabilitype_id 
+                        WHERE disabilitypedetails.disabled_id = $disabilitype_id";
 
                         $result = mysqli_query($conn, $sql);
 
                         if ($result && mysqli_num_rows($result) > 0) {
                         // แสดงข้อมูลของผู้ใช้งานในตาราง
                              while ($row = mysqli_fetch_assoc($result)) {
-                             echo "<tr><td>" . $row['disease_name'] . "</td></tr>";
+                             echo "<tr><td>" . $row['type_name'] . "</td></tr>";
                         }
                     } else {
                         echo "<tr><td colspan='3'>ไม่พบข้อมูลกิจกรรม</td></tr>";
