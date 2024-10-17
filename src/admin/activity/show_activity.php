@@ -20,6 +20,40 @@ $employee_id = $_SESSION['employee_id'];
     <title>ระบบจัดการข้อมูลผู้พิการ ตำบลแค</title>
     <link rel="stylesheet" href="../../../public/css/admin/activity/show_activity.css"> <!-- ลิงก์ไฟล์ CSS ที่นี่ -->
 </head>
+<style>
+    .btn-primary {
+            background-color: #007bff;
+            color: white;
+        }
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+        .btn-info {
+            background-color: #17a2b8;
+            color: white;
+        }
+        .btn-info:hover {
+            background-color: #117a8b;
+        }
+        .btn-warning {
+            background-color: #ffc107;
+            color: black;
+        }
+        .btn-warning:hover {
+            background-color: #d39e00;
+        }
+        .btn-danger {
+            background-color: #dc3545;
+            color: white;
+        }
+        .btn-danger:hover {
+            background-color: #bd2130;
+        }
+        .btn-group {
+            display: flex;
+            gap: 5px;
+        }
+</style>
 <body>
     <div class="sidebar">
         <img src="logo.jpg" alt="CARE Logo" class="logo">
@@ -52,7 +86,7 @@ $employee_id = $_SESSION['employee_id'];
             </li>
 
             <li>
-                <a href="">
+                <a href="../money/show_money.php">
                     <span class="icon">
                         <ion-icon name="storefront-outline"></ion-icon>
                     </span>
@@ -110,7 +144,7 @@ $employee_id = $_SESSION['employee_id'];
     <div class="main-content">
         <div class="container">
             <div class="alert alert-primary h4 text-center mt-4" role="alert">ข้อมูลกิจกรรม</div>
-            <a href="create_activity.php"><button type="button" class="btn btn-primary">เพิ่มข้อมูล</button></a>
+            <a href="../activity/controller/create_activity.php"><button type="button" class="btn btn-primary">เพิ่มข้อมูล</button></a>
             <table class="table table-striped table-hover mt-4">
                 <thead>
                     <tr>
@@ -119,9 +153,7 @@ $employee_id = $_SESSION['employee_id'];
                         <th>สถานที่</th>
                         <th>จำนวนรับ</th>
                         <th>รายละเอียดกิจกรรม</th>
-                        <th>เรียกดูกิจกรรม</th>
-                        <th>แก้ไข</th>
-                        <th>ลบ</th>
+                        <th>การจัดการ</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -137,9 +169,11 @@ $employee_id = $_SESSION['employee_id'];
                         <td><?php echo $row['activity_location']; ?></td>
                         <td><?php echo $row['activity_count']; ?></td>
                         <td><?php echo $row['details']; ?></td>
-                        <td><a href="controller/browse_activitydetails.php?activity_id=<?php echo $row['activity_id']; ?>">เรียกดูรายละเอียด</a></td>
-                        <td><a href="controller/edit_activity.php?activity_id=<?php echo $row['activity_id']; ?>">แก้ไข</a></td>
-                        <td><a href="controller/delete_activity.php?activity_id=<?php echo $row['activity_id']; ?>">ลบ</a></td>
+                        <td>
+                        <div class="btn-group">
+                        <a href="controller/browse_activitydetails.php?activity_id=<?php echo $row['activity_id']; ?>" class="btn btn-info">เรียกดูรายละเอียด</a>
+                        <a href="controller/edit_activity.php?activity_id=<?php echo $row['activity_id']; ?>" class="btn btn-warning">แก้ไข</a>
+                        <a href="controller/delete_activity.php?activity_id=<?php echo $row['activity_id']; ?>" class="btn btn-danger">ลบ</a></td>
 
                     </tr>
                     

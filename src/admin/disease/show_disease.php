@@ -21,6 +21,40 @@ $employee_id = $_SESSION['employee_id'];
     <link rel="stylesheet" href="../../../public/css/admin/disease/show_disease.css"> <!-- เพิ่มลิงก์ไปยังไฟล์ CSS ถ้ามี -->
     
 </head>
+<style>
+    .btn-primary {
+            background-color: #007bff;
+            color: white;
+        }
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+        .btn-info {
+            background-color: #17a2b8;
+            color: white;
+        }
+        .btn-info:hover {
+            background-color: #117a8b;
+        }
+        .btn-warning {
+            background-color: #ffc107;
+            color: black;
+        }
+        .btn-warning:hover {
+            background-color: #d39e00;
+        }
+        .btn-danger {
+            background-color: #dc3545;
+            color: white;
+        }
+        .btn-danger:hover {
+            background-color: #bd2130;
+        }
+        .btn-group {
+            display: flex;
+            gap: 5px;
+        }
+</style>
 <body>
 <div class="sidebar">
         <img src="logo.jpg" alt="CARE Logo" class="logo">
@@ -53,7 +87,7 @@ $employee_id = $_SESSION['employee_id'];
             </li>
 
             <li>
-                <a href="">
+                <a href="../money/show_money.php">
                     <span class="icon">
                         <ion-icon name="storefront-outline"></ion-icon>
                     </span>
@@ -117,9 +151,8 @@ $employee_id = $_SESSION['employee_id'];
                 <tr>
                     <th>ลำดับ</th>
                     <th>โรคประจำตัว</th>
-                    <th>เรียกดูข้อมูล</th>
-                    <th>แก้ไข</th>
-                    <th>ลบ</th>
+                    <th>การจัดการ</th>
+                    
                 </tr>
             </thead>
             <tbody>
@@ -132,9 +165,11 @@ $employee_id = $_SESSION['employee_id'];
                 <tr>
                     <td><?php echo $row['disease_id']; ?></td>
                     <td><?php echo $row['disease_name']; ?></td>
-                    <td><a href="controller/browse_diseasedetails.php?disease_id=<?php echo $row['disease_id']; ?>">เรียกดูรายละเอียด</a></td>
-                    <td><a href="controller/edit_disease.php?disease_id=<?php echo $row['disease_id']; ?>">แก้ไข</a></td>
-                    <td><a href="controller/delete_disease.php?disease_id=<?php echo $row['disease_id']; ?>">ลบ</a></td>
+                    <td>
+                    <div class="btn-group">
+                    <a href="controller/browse_diseasedetails.php?disease_id=<?php echo $row['disease_id']; ?>"class="btn btn-info">เรียกดูรายละเอียด</a>
+                    <a href="controller/edit_disease.php?disease_id=<?php echo $row['disease_id']; ?>"class="btn btn-warning">แก้ไข</a>
+                    <a href="controller/delete_disease.php?disease_id=<?php echo $row['disease_id']; ?>"class="btn btn-danger">ลบ</a></td>
                 </tr>
                 
                 <?php 

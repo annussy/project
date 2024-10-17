@@ -14,6 +14,19 @@ $disease_id = isset($_GET['disease_id']) ? intval($_GET['disease_id']) : 0;
     <title>ระบบจัดการข้อมูลผู้พิการ ตำบลแค</title>
     <link rel="stylesheet" href="../../../../public/css/admin/activitydetails/show_activitydetails.css"> <!-- ลิงก์ไฟล์ CSS ที่นี่ -->
 </head>
+<style>
+        .btn-danger {
+            background-color: #dc3545;
+            color: white;
+        }
+        .btn-danger:hover {
+            background-color: #bd2130;
+        }
+        .btn-group {
+            display: flex;
+            gap: 5px;
+        }
+</style>
 <body>
 
     <div class="sidebar">
@@ -74,14 +87,6 @@ $disease_id = isset($_GET['disease_id']) ? intval($_GET['disease_id']) : 0;
             </li>
 
             <li>
-                <a href="">
-                    <span class="icon">
-                        <ion-icon name="storefront-outline"></ion-icon>
-                    </span>
-                    <span class="title">ข้อมูลแบบประเมินผู้พิการ</span>
-                </a>
-
-            <li>
                 <a href="../disease/show_disease.php">
                     <span class="icon">
                         <ion-icon name="storefront-outline"></ion-icon>
@@ -137,7 +142,7 @@ $disease_id = isset($_GET['disease_id']) ? intval($_GET['disease_id']) : 0;
                             <td><?php echo $row['disease_name']; ?></td>
                             <td><?php echo $row['disabled_id']; ?></td>
                             <td><?php echo $row['disabled_name']; ?></td>
-                            <td><a href="controller/delete_diseasedetails.php?diseasedetails_id=<?php echo $row['disease_id']; ?>" onclick="Del(this.href); return false;">ลบ</a></td>
+                            <td><a href="delete_disease.php?disease_id=<?php echo $row['disease_id']; ?>" onclick="Del(this.href); return false;"class="btn btn-danger">ลบ</a></td>
                         </tr>
             <?php 
                     }

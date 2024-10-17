@@ -1,9 +1,21 @@
 <?php
 include 'C:\laragon\www\project\config\config.php';
+session_start();
 
-// ดึง activity_id จาก URL
-$ability_id = isset($_GET['ability_id']) ? intval($_GET['ability_id']) : 0;
+// ตรวจสอบว่าผู้ใช้เข้าสู่ระบบหรือยัง
+if (!isset($_SESSION['employee_id'])) {
+    header("Location: ../login_admin/login_admin.php");
+    exit();
+}
 
+$employee_id = $_SESSION['employee_id'];
+
+// ตรวจสอบการรับ bilityty_id จาก URL
+if (isset($_GET['ability_id'])) {
+    $ability_id = $_GET['ability_id'];
+} else {
+    $abilityity_id = 0; // กำหนดค่าเริ่มต้นหากไม่มีการส่ง activity_id
+}
 ?>
 
 <!DOCTYPE html>
@@ -29,7 +41,7 @@ $ability_id = isset($_GET['ability_id']) ? intval($_GET['ability_id']) : 0;
             </li>
 
             <li>
-                <a href="../disabled/show_disabled.php">
+                <a href="../disabled/show_disabled.php"> <!-- ยังต้องเพิ่ม -->
                     <span class="icon">
                         <ion-icon name="storefront-outline"></ion-icon>
                     </span>
@@ -41,12 +53,12 @@ $ability_id = isset($_GET['ability_id']) ? intval($_GET['ability_id']) : 0;
                     <span class="icon">
                         <ion-icon name="storefront-outline"></ion-icon>
                     </span>
-                    <span class="title">ข้อมูลกิจกรรมผู้พิการ</span>     
+                    <span class="title">ข้อมูลกิจกรรมผู้พิการ</span>
                 </a>
             </li>
 
             <li>
-                <a href="">
+                <a href="../money/show_money.php">
                     <span class="icon">
                         <ion-icon name="storefront-outline"></ion-icon>
                     </span>
@@ -90,23 +102,14 @@ $ability_id = isset($_GET['ability_id']) ? intval($_GET['ability_id']) : 0;
             </li>
 
             <li>
-                <a href="">
+                <a href="../entrepreneur/show_entrepreneur.php">
                     <span class="icon">
                         <ion-icon name="storefront-outline"></ion-icon>
                     </span>
-                    <span class="title">ข้อมูลความต้องการผู้ประกอบการ</span>
+                    <span class="title">ข้อมูลผู้ประกอบการ</span>
                 </a>
 
-                <li>
-                <a href="">
-                    <span class="icon">
-                        <ion-icon name="storefront-outline"></ion-icon>
-                    </span>
-                    <span class="title">รายละเอียดความสามารถผู้พิการ</span>
-                </a>
-            </li>
-
-            <li><a href="logout">ออกจากระบบ</a></li>
+                <li><a href="../login_admin/logout_admin.php">ออกจากระบบ</a></li>
         </ul>
     </div>
 
@@ -120,7 +123,6 @@ $ability_id = isset($_GET['ability_id']) ? intval($_GET['ability_id']) : 0;
                 <th>ความสามารถ</th>
                 <th>รหัสผู้พิการ</th>
                 <th>ชื่อผู้พิการ</th>
-                <th>ลบ</th>
             </tr>
 
             <?php
@@ -144,7 +146,7 @@ $ability_id = isset($_GET['ability_id']) ? intval($_GET['ability_id']) : 0;
                             <td><?php echo $row['ability_name']; ?></td>
                             <td><?php echo $row['disabled_id']; ?></td>
                             <td><?php echo $row['disabled_name']; ?></td>
-                            <td><a href="controller/delete_abilitydetails.php?abilitydetails_id=<?php echo $row['ability_id']; ?>" onclick="Del(this.href); return false;">ลบ</a></td>
+                            <!-- <td><a href="controller/delete_abilitydetails.php?abilitydetails_id=<?php echo $row['ability_id']; ?>" onclick="Del(this.href); return false;">ลบ</a></td> -->
                         </tr>
             <?php 
                     }

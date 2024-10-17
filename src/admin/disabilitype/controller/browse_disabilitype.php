@@ -14,6 +14,19 @@ $disabilitype_id = isset($_GET['disabilitype_id']) ? intval($_GET['disabilitype_
     <title>ระบบจัดการข้อมูลผู้พิการ ตำบลแค</title>
     <link rel="stylesheet" href="../../../../public/css/admin/activitydetails/show_activitydetails.css"> <!-- ลิงก์ไฟล์ CSS ที่นี่ -->
 </head>
+<style>
+        .btn-danger {
+            background-color: #dc3545;
+            color: white;
+        }
+        .btn-danger:hover {
+            background-color: #bd2130;
+        }
+        .btn-group {
+            display: flex;
+            gap: 5px;
+        }
+</style>
 <body>
 
     <div class="sidebar">
@@ -104,7 +117,7 @@ $disabilitype_id = isset($_GET['disabilitype_id']) ? intval($_GET['disabilitype_
 
     <div class="main-content">
     <div class="container">    
-        <div class="alert alert-success h4 text-center mt-4" role="alert">รายละเอียดประเภทความผู้พิการ</div>
+        <div class="alert alert-success h4 text-center mt-4" role="alert">รายละเอียดประเภทความพิการ</div>
         <a href="../show_disabilitype.php"><button type="button" class="btn btn-primary">ย้อนกลับ</button></a>
         <table class="table table-striped table-hover mt-4">
             <tr>
@@ -135,7 +148,7 @@ $disabilitype_id = isset($_GET['disabilitype_id']) ? intval($_GET['disabilitype_
                             <td><?php echo $row['type_name']; ?></td>
                             <td><?php echo $row['disabled_id']; ?></td>
                             <td><?php echo $row['disabled_name']; ?></td>
-                            <td><a href="controller/delete_disabilitypedetails.php?disabilitypedetails_id=<?php echo $row['disabilitype_id']; ?>" onclick="Del(this.href); return false;">ลบ</a></td>
+                            <td><a href="controller/delete_disabilitypedetails.php?disabilitypedetails_id=<?php echo $row['disabilitype_id']; ?>" onclick="Del(this.href); return false;"class="btn btn-danger">ลบ</a></td>
                         </tr>
             <?php 
                     }

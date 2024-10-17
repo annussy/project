@@ -1,47 +1,20 @@
 <?php
 include 'C:\laragon\www\project\config\config.php';
-session_start();
 
-// ตรวจสอบว่าผู้ใช้เข้าสู่ระบบหรือยัง
-if (!isset($_SESSION['employee_id'])) {
-    // ถ้าไม่ได้เข้าสู่ระบบ ให้นำไปหน้าเข้าสู่ระบบ
-    header("Location: ../login_admin/login_admin.php");
-    exit();
-}
-// ดึง ID ผู้ใช้จากเซสชัน
-$employee_id = $_SESSION['employee_id'];
+// ดึง money_id จาก URL
+$money_id = isset($_GET['money_id']) ? intval($_GET['money_id']) : 0;
+
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+<meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ระบบจัดการข้อมูลผู้พิการ ตำบลแค</title>
-    <link rel="stylesheet" href="../../../public/css/admin/disease/show_disease.css"> <!-- เพิ่มลิงก์ไปยังไฟล์ CSS ถ้ามี -->
+    <link rel="stylesheet" href="../../../../public/css/admin/activitydetails/show_activitydetails.css"> <!-- ลิงก์ไฟล์ CSS ที่นี่ -->
 </head>
 <style>
-    .btn-primary {
-            background-color: #007bff;
-            color: white;
-        }
-        .btn-primary:hover {
-            background-color: #0056b3;
-        }
-        .btn-info {
-            background-color: #17a2b8;
-            color: white;
-        }
-        .btn-info:hover {
-            background-color: #117a8b;
-        }
-        .btn-warning {
-            background-color: #ffc107;
-            color: black;
-        }
-        .btn-warning:hover {
-            background-color: #d39e00;
-        }
         .btn-danger {
             background-color: #dc3545;
             color: white;
@@ -55,7 +28,8 @@ $employee_id = $_SESSION['employee_id'];
         }
 </style>
 <body>
-<div class="sidebar">
+
+    <div class="sidebar">
         <img src="logo.jpg" alt="CARE Logo" class="logo">
         <ul class="nav">
         <li>
@@ -68,13 +42,14 @@ $employee_id = $_SESSION['employee_id'];
             </li>
 
             <li>
-                <a href="../disabled/show_disabled.php"> <!-- ยังต้องเพิ่ม -->
+                <a href="../disabled/show_disabled.php">
                     <span class="icon">
                         <ion-icon name="storefront-outline"></ion-icon>
                     </span>
                     <span class="title">ข้อมูลผู้พิการ</span>
                 </a>
             </li>
+
             <li>
                 <a href="../activity/show_activity.php">
                     <span class="icon">
@@ -85,7 +60,7 @@ $employee_id = $_SESSION['employee_id'];
             </li>
 
             <li>
-                <a href="../money/show_money.php">
+                <a href="">
                     <span class="icon">
                         <ion-icon name="storefront-outline"></ion-icon>
                     </span>
@@ -129,7 +104,7 @@ $employee_id = $_SESSION['employee_id'];
             </li>
 
             <li>
-                <a href="../entrepreneur/show_entrepreneur.php">
+                <a href="">
                     <span class="icon">
                         <ion-icon name="storefront-outline"></ion-icon>
                     </span>
@@ -138,46 +113,68 @@ $employee_id = $_SESSION['employee_id'];
 
                 <li><a href="../login_admin/logout_admin.php">ออกจากระบบ</a></li>
         </ul>
+
     </div>
-    <div class="container">    
+    </div>
     <div class="main-content">
-        <div class="alert alert-primary h4 text-center mt-4" role="alert">ข้อมูลการรับเบี้ยยังชีพผู้พิการ</div>
-        <a href="form_money.php"><button type="button" class="btn btn-primary">เพิ่มข้อมูล</button></a>
+    <div class="container">    
+        <div class="alert alert-success h4 text-center mt-4" role="alert">รายละเอียดการรับเบี้ยผู้พิการ</div>
+        <a href="../show_money.php"><button type="button" class="btn btn-primary">ย้อนกลับ</button></a>
         <table class="table table-striped table-hover mt-4">
-            <thead>
-                <tr>
-                    <th>ลำดับ</th>
-                    <th>วันที่ชำระเงิน</th>
-                    <th>การจัดการ</th>
-                    
-                </tr>
-            </thead>
-            <tbody>
-                <?php
-                    $sql = "SELECT * FROM money";
-                    $result = mysqli_query($conn, $sql);
-                    if ($result) {
-                        while ($row = mysqli_fetch_array($result)) { 
-                ?>
-                <tr>
-                    <td><?php echo $row['money_id']; ?></td>
-                    <td><?php echo $row['money_date']; ?></td>
-                    <td>
-                        <div class="btn-group">
-                    <a href="controller/browse_moneydetails.php?money_id=<?php echo $row['money_id']; ?>"class="btn btn-info">เรียกดูรายละเอียด</a></td>
-                    <!-- <a href="controller/edit_.php?ability_id=<?php echo $row['ability_id']; ?>"class="btn btn-warning">แก้ไข</a> -->
-                    <!-- <a href="controller/delete_money.php?ability_id=<?php echo $row['money_id']; ?>"class="btn btn-danger">ลบ</a></td> -->
-                </tr>
-                
-                <?php 
-                        } 
-                    } else {
-                        echo "<tr><td colspan='5'>ไม่พบข้อมูล</td></tr>";
+            <tr>
+                <th>รหัสการชำระเงิน</th>
+                <th>วันที่ชำระเงิน</th>
+                <th>รหัสผู้พิการ</th>
+                <th>ชื่อผู้พิการ</th>
+                <th>ลบ</th>
+            </tr>
+
+            <?php
+            // ตรวจสอบว่ามีการส่ง money_id มาหรือไม่
+            if ($money_id > 0) {
+                // ปรับ SQL query ให้แสดงข้อมูลตาม money_id
+                $sql = "SELECT moneydetails.money_id, money.money_date, moneydetails.disabled_id, disabled.disabled_name 
+                        FROM moneydetails 
+                        JOIN money ON moneydetails.money_id = money.money_id
+                        JOIN disabled ON moneydetails.disabled_id = disabled.disabled_id
+                        WHERE moneydetails.money_id = $money_id";
+
+                $result = mysqli_query($conn, $sql);
+
+                // ตรวจสอบว่ามีข้อมูลหรือไม่
+                if (mysqli_num_rows($result) > 0) {
+                    while($row = mysqli_fetch_array($result)){ 
+            ?>
+                        <tr>
+                            <td><?php echo $row['money_id']; ?></td>
+                            <td><?php echo $row['money_date']; ?></td>
+                            <td><?php echo $row['disabled_id']; ?></td>
+                            <td><?php echo $row['disabled_name']; ?></td>
+                            <td><a href="delete_money.php?money_id=<?php echo $row['money_id']; ?>" onclick="Del(this.href); return false;"class="btn btn-danger">ลบ</a></td>
+                        </tr>
+            <?php 
                     }
-                    mysqli_close($conn);
-                ?>
-            </tbody>
+                } else {
+                    echo "<tr><td colspan='5' class='text-center'>ไม่พบข้อมูลสำหรับโรคนี้นี้</td></tr>";
+                }
+            } else {
+                echo "<tr><td colspan='5' class='text-center'>กรุณาระบุรหัสโรคที่ถูกต้อง</td></tr>";
+            }
+
+            // ปิดการเชื่อมต่อฐานข้อมูล
+            mysqli_close($conn);
+            ?>
         </table>
+    </div>
+
+    <script language="Javascript">
+        function Del(mypage){
+            var agree = confirm("คุณต้องการลบข้อมูลนี้ใช่หรือไม่?");
+            if(agree){
+                window.location = mypage;
+            }
+        }
+    </script>
     </div>
 </body>
 </html>

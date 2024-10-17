@@ -10,6 +10,15 @@ if (!isset($_SESSION['employee_id'])) {
 }
 // ดึง ID ผู้ใช้จากเซสชัน
 $employee_id = $_SESSION['employee_id'];
+
+// ดึงข้อมูลจากตาราง disabled
+$sql_disabled = "SELECT disabled_id, disabled_name FROM disabled";
+$result_disabled = mysqli_query($conn, $sql_disabled);
+
+// ดึงข้อมูลจากตาราง employee
+$sql_employee = "SELECT employee_id, employee_name FROM employee";
+$result_employee = mysqli_query($conn, $sql_employee);
+
 ?>
 
 <!DOCTYPE html>
@@ -18,47 +27,13 @@ $employee_id = $_SESSION['employee_id'];
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ระบบจัดการข้อมูลผู้พิการ ตำบลแค</title>
-    <link rel="stylesheet" href="../../../public/css/admin/disease/show_disease.css"> <!-- เพิ่มลิงก์ไปยังไฟล์ CSS ถ้ามี -->
+    <link rel="stylesheet" href="../../../public/css/admin/money/form_money.css"> <!-- เพิ่มลิงก์ไปยังไฟล์ CSS ถ้ามี -->
 </head>
-<style>
-    .btn-primary {
-            background-color: #007bff;
-            color: white;
-        }
-        .btn-primary:hover {
-            background-color: #0056b3;
-        }
-        .btn-info {
-            background-color: #17a2b8;
-            color: white;
-        }
-        .btn-info:hover {
-            background-color: #117a8b;
-        }
-        .btn-warning {
-            background-color: #ffc107;
-            color: black;
-        }
-        .btn-warning:hover {
-            background-color: #d39e00;
-        }
-        .btn-danger {
-            background-color: #dc3545;
-            color: white;
-        }
-        .btn-danger:hover {
-            background-color: #bd2130;
-        }
-        .btn-group {
-            display: flex;
-            gap: 5px;
-        }
-</style>
 <body>
 <div class="sidebar">
-        <img src="logo.jpg" alt="CARE Logo" class="logo">
-        <ul class="nav">
-        <li>
+    <img src="logo.jpg" alt="CARE Logo" class="logo">
+    <ul class="nav">
+    <li>
                 <a href="">
                     <span class="icon">
                         <ion-icon name="storefront-outline"></ion-icon>
@@ -112,14 +87,6 @@ $employee_id = $_SESSION['employee_id'];
             </li>
 
             <li>
-                <a href="">
-                    <span class="icon">
-                        <ion-icon name="storefront-outline"></ion-icon>
-                    </span>
-                    <span class="title">ข้อมูลแบบประเมินผู้พิการ</span>
-                </a>
-
-            <li>
                 <a href="../disease/show_disease.php">
                     <span class="icon">
                         <ion-icon name="storefront-outline"></ion-icon>
@@ -138,46 +105,72 @@ $employee_id = $_SESSION['employee_id'];
 
                 <li><a href="../login_admin/logout_admin.php">ออกจากระบบ</a></li>
         </ul>
-    </div>
-    <div class="container">    
+</div>
+<div class="container">    
     <div class="main-content">
-        <div class="alert alert-primary h4 text-center mt-4" role="alert">ข้อมูลการรับเบี้ยยังชีพผู้พิการ</div>
-        <a href="form_money.php"><button type="button" class="btn btn-primary">เพิ่มข้อมูล</button></a>
-        <table class="table table-striped table-hover mt-4">
-            <thead>
-                <tr>
-                    <th>ลำดับ</th>
-                    <th>วันที่ชำระเงิน</th>
-                    <th>การจัดการ</th>
-                    
-                </tr>
-            </thead>
-            <tbody>
-                <?php
-                    $sql = "SELECT * FROM money";
-                    $result = mysqli_query($conn, $sql);
-                    if ($result) {
-                        while ($row = mysqli_fetch_array($result)) { 
-                ?>
-                <tr>
-                    <td><?php echo $row['money_id']; ?></td>
-                    <td><?php echo $row['money_date']; ?></td>
-                    <td>
-                        <div class="btn-group">
-                    <a href="controller/browse_moneydetails.php?money_id=<?php echo $row['money_id']; ?>"class="btn btn-info">เรียกดูรายละเอียด</a></td>
-                    <!-- <a href="controller/edit_.php?ability_id=<?php echo $row['ability_id']; ?>"class="btn btn-warning">แก้ไข</a> -->
-                    <!-- <a href="controller/delete_money.php?ability_id=<?php echo $row['money_id']; ?>"class="btn btn-danger">ลบ</a></td> -->
-                </tr>
-                
-                <?php 
-                        } 
+        <div class="alert alert-primary h4 text-center mt-4" role="alert">ข้อมูลการชำระเงิน</div>
+        <a href="show_money.php"><button type="button" class="btn btn-primary">ย้อนกลับ</button></a>
+       
+        <form action="controller/join_moneydetails.php" method="post">
+      
+            <!-- ฟิลด์สำหรับเลือกวันที่ชำระเงิน -->
+            <div class="form-group">
+                <label for="money_date">วันที่ชำระเงิน:</label>
+                <input type="date" id="money_date" name="money_date" required>
+            </div>
+
+            <!-- ฟิลด์สำหรับเลือกผู้ชำระเงินจากตาราง disabled -->
+            <div class="form-group">
+                <label for="disabled_id">ชื่อผู้พิการ:</label>
+                <select id="disabled_id" name="disabled_id" required>
+                    <option value="">-- เลือกผู้ชำระเงิน --</option>
+                    <?php
+                    if (mysqli_num_rows($result_disabled) > 0) {
+                        while($row = mysqli_fetch_assoc($result_disabled)) {
+                            echo "<option value='" . $row['disabled_id'] . "'>" . $row['disabled_name'] . "</option>";
+                        }
                     } else {
-                        echo "<tr><td colspan='5'>ไม่พบข้อมูล</td></tr>";
+                        echo "<option value=''>ไม่มีข้อมูล</option>";
                     }
-                    mysqli_close($conn);
-                ?>
-            </tbody>
-        </table>
+                    ?>
+                </select>
+            </div>
+
+            
+            <!-- ฟิลด์สำหรับป้อนจำนวนเงิน -->
+            <div class="form-group">
+                <label for="money_count">จำนวนเงิน (บาท):</label>
+                <input type="number" id="money_count" name="money_count" required min="1" step="0.01" placeholder="ใส่จำนวนเงิน">
+            </div>
+
+
+            <!-- ฟิลด์สำหรับเลือกผู้ชำระเงินจากตาราง employee -->
+            <div class="form-group">
+                <label for="employee_id">ชำระโดย:</label>
+                <select id="employee_id" name="employee_id" required>
+                    <option value="">-- เลือกผู้ชำระเงิน --</option>
+                    <?php
+                    if (mysqli_num_rows($result_employee) > 0) {
+                        while($row = mysqli_fetch_assoc($result_employee)) {
+                            echo "<option value='" . $row['employee_id'] . "'>" . $row['employee_name'] . "</option>";
+                        }
+                    } else {
+                        echo "<option value=''>ไม่มีข้อมูล</option>";
+                    }
+                    ?>
+                </select>
+            </div>
+
+
+            <!-- ปุ่มยืนยันการชำระเงิน -->
+            <button type="submit" href="../join_moneydetails.php">ยืนยันการชำระ</button>
+        </form>
     </div>
+</div>
 </body>
 </html>
+
+<?php
+// ปิดการเชื่อมต่อฐานข้อมูล
+mysqli_close($conn);
+?>

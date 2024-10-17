@@ -137,8 +137,8 @@ $disabled_id = $_SESSION['disabled_id'];
     <table>
         <thead>
             <tr>
-                <th>เลือกความสามารถ</th>
-                <th>ความสามารถ</th>
+                <th>เลือกประเภิความพิการ</th>
+                <th>ประเภิความพิการ</th>
             </tr>
         </thead>
         <tbody>

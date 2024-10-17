@@ -55,6 +55,7 @@ body {
     background-color: #737edb; /* สีเข้มขึ้นเมื่อ hover */
 }
 
+
 /* รูปแบบเนื้อหาหลัก */
 .main-content {
     margin-left: 270px;
@@ -79,6 +80,8 @@ body {
 .btn:hover {
     background-color: #a63442; /* ปุ่มเปลี่ยนเป็นเข้มกว่าเมื่อ hover */
 }
+
+
 
 /* ตาราง */
 table {
@@ -108,6 +111,20 @@ tr:hover {
 .table-striped tbody tr:nth-of-type(odd) {
     background-color: #f2f3fd; /* แถบสีฟ้าอ่อนสำหรับแถวคู่คี่ */
 }
+
+.input-field {
+    width: 100%; /* กำหนดให้ช่อง input มีขนาดเต็มความกว้างของ container */
+    padding: 10px; /* กำหนดขนาด padding เพื่อให้ช่อง input มีขนาดใหญ่ขึ้น */
+    box-sizing: border-box; /* เพื่อให้ padding รวมอยู่ใน width */
+    font-size: 16px; /* ปรับขนาดฟอนต์ให้เหมาะสม */
+    margin-top: 8px; /* เพิ่มระยะห่างจาก label ด้านบน */
+}
+
+.form-group {
+    margin-bottom: 20px; /* เพิ่มระยะห่างระหว่างกลุ่มฟอร์ม */
+}
+
+
 
 /* การแจ้งเตือน */
 .alert {

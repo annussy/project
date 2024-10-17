@@ -20,6 +20,40 @@ $employee_id = $_SESSION['employee_id'];
     <title>ระบบจัดการข้อมูลผู้พิการ ตำบลแค</title>
     <link rel="stylesheet" href="../../../public/css/admin/activity/show_activity.css"> <!-- ลิงก์ไปยังไฟล์ CSS ที่แยกออกมา -->
 </head>
+<style>
+    .btn-primary {
+            background-color: #007bff;
+            color: white;
+        }
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+        .btn-info {
+            background-color: #17a2b8;
+            color: white;
+        }
+        .btn-info:hover {
+            background-color: #117a8b;
+        }
+        .btn-warning {
+            background-color: #ffc107;
+            color: black;
+        }
+        .btn-warning:hover {
+            background-color: #d39e00;
+        }
+        .btn-danger {
+            background-color: #dc3545;
+            color: white;
+        }
+        .btn-danger:hover {
+            background-color: #bd2130;
+        }
+        .btn-group {
+            display: flex;
+            gap: 5px;
+        }
+</style>
 <body>
 
     <div class="sidebar">
@@ -53,7 +87,7 @@ $employee_id = $_SESSION['employee_id'];
             </li>
 
             <li>
-                <a href="">
+                <a href="../money/show_money.php">
                     <span class="icon">
                         <ion-icon name="storefront-outline"></ion-icon>
                     </span>
@@ -119,9 +153,7 @@ $employee_id = $_SESSION['employee_id'];
                     <th>ลำดับ</th>
                     <th>ชื่อประเภทความพิการ</th>
                     <th>จำนวนเงินรับเบี้ยความพิการ</th>
-                    <th>ดูรายละเอียด</th>
-                    <th>แก้ไข</th>
-                    <th>ลบ</th>
+                    <th>การจัดการ</th>
                 </tr>
             </thead>
             <tbody>
@@ -135,9 +167,11 @@ $employee_id = $_SESSION['employee_id'];
                     <td><?php echo $row['disabilitype_id']; ?></td>
                     <td><?php echo $row['type_name']; ?></td>
                     <td><?php echo $row['type_money']; ?></td>
-                    <td><a href="controller/browse_disabilitype.php?disabilitype_id=<?php echo $row['disabilitype_id']; ?>">เรียกดูรายละเอียด</a></td>
-                    <td><a href="controller/edit_disabilitype.php?disabilitype_id=<?php echo $row['disabilitype_id']; ?>">แก้ไข</a></td>
-                    <td><a href="controller/delete_disabilitype.php?disabilitype_id=<?php echo $row['disabilitype_id']; ?>">ลบ</a></td>
+                    <td>
+                    <div class="btn-group">
+                    <a href="controller/browse_disabilitype.php?disabilitype_id=<?php echo $row['disabilitype_id']; ?>" class="btn btn-info">เรียกดูรายละเอียด</a>
+                    <a href="controller/edit_disabilitype.php?disabilitype_id=<?php echo $row['disabilitype_id']; ?>"class="btn btn-warning">แก้ไข</a></td>
+                    <!-- <a href="controller/delete_disabilitype.php?disabilitype_id=<?php echo $row['disabilitype_id']; ?>"class="btn btn-danger">ลบ</a></td0> -->
                 </tr>
                 <?php 
                         } 

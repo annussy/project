@@ -1,10 +1,23 @@
 <?php
 include 'C:\laragon\www\project\config\config.php';
+session_start();
 
-// ดึง activity_id จาก URL
-$activity_id = isset($_GET['activity_id']) ? intval($_GET['activity_id']) : 0;
+// ตรวจสอบว่าผู้ใช้เข้าสู่ระบบหรือยัง
+if (!isset($_SESSION['employee_id'])) {
+    header("Location: ../login_admin/login_admin.php");
+    exit();
+}
 
+$employee_id = $_SESSION['employee_id'];
+
+// ตรวจสอบการรับ activity_id จาก URL
+if (isset($_GET['activity_id'])) {
+    $activity_id = $_GET['activity_id'];
+} else {
+    $activity_id = 0; // กำหนดค่าเริ่มต้นหากไม่มีการส่ง activity_id
+}
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -29,14 +42,13 @@ $activity_id = isset($_GET['activity_id']) ? intval($_GET['activity_id']) : 0;
             </li>
 
             <li>
-                <a href="../disabled/show_disabled.php">
+                <a href="../disabled/show_disabled.php"> <!-- ยังต้องเพิ่ม -->
                     <span class="icon">
                         <ion-icon name="storefront-outline"></ion-icon>
                     </span>
                     <span class="title">ข้อมูลผู้พิการ</span>
                 </a>
             </li>
-
             <li>
                 <a href="../activity/show_activity.php">
                     <span class="icon">
@@ -47,7 +59,7 @@ $activity_id = isset($_GET['activity_id']) ? intval($_GET['activity_id']) : 0;
             </li>
 
             <li>
-                <a href="">
+                <a href="../money/show_money.php">
                     <span class="icon">
                         <ion-icon name="storefront-outline"></ion-icon>
                     </span>
@@ -91,7 +103,7 @@ $activity_id = isset($_GET['activity_id']) ? intval($_GET['activity_id']) : 0;
             </li>
 
             <li>
-                <a href="">
+                <a href="../entrepreneur/show_entrepreneur.php">
                     <span class="icon">
                         <ion-icon name="storefront-outline"></ion-icon>
                     </span>
@@ -124,8 +136,7 @@ $activity_id = isset($_GET['activity_id']) ? intval($_GET['activity_id']) : 0;
                         JOIN activity ON activitydetails.activity_id = activity.activity_id
                         JOIN disabled ON activitydetails.disabled_id = disabled.disabled_id
                         WHERE activitydetails.activity_id = $activity_id";
-
-                $result = mysqli_query($conn, $sql);
+                            $result = mysqli_query($conn, $sql);
 
                 // ตรวจสอบว่ามีข้อมูลหรือไม่
                 if (mysqli_num_rows($result) > 0) {
