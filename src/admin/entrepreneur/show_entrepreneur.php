@@ -149,26 +149,29 @@ $employee_id = $_SESSION['employee_id'];
             <thead>
                 <tr>
                     <th>ลำดับ</th>
-                    <th>ประเภทความสามารถ</th>
+                    <th>ชื่อผู้ประกอบการ</th>
+                    <th>หน่วยงาน</th>
                     <th>การจัดการ</th>
                     
                 </tr>
             </thead>
             <tbody>
                 <?php
-                    $sql = "SELECT * FROM ability";
+                    $sql = "SELECT * FROM entrepreneur";
                     $result = mysqli_query($conn, $sql);
                     if ($result) {
                         while ($row = mysqli_fetch_array($result)) { 
                 ?>
                 <tr>
-                    <td><?php echo $row['ability_id']; ?></td>
-                    <td><?php echo $row['ability_name']; ?></td>
+                    <td><?php echo $row['entrepreneur_id']; ?></td>
+                    <td><?php echo $row['entrepreneur_name']; ?></td>
+                    <td><?php echo $row['entrepreneur_agency']; ?></td>
                     <td>
                         <div class="btn-group">
-                    <a href="controller/browse_abilitydetails.php?ability_id=<?php echo $row['ability_id']; ?>"class="btn btn-info">เรียกดูรายละเอียด</a>
-                    <a href="controller/edit_ability.php?ability_id=<?php echo $row['ability_id']; ?>"class="btn btn-warning">แก้ไข</a>
-                    <a href="controller/delete_ability.php?ability_id=<?php echo $row['ability_id']; ?>"class="btn btn-danger">ลบ</a></td>
+                        <a href="controller/browse_entrepreneurdetail.php?entrepreneur_id=<?php echo $row['entrepreneur_id']; ?>" class="btn btn-info">เรียกดูรายละเอียดความต้องการ</a>
+
+                    <!-- <a href="controller/edit_ability.php?ability_id=<?php echo $row['ability_id']; ?>"class="btn btn-warning">แก้ไข</a>
+                    <a href="controller/delete_ability.php?ability_id=<?php echo $row['ability_id']; ?>"class="btn btn-danger">ลบ</a></td> -->
                 </tr>
                 
                 <?php 

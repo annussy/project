@@ -1,8 +1,8 @@
 <?php
 include 'C:\laragon\www\project\config\config.php';
 
-// ดึง disease_id จาก URL
-$disease_id = isset($_GET['disease_id']) ? intval($_GET['disease_id']) : 0;
+// ดึง entrepreneur_id จาก URL
+$c_id = isset($_GET['entrepreneur_id']) ? intval($_GET['entrepreneur_id']) : 0;
 
 ?>
 
@@ -97,51 +97,62 @@ $disease_id = isset($_GET['disease_id']) ? intval($_GET['disease_id']) : 0;
     </div>
     <div class="main-content">
     <div class="container">    
-        <div class="alert alert-success h4 text-center mt-4" role="alert">รายละเอียดโรคประจำตัวผู้พิการ</div>
-        <a href="../show_disease.php"><button type="button" class="btn btn-primary">ย้อนกลับ</button></a>
+        <div class="alert alert-success h4 text-center mt-4" role="alert">ข้อมูลความต้องการของผู้ประกอบการ</div>
+        <a href="../show_entrepreneur.php"><button type="button" class="btn btn-primary">ย้อนกลับ</button></a>
         <table class="table table-striped table-hover mt-4">
+
             <tr>
-                <th>รหัสโรคประจำตัวผู้พิการ</th>
-                <th>ชื่อโรคประจำตัวผู้พิการ</th>
-                <th>รหัสผู้พิการ</th>
+                <th>ลำดับที่</th>
+                <th>ชื่อผู้ประกอบการ</th>
                 <th>ชื่อผู้พิการ</th>
+                <th>ความสามารถ</th>
             </tr>
 
-            <?php
-            // ตรวจสอบว่ามีการส่ง disease_id มาหรือไม่
-            if ($disease_id > 0) {
-                // ปรับ SQL query ให้แสดงข้อมูลตาม disease_id
-                $sql = "SELECT diseasedetails.disease_id, disease.disease_name, diseasedetails.disabled_id, disabled.disabled_name 
-                        FROM diseasedetails 
-                        JOIN disease ON diseasedetails.disease_id = disease.disease_id
-                        JOIN disabled ON diseasedetails.disabled_id = disabled.disabled_id
-                        WHERE diseasedetails.disease_id = $disease_id";
+                                <?php
+                // ตรวจสอบว่ามีการส่ง entrepreneur_id มาหรือไม่ผ่าน GET หรือ POST
+                if (isset($_GET['entrepreneur_id'])) {
+                    $entrepreneur_id = $_GET['entrepreneur_id']; // ดึงค่า entrepreneur_id จาก URL (GET method)
+                } elseif (isset($_POST['entrepreneur_id'])) {
+                    $entrepreneur_id = $_POST['entrepreneur_id']; // หรือจากฟอร์ม (POST method)
+                } else {
+                    $entrepreneur_id = 0; // กำหนดค่าเริ่มต้นเป็น 0 หากไม่มีค่า
+                }
 
-                $result = mysqli_query($conn, $sql);
+                // ตรวจสอบว่ามีการส่ง entrepreneur_id มาหรือไม่
+                if ($entrepreneur_id > 0) { // แก้ไขจาก $need_id เป็น $entrepreneur_id
+                    // ปรับ SQL query ให้แสดงข้อมูลตาม entrepreneur_id
+                    $sql = "SELECT need.need_id, entrepreneur.entrepreneur_agency, ability.ability_name, disabled.disabled_name 
+                            FROM need 
+                            JOIN entrepreneur ON need.entrepreneur_id = entrepreneur.entrepreneur_id
+                            JOIN ability ON need.ability_id = ability.ability_id
+                            JOIN disabled ON disabled.disabled_id = disabled.disabled_id
+                            WHERE need.entrepreneur_id = $entrepreneur_id";
 
-                // ตรวจสอบว่ามีข้อมูลหรือไม่
-                if (mysqli_num_rows($result) > 0) {
-                    while($row = mysqli_fetch_array($result)){ 
-            ?>
-                        <tr>
-                            <td><?php echo $row['disease_id']; ?></td>
-                            <td><?php echo $row['disease_name']; ?></td>
-                            <td><?php echo $row['disabled_id']; ?></td>
-                            <td><?php echo $row['disabled_name']; ?></td>
-                            <!-- <td><a href="delete_disease.php?disease_id=<?php echo $row['disease_id']; ?>" onclick="Del(this.href); return false;"class="btn btn-danger">ลบ</a></td> -->
-                        </tr>
-            <?php 
+                    $result = mysqli_query($conn, $sql);
+
+                    // ตรวจสอบว่ามีข้อมูลหรือไม่
+                    if (mysqli_num_rows($result) > 0) {
+                        while ($row = mysqli_fetch_array($result)) {
+                ?>
+                            <tr>
+                                <td><?php echo $row['need_id']; ?></td>
+                                <td><?php echo $row['entrepreneur_agency']; ?></td>
+                                <td><?php echo $row['disabled_name']; ?></td>
+                                <td><?php echo $row['ability_name']; ?></td>
+                                <!-- <td><a href="delete_money.php?money_id=<?php echo $row['need_id']; ?>" onclick="Del(this.href); return false;" class="btn btn-danger">ลบ</a></td> -->
+                            </tr>
+                <?php
+                        }
+                    } else {
+                        echo "ไม่มีข้อมูล";
                     }
                 } else {
-                    echo "<tr><td colspan='5' class='text-center'>ไม่พบข้อมูลสำหรับโรคนี้นี้</td></tr>";
+                    echo "ไม่พบ entrepreneur_id ที่ถูกต้อง";
                 }
-            } else {
-                echo "<tr><td colspan='5' class='text-center'>กรุณาระบุรหัสโรคที่ถูกต้อง</td></tr>";
-            }
+                ?>
 
-            // ปิดการเชื่อมต่อฐานข้อมูล
-            mysqli_close($conn);
-            ?>
+
+
         </table>
     </div>
 

@@ -1,8 +1,8 @@
 <?php
 include 'C:\laragon\www\project\config\config.php';
 
-    $disabilitype_id = $_GET['disabilitype_id'];
-    $sql = "DELETE FROM disabilitype WHERE disabilitype_id = $disabilitype_id";
+    $disabilitypedetails_id = $_GET['disabilitypedetails_id'];
+    $sql = "DELETE FROM disabilitypedetails WHERE disabilitypedetails_id = $disabilitypedetails_id";
 
     if(mysqli_query($conn, $sql)){
         echo "<script>alert('ลบข้อมูลสำเร็จ')</script>";
