@@ -14,19 +14,6 @@ $money_id = isset($_GET['money_id']) ? intval($_GET['money_id']) : 0;
     <title>ระบบจัดการข้อมูลผู้พิการ ตำบลแค</title>
     <link rel="stylesheet" href="../../../../public/css/admin/activitydetails/show_activitydetails.css"> <!-- ลิงก์ไฟล์ CSS ที่นี่ -->
 </head>
-<style>
-        .btn-danger {
-            background-color: #dc3545;
-            color: white;
-        }
-        .btn-danger:hover {
-            background-color: #bd2130;
-        }
-        .btn-group {
-            display: flex;
-            gap: 5px;
-        }
-</style>
 <body>
 
     <div class="sidebar">
@@ -87,14 +74,6 @@ $money_id = isset($_GET['money_id']) ? intval($_GET['money_id']) : 0;
             </li>
 
             <li>
-                <a href="">
-                    <span class="icon">
-                        <ion-icon name="storefront-outline"></ion-icon>
-                    </span>
-                    <span class="title">ข้อมูลแบบประเมินผู้พิการ</span>
-                </a>
-
-            <li>
                 <a href="../disease/show_disease.php">
                     <span class="icon">
                         <ion-icon name="storefront-outline"></ion-icon>
@@ -116,65 +95,67 @@ $money_id = isset($_GET['money_id']) ? intval($_GET['money_id']) : 0;
 
     </div>
     </div>
+
     <div class="main-content">
-    <div class="container">    
-        <div class="alert alert-success h4 text-center mt-4" role="alert">รายละเอียดการรับเบี้ยผู้พิการ</div>
-        <a href="../show_money.php"><button type="button" class="btn btn-primary">ย้อนกลับ</button></a>
-        <table class="table table-striped table-hover mt-4">
-            <tr>
-                <th>รหัสการชำระเงิน</th>
-                <th>วันที่ชำระเงิน</th>
-                <th>รหัสผู้พิการ</th>
-                <th>ชื่อผู้พิการ</th>
-                <th>ลบ</th>
-            </tr>
+        <div class="container">    
+            <div class="alert alert-success h4 text-center mt-4" role="alert">รายละเอียดการรับเบี้ยผู้พิการ</div>
+            <a href="../show_money.php"><button type="button" class="btn btn-primary">ย้อนกลับ</button></a>
+            <table class="table table-striped table-hover mt-4">
+                <tr>
+                    <th>รหัสการชำระเงิน</th>
+                    <th>รหัสผู้พิการ</th>
+                    <th>ชื่อผู้พิการ</th>
+                    <th>ลบ</th>
+                </tr>
 
-            <?php
-            // ตรวจสอบว่ามีการส่ง money_id มาหรือไม่
-            if ($money_id > 0) {
-                // ปรับ SQL query ให้แสดงข้อมูลตาม money_id
-                $sql = "SELECT moneydetails.money_id, money.money_date, moneydetails.disabled_id, disabled.disabled_name 
-                        FROM moneydetails 
-                        JOIN money ON moneydetails.money_id = money.money_id
-                        JOIN disabled ON moneydetails.disabled_id = disabled.disabled_id
-                        WHERE moneydetails.money_id = $money_id";
+                <?php
+                // ตรวจสอบว่ามีการส่ง money_id มาหรือไม่
+                if ($money_id > 0) {
+                    // ปรับ SQL query ให้ดึงข้อมูลจาก moneydetail โดยเชื่อมกับตาราง disabled
+                    $sql = "SELECT moneydetails.moneydetails_id, moneydetails.money_id, moneydetails.disabled_id, disabled.disabled_name 
+                            FROM moneydetails
+                            INNER JOIN disabled ON moneydetails.disabled_id = disabled.disabled_id
+                            WHERE moneydetails.money_id = ?";
 
-                $result = mysqli_query($conn, $sql);
+                    $stmt = $conn->prepare($sql);
+                    $stmt->bind_param("i", $money_id); // ใช้ money_id ในการค้นหา
+                    $stmt->execute();
+                    $result = $stmt->get_result();
 
-                // ตรวจสอบว่ามีข้อมูลหรือไม่
-                if (mysqli_num_rows($result) > 0) {
-                    while($row = mysqli_fetch_array($result)){ 
-            ?>
-                        <tr>
-                            <td><?php echo $row['money_id']; ?></td>
-                            <td><?php echo $row['money_date']; ?></td>
-                            <td><?php echo $row['disabled_id']; ?></td>
-                            <td><?php echo $row['disabled_name']; ?></td>
-                            <td><a href="delete_money.php?money_id=<?php echo $row['money_id']; ?>" onclick="Del(this.href); return false;"class="btn btn-danger">ลบ</a></td>
-                        </tr>
-            <?php 
+                    // ตรวจสอบว่ามีข้อมูลหรือไม่
+                    if ($result->num_rows > 0) {
+                        while($row = $result->fetch_assoc()){ 
+                ?>
+                            <tr>
+                                <td><?php echo $row['moneydetails_id']; ?></td>
+                                <td><?php echo $row['disabled_id']; ?></td>
+                                <td><?php echo $row['disabled_name']; ?></td>
+                                <td><a href="delete_money.php?money_id=<?php echo $row['money_id']; ?>" onclick="Del(this.href); return false;" class="btn btn-danger">ลบ</a></td>
+                            </tr>
+                <?php 
+                        }
+                    } else {
+                        echo "<tr><td colspan='5' class='text-center'>ไม่พบข้อมูลสำหรับเบี้ยผู้พิการนี้</td></tr>";
                     }
+                    $stmt->close();
                 } else {
-                    echo "<tr><td colspan='5' class='text-center'>ไม่พบข้อมูลสำหรับโรคนี้นี้</td></tr>";
+                    echo "<tr><td colspan='5' class='text-center'>กรุณาระบุรหัสการชำระเงินที่ถูกต้อง</td></tr>";
                 }
-            } else {
-                echo "<tr><td colspan='5' class='text-center'>กรุณาระบุรหัสโรคที่ถูกต้อง</td></tr>";
-            }
 
-            // ปิดการเชื่อมต่อฐานข้อมูล
-            mysqli_close($conn);
-            ?>
-        </table>
-    </div>
+                // ปิดการเชื่อมต่อฐานข้อมูล
+                mysqli_close($conn);
+                ?>
+            </table>
+        </div>
 
-    <script language="Javascript">
-        function Del(mypage){
-            var agree = confirm("คุณต้องการลบข้อมูลนี้ใช่หรือไม่?");
-            if(agree){
-                window.location = mypage;
+        <script language="Javascript">
+            function Del(mypage){
+                var agree = confirm("คุณต้องการลบข้อมูลนี้ใช่หรือไม่?");
+                if(agree){
+                    window.location = mypage;
+                }
             }
-        }
-    </script>
+        </script>
     </div>
 </body>
 </html>
