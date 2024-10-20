@@ -60,7 +60,7 @@ $employee_id = $_SESSION['employee_id'];
         <img src="logo.jpg" alt="CARE Logo" class="logo">
         <ul class="nav">
         <li>
-                <a href="">
+                <a href="../homepage/show_homepage.php">
                     <span class="icon">
                         <ion-icon name="storefront-outline"></ion-icon>
                     </span>
@@ -131,7 +131,7 @@ $employee_id = $_SESSION['employee_id'];
             </li>
 
             <li>
-                <a href="">
+                <a href="../entrepreneur/show_entrepreneur.php">
                     <span class="icon">
                         <ion-icon name="storefront-outline"></ion-icon>
                     </span>
@@ -141,6 +141,7 @@ $employee_id = $_SESSION['employee_id'];
                 <li><a href="../login_admin/logout_admin.php">ออกจากระบบ</a></li>
         </ul>
     </div>
+
 
     <div class="container">    
     <div class="main-content">

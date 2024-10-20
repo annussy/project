@@ -59,7 +59,7 @@ $employee_id = $_SESSION['employee_id'];
         <img src="logo.jpg" alt="CARE Logo" class="logo">
         <ul class="nav">
         <li>
-                <a href="">
+                <a href="../homepage/show_homepage.php">
                     <span class="icon">
                         <ion-icon name="storefront-outline"></ion-icon>
                     </span>
@@ -68,13 +68,14 @@ $employee_id = $_SESSION['employee_id'];
             </li>
 
             <li>
-                <a href="../disabled/show_disabled.php"> <!-- ยังต้องเพิ่ม -->
+                <a href="../disabled/show_disabled.php">
                     <span class="icon">
                         <ion-icon name="storefront-outline"></ion-icon>
                     </span>
                     <span class="title">ข้อมูลผู้พิการ</span>
                 </a>
             </li>
+
             <li>
                 <a href="../activity/show_activity.php">
                     <span class="icon">
@@ -139,6 +140,7 @@ $employee_id = $_SESSION['employee_id'];
                 <li><a href="../login_admin/logout_admin.php">ออกจากระบบ</a></li>
         </ul>
     </div>
+
     <div class="container">    
     <div class="main-content">
         <div class="alert alert-primary h4 text-center mt-4" role="alert">ข้อมูลการรับเบี้ยยังชีพผู้พิการ</div>

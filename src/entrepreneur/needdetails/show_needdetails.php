@@ -18,7 +18,7 @@ $entrepreneur_id = $_SESSION['entrepreneur_id'];
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ระบบจัดการข้อมูลผู้พิการ ตำบลแค</title>
-    <link rel="stylesheet" href="../../../public/css/entrepreneur/form_need.css"> <!-- แก้ไข path ให้ตรงกับที่เก็บไฟล์ CSS ของคุณ -->
+    <link rel="stylesheet" href="../../../public/css/entrepreneur/show_homepage.css"> <!-- แก้ไข path ให้ตรงกับที่เก็บไฟล์ CSS ของคุณ -->
 </head>
 <body>
     <div class="container">
@@ -26,7 +26,7 @@ $entrepreneur_id = $_SESSION['entrepreneur_id'];
             <img src="logo.jpg" alt="CARE Logo" class="logo">
             <ul class="nav">
                 <li>
-                    <a href="">
+                    <a href="../homepage/show_homepage.php">
                         <span class="icon">
                             <ion-icon name="storefront-outline"></ion-icon>
                         </span>

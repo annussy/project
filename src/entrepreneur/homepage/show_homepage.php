@@ -18,7 +18,7 @@ $entrepreneur_id = $_SESSION['entrepreneur_id'];
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ระบบจัดการข้อมูลผู้พิการ ตำบลแค</title>
-    <link rel="stylesheet" href="../../../public/css/entrepreneur/form_need.css"> <!-- แก้ไข path ให้ตรงกับที่เก็บไฟล์ CSS ของคุณ -->
+    <link rel="stylesheet" href="../../../public/css/entrepreneur/show_homepage.css"> <!-- แก้ไข path ให้ตรงกับที่เก็บไฟล์ CSS ของคุณ -->
 </head>
 <body>
     <div class="container">
@@ -57,43 +57,38 @@ $entrepreneur_id = $_SESSION['entrepreneur_id'];
         </div>
 
         <div class="main-content">
-        <form action="join_needdetails.php" method="post">
-        <div class="header">
-    <div class="alert alert-primary h4 text-center mt-4" role="alert">ข้อมูลความสามารถที่ต้องการ</div>
+            <div class="header">
+                <div class="alert alert-primary h4 text-center mt-4" role="alert">ข้อมูลส่วนตัว</div>
+            </div>
+
+            <!-- แสดงข้อมูลส่วนตัวของผู้ใช้งาน -->
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>ข้อมูล</th>
+                        <th>รายละเอียด</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                        // ดึงข้อมูลจากฐานข้อมูล
+                        $sql = "SELECT entrepreneur_name, entrepreneur_agency, tel, email FROM entrepreneur WHERE entrepreneur_id = " . $_SESSION['entrepreneur_id'];
+                        $result = mysqli_query($conn, $sql);
+                        if ($result && mysqli_num_rows($result) > 0) {
+                            // แสดงข้อมูลของผู้ใช้งานในตาราง
+                            $row = mysqli_fetch_assoc($result);
+                            echo "<tr><td>ชื่อ-สกุล</td><td>" . $row['entrepreneur_name'] . "</td></tr>";
+                            echo "<tr><td>ตำแหน่ง</td><td>" . $row['entrepreneur_agency'] . "</td></tr>";
+                            echo "<tr><td>เบอร์โทร</td><td>" . $row['tel'] . "</td></tr>";
+                            echo "<tr><td>อีเมล</td><td>" . $row['email'] . "</td></tr>";
+                        } else {
+                            echo "<tr><td colspan='2'>ไม่พบข้อมูลส่วนตัว</td></tr>";
+                        }
+                    ?>
+                </tbody>
+            </table>
+
         </div>
-    <table>
-        <thead>
-            <tr>
-                <th>เลือกความสามารถที่ต้องการ</th>
-                <th>ความสามารถ</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php
-            // ดึงข้อมูลจากฐานข้อมูล
-            $sql = "SELECT ability_id, ability_name FROM ability";
-            $result = $conn->query($sql);
-
-            if ($result->num_rows > 0) {
-                // แสดงข้อมูลในตาราง
-                while($row = $result->fetch_assoc()) {
-                    echo "<tr>";
-                    echo '<td><input type="checkbox" name="ability[]" value="' . $row["ability_id"] . '"></td>';
-                    echo "<td>" . $row["ability_name"] . "</td>";
-                    echo "</tr>";
-                }
-            } else {
-                echo "<tr><td colspan='2'>ไม่มีข้อมูลความสามารถ</td></tr>";
-            }
-
-            // ปิดการเชื่อมต่อ
-            $conn->close();
-            ?>
-        </tbody>
-    </table>
-    <input type="hidden" name="disabled_id" value="<?php echo $disabled_id; ?>"> <!-- ใช้ค่า disabled_id จากเซสชัน -->
-    <button type="submit">ยืนยันการเลือกความต้องการ</button>
-</form>
 
     </div>
 

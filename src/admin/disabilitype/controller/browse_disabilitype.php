@@ -42,7 +42,7 @@ $disabilitype_id = isset($_GET['disabilitype_id']) ? intval($_GET['disabilitype_
             </li>
 
             <li>
-                <a href="../disabled/show_disabled.php">
+                <a href="">
                     <span class="icon">
                         <ion-icon name="storefront-outline"></ion-icon>
                     </span>
@@ -51,7 +51,7 @@ $disabilitype_id = isset($_GET['disabilitype_id']) ? intval($_GET['disabilitype_
             </li>
 
             <li>
-                <a href="../activity/show_activity.php">
+                <a href="">
                     <span class="icon">
                         <ion-icon name="storefront-outline"></ion-icon>
                     </span>
@@ -69,7 +69,7 @@ $disabilitype_id = isset($_GET['disabilitype_id']) ? intval($_GET['disabilitype_
             </li>
 
             <li>
-                    <a href="../disabilitype/show_disabilitype.php">
+                    <a href="">
                         <span class="icon">
                             <ion-icon name="storefront-outline"></ion-icon>
                         </span>
@@ -78,7 +78,7 @@ $disabilitype_id = isset($_GET['disabilitype_id']) ? intval($_GET['disabilitype_
             </li>
 
             <li>
-                <a href="../ability/show_ability.php">
+                <a href="">
                     <span class="icon">
                         <ion-icon name="storefront-outline"></ion-icon>
                     </span>
@@ -95,7 +95,7 @@ $disabilitype_id = isset($_GET['disabilitype_id']) ? intval($_GET['disabilitype_
                 </a>
 
             <li>
-                <a href="../disease/show_disease.php">
+                <a href="">
                     <span class="icon">
                         <ion-icon name="storefront-outline"></ion-icon>
                     </span>
@@ -111,10 +111,10 @@ $disabilitype_id = isset($_GET['disabilitype_id']) ? intval($_GET['disabilitype_
                     <span class="title">ข้อมูลผู้ประกอบการ</span>
                 </a>
 
-                <li><a href="../login_admin/logout_admin.php">ออกจากระบบ</a></li>
+                <li><a href="">ออกจากระบบ</a></li>
         </ul>
     </div>
-
+    
     <div class="main-content">
     <div class="container">    
         <div class="alert alert-success h4 text-center mt-4" role="alert">รายละเอียดประเภทความพิการ</div>

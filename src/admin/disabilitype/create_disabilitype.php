@@ -26,15 +26,16 @@
             </li>
 
             <li>
-                <a href="../disabled/show_disabled.php"> <!-- ยังต้องเพิ่ม -->
+                <a href="">
                     <span class="icon">
                         <ion-icon name="storefront-outline"></ion-icon>
                     </span>
                     <span class="title">ข้อมูลผู้พิการ</span>
                 </a>
             </li>
+
             <li>
-                <a href="../activity/show_activity.php">
+                <a href="">
                     <span class="icon">
                         <ion-icon name="storefront-outline"></ion-icon>
                     </span>
@@ -43,7 +44,7 @@
             </li>
 
             <li>
-                <a href="../money/show_money.php">
+                <a href="">
                     <span class="icon">
                         <ion-icon name="storefront-outline"></ion-icon>
                     </span>
@@ -52,7 +53,7 @@
             </li>
 
             <li>
-                    <a href="../disabilitype/show_disabilitype.php">
+                    <a href="">
                         <span class="icon">
                             <ion-icon name="storefront-outline"></ion-icon>
                         </span>
@@ -61,7 +62,7 @@
             </li>
 
             <li>
-                <a href="../ability/show_ability.php">
+                <a href="">
                     <span class="icon">
                         <ion-icon name="storefront-outline"></ion-icon>
                     </span>
@@ -70,7 +71,15 @@
             </li>
 
             <li>
-                <a href="../disease/show_disease.php">
+                <a href="">
+                    <span class="icon">
+                        <ion-icon name="storefront-outline"></ion-icon>
+                    </span>
+                    <span class="title">ข้อมูลแบบประเมินผู้พิการ</span>
+                </a>
+
+            <li>
+                <a href="">
                     <span class="icon">
                         <ion-icon name="storefront-outline"></ion-icon>
                     </span>
@@ -79,16 +88,17 @@
             </li>
 
             <li>
-                <a href="../entrepreneur/show_entrepreneur.php">
+                <a href="">
                     <span class="icon">
                         <ion-icon name="storefront-outline"></ion-icon>
                     </span>
                     <span class="title">ข้อมูลผู้ประกอบการ</span>
                 </a>
 
-                <li><a href="../login_admin/logout_admin.php">ออกจากระบบ</a></li>
+                <li><a href="">ออกจากระบบ</a></li>
         </ul>
-</div>
+    </div>
+
 
 <div class="container mt-5">
     <div class="main-content">

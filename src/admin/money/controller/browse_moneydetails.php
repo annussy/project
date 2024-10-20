@@ -20,7 +20,7 @@ $money_id = isset($_GET['money_id']) ? intval($_GET['money_id']) : 0;
         <img src="logo.jpg" alt="CARE Logo" class="logo">
         <ul class="nav">
         <li>
-                <a href="">
+                <a href="../homepage/show_homepage.php">
                     <span class="icon">
                         <ion-icon name="storefront-outline"></ion-icon>
                     </span>
@@ -47,7 +47,7 @@ $money_id = isset($_GET['money_id']) ? intval($_GET['money_id']) : 0;
             </li>
 
             <li>
-                <a href="">
+                <a href="../money/show_money.php">
                     <span class="icon">
                         <ion-icon name="storefront-outline"></ion-icon>
                     </span>
@@ -74,6 +74,14 @@ $money_id = isset($_GET['money_id']) ? intval($_GET['money_id']) : 0;
             </li>
 
             <li>
+                <a href="">
+                    <span class="icon">
+                        <ion-icon name="storefront-outline"></ion-icon>
+                    </span>
+                    <span class="title">ข้อมูลแบบประเมินผู้พิการ</span>
+                </a>
+
+            <li>
                 <a href="../disease/show_disease.php">
                     <span class="icon">
                         <ion-icon name="storefront-outline"></ion-icon>
@@ -83,7 +91,7 @@ $money_id = isset($_GET['money_id']) ? intval($_GET['money_id']) : 0;
             </li>
 
             <li>
-                <a href="">
+                <a href="../entrepreneur/show_entrepreneur.php">
                     <span class="icon">
                         <ion-icon name="storefront-outline"></ion-icon>
                     </span>
@@ -92,8 +100,6 @@ $money_id = isset($_GET['money_id']) ? intval($_GET['money_id']) : 0;
 
                 <li><a href="../login_admin/logout_admin.php">ออกจากระบบ</a></li>
         </ul>
-
-    </div>
     </div>
 
     <div class="main-content">
