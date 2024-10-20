@@ -71,7 +71,7 @@ if (!isset($_SESSION['disabled_id'])) {
                 </li>
 
                 <li>
-                    <a href="#">
+                    <a href="../money/show_moneydetails.php">
                         <span class="icon">
                             <ion-icon name="storefront-outline"></ion-icon>
                         </span>

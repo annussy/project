@@ -26,6 +26,19 @@ if (isset($_GET['ability_id'])) {
     <title>ระบบจัดการข้อมูลผู้พิการ ตำบลแค</title>
     <link rel="stylesheet" href="../../../../public/css/admin/activitydetails/show_activitydetails.css"> <!-- ลิงก์ไฟล์ CSS ที่นี่ -->
 </head>
+<style>
+        .btn-danger {
+            background-color: #dc3545;
+            color: white;
+        }
+        .btn-danger:hover {
+            background-color: #bd2130;
+        }
+        .btn-group {
+            display: flex;
+            gap: 5px;
+        }
+</style>
 <body>
 
     <div class="sidebar">
@@ -123,6 +136,7 @@ if (isset($_GET['ability_id'])) {
                 <th>ความสามารถ</th>
                 <th>รหัสผู้พิการ</th>
                 <th>ชื่อผู้พิการ</th>
+                <th>การจัดการ</th>
             </tr>
 
             <?php
@@ -146,7 +160,7 @@ if (isset($_GET['ability_id'])) {
                             <td><?php echo $row['ability_name']; ?></td>
                             <td><?php echo $row['disabled_id']; ?></td>
                             <td><?php echo $row['disabled_name']; ?></td>
-                            <!-- <td><a href="controller/delete_abilitydetails.php?abilitydetails_id=<?php echo $row['ability_id']; ?>" onclick="Del(this.href); return false;">ลบ</a></td> -->
+                            <td><a href="delete_ability.php?ability_id=<?php echo $row['ability_id']; ?>" onclick="Del(this.href); return false;"class="btn btn-danger">ลบ</a></td>
                         </tr>
             <?php 
                     }

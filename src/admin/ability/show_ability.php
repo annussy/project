@@ -166,7 +166,7 @@ $employee_id = $_SESSION['employee_id'];
                         <div class="btn-group">
                     <a href="controller/browse_abilitydetails.php?ability_id=<?php echo $row['ability_id']; ?>" class="btn btn-info">เรียกดูรายละเอียด</a>
                     <a href="controller/edit_ability.php?ability_id=<?php echo $row['ability_id']; ?>"class="btn btn-warning">แก้ไข</a>
-                    <a href="controller/delete_ability.php?ability_id=<?php echo $row['ability_id']; ?>" class="btn btn-danger">ลบ</a></td>
+                    <!-- <a href="controller/delete_ability.php?ability_id=<?php echo $row['ability_id']; ?>" class="btn btn-danger">ลบ</a></td> -->
                 </tr>
                 
                 <?php 

@@ -148,7 +148,7 @@ $disabilitype_id = isset($_GET['disabilitype_id']) ? intval($_GET['disabilitype_
                             <td><?php echo $row['type_name']; ?></td>
                             <td><?php echo $row['disabled_id']; ?></td>
                             <td><?php echo $row['disabled_name']; ?></td>
-                            <td><a href="delete_disabilitype.php?disabilitypedetails_id=<?php echo $row['disabilitype_id']; ?>" onclick="Del(this.href); return false;"class="btn btn-danger">ลบ</a></td>
+                            <td><a href="delete_disabilitype.php?disabilitype_id=<?php echo $row['disabilitype_id']; ?>" onclick="Del(this.href); return false;"class="btn btn-danger">ลบ</a></td>
                         </tr>
             <?php 
                     }

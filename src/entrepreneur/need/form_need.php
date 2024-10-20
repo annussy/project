@@ -39,7 +39,7 @@ $entrepreneur_id = $_SESSION['entrepreneur_id'];
                         <span class="icon">
                             <ion-icon name="storefront-outline"></ion-icon>
                         </span>
-                        <span class="title">ข้อมูลความสามารถผู้พิการ</span>
+                        <span class="title">ข้อมูลความต้องการ</span>
                     </a>
                 </li>
 
@@ -48,7 +48,7 @@ $entrepreneur_id = $_SESSION['entrepreneur_id'];
                         <span class="icon">
                             <ion-icon name="storefront-outline"></ion-icon>
                         </span>
-                        <span class="title">รายละเอียดความสามารถ</span>
+                        <span class="title">รายละเอียดความต้องการ</span>
                     </a>
                 </li>
 
@@ -92,7 +92,7 @@ $entrepreneur_id = $_SESSION['entrepreneur_id'];
         </tbody>
     </table>
     <input type="hidden" name="disabled_id" value="<?php echo $disabled_id; ?>"> <!-- ใช้ค่า disabled_id จากเซสชัน -->
-    <button type="submit">ยืนยันการเลือกความสามารถ</button>
+    <button type="submit">ยืนยันการเลือกความต้องการ</button>
 </form>
 
     </div>

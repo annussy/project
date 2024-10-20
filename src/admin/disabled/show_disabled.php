@@ -202,7 +202,7 @@ $employee_id = $_SESSION['employee_id'];
     <div class="main-content">
         <div class="container">
             <div class="alert alert-primary h4 text-center mt-4" role="alert">ข้อมูลผู้พิการ</div>
-            <a href="create_disabled.php"><button type="button" class="btn btn-primary">เพิ่มข้อมูล</button></a>
+            <!-- <a href="create_disabled.php"><button type="button" class="btn btn-primary">เพิ่มข้อมูล</button></a> -->
             <div class="search-container">
                 <form action="show_disabled.php" method="GET">
                     <input type="text" name="search" placeholder="ค้นหาชื่อผู้พิการ..." value="<?php echo isset($_GET['search']) ? $_GET['search'] : ''; ?>">
@@ -242,7 +242,7 @@ $employee_id = $_SESSION['employee_id'];
                             <div class="btn-group">
                                 <button onclick="openModal(<?php echo $row['disabled_id']; ?>)" class="btn btn-info">รายละเอียด</button>
                                 <a href="controller/edit_disabled.php?disabled_id=<?php echo $row['disabled_id']; ?>" class="btn btn-warning">แก้ไข</a>
-                                <a href="controller/delete_disabled.php?disabled_id=<?php echo $row['disabled_id']; ?>" class="btn btn-danger" onclick="return confirm('คุณแน่ใจว่าต้องการลบข้อมูลนี้หรือไม่?');">ลบ</a>
+                                <!-- <a href="controller/delete_disabled.php?disabled_id=<?php echo $row['disabled_id']; ?>" class="btn btn-danger" onclick="return confirm('คุณแน่ใจว่าต้องการลบข้อมูลนี้หรือไม่?');">ลบ</a> -->
                             </div>
                         </td>
                     </tr>

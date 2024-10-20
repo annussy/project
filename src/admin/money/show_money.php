@@ -156,7 +156,7 @@ $employee_id = $_SESSION['employee_id'];
             </thead>
             <tbody>
                 <?php
-                    $sql = "SELECT * FROM money";
+                    $sql = "SELECT  money.*, employee.employee_name  FROM money JOIN employee ON money.employee_id = employee.employee_id";
                     $result = mysqli_query($conn, $sql);
                     if ($result) {
                         while ($row = mysqli_fetch_array($result)) { 
@@ -164,7 +164,7 @@ $employee_id = $_SESSION['employee_id'];
                 <tr>
                     <td><?php echo $row['money_id']; ?></td>
                     <td><?php echo $row['money_date']; ?></td>
-                    <td><?php echo $row['employee_id']; ?></td>
+                    <td><?php echo $row['employee_name']; ?></td>
                     <td><?php echo $row['money_count']; ?></td>
                     <td>
                         <div class="btn-group">

@@ -39,7 +39,7 @@ $entrepreneur_id = $_SESSION['entrepreneur_id'];
                         <span class="icon">
                             <ion-icon name="storefront-outline"></ion-icon>
                         </span>
-                        <span class="title">ข้อมูลความสามารถผู้พิการ</span>
+                        <span class="title">ข้อมูลความต้องการ</span>
                     </a>
                 </li>
 
@@ -48,7 +48,7 @@ $entrepreneur_id = $_SESSION['entrepreneur_id'];
                         <span class="icon">
                             <ion-icon name="storefront-outline"></ion-icon>
                         </span>
-                        <span class="title">รายละเอียดความสามารถ</span>
+                        <span class="title">รายละเอียดความต้องการ</span>
                     </a>
                 </li>
 
@@ -58,14 +58,14 @@ $entrepreneur_id = $_SESSION['entrepreneur_id'];
 
         <div class="main-content">
             <div class="header">
-                <div class="alert alert-primary h4 text-center mt-4" role="alert">รายละเอียดประเภทความพิการ</div>
+                <div class="alert alert-primary h4 text-center mt-4" role="alert">รายละเอียดความต้องการ</div>
             </div>
 
             <!-- แสดงข้อมูลส่วนตัวของผู้ใช้งาน -->
             <table class="table">
                 <thead>
                     <tr>
-                        <th>ประเภทความพิการ</th>
+                        <th>ความสามารถที่ต้องการ</th>
                     </tr>
                 </thead>
                 <tbody>

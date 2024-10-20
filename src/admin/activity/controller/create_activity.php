@@ -97,7 +97,7 @@
 
         <a href="../show_activity.php"><button type="button" class="btn btn-primary">ย้อนกลับ</button></a>
 
-            <form action="controller/insert_activity.php" method="post">
+            <form action="insert_activity.php" method="post">
                 <div class="form-group">
                     <label for="name">ชื่อกิจกรรม :</label>
                     <input type="text" id="name" name="activity_name" required>

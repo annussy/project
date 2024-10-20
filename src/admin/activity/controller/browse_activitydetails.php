@@ -124,7 +124,6 @@ if (isset($_GET['activity_id'])) {
                 <th>ชื่อกิจกรรม</th>
                 <th>รหัสผู้พิการ</th>
                 <th>ชื่อผู้พิการ</th>
-                <th>ลบ</th>
             </tr>
 
             <?php
@@ -147,7 +146,7 @@ if (isset($_GET['activity_id'])) {
                             <td><?php echo $row['activity_name']; ?></td>
                             <td><?php echo $row['disabled_id']; ?></td>
                             <td><?php echo $row['disabled_name']; ?></td>
-                            <td><a href="controller/delete_activitydetails.php?activitydetails_id=<?php echo $row['activity_id']; ?>" onclick="Del(this.href); return false;">ลบ</a></td>
+                            <!-- <td><a href="controller/delete_activitydetails.php?activitydetails_id=<?php echo $row['activity_id']; ?>" onclick="Del(this.href); return false;">ลบ</a></td> -->
                         </tr>
             <?php 
                     }

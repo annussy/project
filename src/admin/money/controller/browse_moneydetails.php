@@ -105,7 +105,6 @@ $money_id = isset($_GET['money_id']) ? intval($_GET['money_id']) : 0;
                     <th>รหัสการชำระเงิน</th>
                     <th>รหัสผู้พิการ</th>
                     <th>ชื่อผู้พิการ</th>
-                    <th>ลบ</th>
                 </tr>
 
                 <?php
@@ -130,8 +129,8 @@ $money_id = isset($_GET['money_id']) ? intval($_GET['money_id']) : 0;
                                 <td><?php echo $row['moneydetails_id']; ?></td>
                                 <td><?php echo $row['disabled_id']; ?></td>
                                 <td><?php echo $row['disabled_name']; ?></td>
-                                <td><a href="delete_money.php?money_id=<?php echo $row['money_id']; ?>" onclick="Del(this.href); return false;" class="btn btn-danger">ลบ</a></td>
-                            </tr>
+                                <!-- <td><a href="delete_money.php?money_id=<?php echo $row['money_id']; ?>" onclick="Del(this.href); return false;" class="btn btn-danger">ลบ</a></td>
+                            </tr> -->
                 <?php 
                         }
                     } else {
