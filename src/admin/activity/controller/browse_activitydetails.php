@@ -42,13 +42,14 @@ if (isset($_GET['activity_id'])) {
             </li>
 
             <li>
-                <a href="../disabled/show_disabled.php"> <!-- ยังต้องเพิ่ม -->
+                <a href="../disabled/show_disabled.php">
                     <span class="icon">
                         <ion-icon name="storefront-outline"></ion-icon>
                     </span>
                     <span class="title">ข้อมูลผู้พิการ</span>
                 </a>
             </li>
+
             <li>
                 <a href="../activity/show_activity.php">
                     <span class="icon">
@@ -103,7 +104,7 @@ if (isset($_GET['activity_id'])) {
             </li>
 
             <li>
-                <a href="../entrepreneur/show_entrepreneur.php">
+                <a href="">
                     <span class="icon">
                         <ion-icon name="storefront-outline"></ion-icon>
                     </span>

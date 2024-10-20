@@ -125,7 +125,6 @@ $disabilitype_id = isset($_GET['disabilitype_id']) ? intval($_GET['disabilitype_
                 <th>ชื่อประเภทความผู้พิการ</th>
                 <th>รหัสผู้พิการ</th>
                 <th>ชื่อผู้พิการ</th>
-                <th>ลบ</th>
             </tr>
 
             <?php
@@ -148,15 +147,15 @@ $disabilitype_id = isset($_GET['disabilitype_id']) ? intval($_GET['disabilitype_
                             <td><?php echo $row['type_name']; ?></td>
                             <td><?php echo $row['disabled_id']; ?></td>
                             <td><?php echo $row['disabled_name']; ?></td>
-                            <td><a href="delete_disabilitype.php?disabilitype_id=<?php echo $row['disabilitype_id']; ?>" onclick="Del(this.href); return false;"class="btn btn-danger">ลบ</a></td>
+                            <!-- <td><a href="delete_disabilitype.php?disabilitype_id=<?php echo $row['disabilitype_id']; ?>" onclick="Del(this.href); return false;"class="btn btn-danger">ลบ</a></td> -->
                         </tr>
             <?php 
                     }
                 } else {
-                    echo "<tr><td colspan='5' class='text-center'>ไม่พบข้อมูลสำหรับโรคนี้นี้</td></tr>";
+                    echo "<tr><td colspan='5' class='text-center'>ไม่พบข้อมูลสำหรับความพิการประเภทนี้นี้</td></tr>";
                 }
             } else {
-                echo "<tr><td colspan='5' class='text-center'>กรุณาระบุรหัสโรคที่ถูกต้อง</td></tr>";
+                echo "<tr><td colspan='5' class='text-center'>กรุณาระบุรหัสประเภทความพิการที่ถูกต้อง</td></tr>";
             }
 
             // ปิดการเชื่อมต่อฐานข้อมูล

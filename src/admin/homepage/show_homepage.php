@@ -8,8 +8,7 @@ if (!isset($_SESSION['employee_id'])) {
     header("Location: ../login_admin/login_admin.php");
     exit();
 }
-// ดึง ID ผู้ใช้จากเซสชัน
-$employee_id = $_SESSION['employee_id'];
+
 ?>
 
 <!DOCTYPE html>
@@ -18,48 +17,15 @@ $employee_id = $_SESSION['employee_id'];
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ระบบจัดการข้อมูลผู้พิการ ตำบลแค</title>
-    <link rel="stylesheet" href="../../../public/css/admin/disease/show_disease.css"> <!-- เพิ่มลิงก์ไปยังไฟล์ CSS ถ้ามี -->
+    <link rel="stylesheet" href="../../../public/css/admin/activity/show_activity.css"> <!-- แก้ไข path ให้ตรงกับที่เก็บไฟล์ CSS ของคุณ -->
 </head>
-<style>
-    .btn-primary {
-            background-color: #007bff;
-            color: white;
-        }
-        .btn-primary:hover {
-            background-color: #0056b3;
-        }
-        .btn-info {
-            background-color: #17a2b8;
-            color: white;
-        }
-        .btn-info:hover {
-            background-color: #117a8b;
-        }
-        .btn-warning {
-            background-color: #ffc107;
-            color: black;
-        }
-        .btn-warning:hover {
-            background-color: #d39e00;
-        }
-        .btn-danger {
-            background-color: #dc3545;
-            color: white;
-        }
-        .btn-danger:hover {
-            background-color: #bd2130;
-        }
-        .btn-group {
-            display: flex;
-            gap: 5px;
-        }
-</style>
 <body>
-<div class="sidebar">
+
+    <div class="sidebar">
         <img src="logo.jpg" alt="CARE Logo" class="logo">
         <ul class="nav">
         <li>
-                <a href="">
+                <a href="../homepage/show_homepage.php">
                     <span class="icon">
                         <ion-icon name="storefront-outline"></ion-icon>
                     </span>
@@ -140,45 +106,47 @@ $employee_id = $_SESSION['employee_id'];
                 <li><a href="../login_admin/logout_admin.php">ออกจากระบบ</a></li>
         </ul>
     </div>
-    
-    <div class="container">    
-    <div class="main-content">
-        <div class="alert alert-primary h4 text-center mt-4" role="alert">ข้อมูลความสามารถผู้พิการ</div>
-        <a href="create_ability.php"><button type="button" class="btn btn-primary">เพิ่มข้อมูล</button></a>
-        <table class="table table-striped table-hover mt-4">
-            <thead>
-                <tr>
-                    <th>ลำดับ</th>
-                    <th>ประเภทความสามารถ</th>
-                    <th>การจัดการ</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php
-                    $sql = "SELECT * FROM ability";
-                    $result = mysqli_query($conn, $sql);
-                    if ($result) {
-                        while ($row = mysqli_fetch_array($result)) { 
-                ?>
-                <tr>
-                    <td><?php echo $row['ability_id']; ?></td>
-                    <td><?php echo $row['ability_name']; ?></td>
-                    <td>
-                        <div class="btn-group">
-                    <a href="controller/browse_abilitydetails.php?ability_id=<?php echo $row['ability_id']; ?>" class="btn btn-info">เรียกดูรายละเอียด</a>
-                    <a href="controller/edit_ability.php?ability_id=<?php echo $row['ability_id']; ?>"class="btn btn-warning">แก้ไข</a>
-                    <!-- <a href="controller/delete_ability.php?ability_id=<?php echo $row['ability_id']; ?>" class="btn btn-danger">ลบ</a></td> -->
-                </tr>
-                
-                <?php 
-                        } 
-                    } else {
-                        echo "<tr><td colspan='5'>ไม่พบข้อมูล</td></tr>";
-                    }
-                    mysqli_close($conn);
-                ?>
-            </tbody>
-        </table>
+
+        <div class="main-content">
+            <div class="header">
+                <div class="alert alert-primary h4 text-center mt-4" role="alert">ข้อมูลส่วนตัว</div>
+            </div>
+
+            <!-- แสดงข้อมูลส่วนตัวของผู้ใช้งาน -->
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>ข้อมูล</th>
+                        <th>รายละเอียด</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                        // ดึงข้อมูลจากฐานข้อมูล
+                        $sql = "SELECT employee_name, employee_department, tel, email FROM employee WHERE employee_id = " . $_SESSION['employee_id'];
+                        $result = mysqli_query($conn, $sql);
+                        if ($result && mysqli_num_rows($result) > 0) {
+                            // แสดงข้อมูลของผู้ใช้งานในตาราง
+                            $row = mysqli_fetch_assoc($result);
+                            echo "<tr><td>ชื่อ-สกุล</td><td>" . $row['employee_name'] . "</td></tr>";
+                            echo "<tr><td>ตำแหน่ง</td><td>" . $row['employee_department'] . "</td></tr>";
+                            echo "<tr><td>เบอร์โทร</td><td>" . $row['tel'] . "</td></tr>";
+                            echo "<tr><td>อีเมล</td><td>" . $row['email'] . "</td></tr>";
+                        } else {
+                            echo "<tr><td colspan='2'>ไม่พบข้อมูลส่วนตัว</td></tr>";
+                        }
+                    ?>
+                </tbody>
+            </table>
+
+        </div>
+
     </div>
+
+    <script>
+        function goBack() {
+            window.location.href = "form_ability.php";
+        }
+    </script>
 </body>
 </html>

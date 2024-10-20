@@ -169,7 +169,7 @@ $employee_id = $_SESSION['employee_id'];
                     <div class="btn-group">
                     <a href="controller/browse_diseasedetails.php?disease_id=<?php echo $row['disease_id']; ?>"class="btn btn-info">เรียกดูรายละเอียด</a>
                     <a href="controller/edit_disease.php?disease_id=<?php echo $row['disease_id']; ?>"class="btn btn-warning">แก้ไข</a>
-                    <a href="controller/delete_disease.php?disease_id=<?php echo $row['disease_id']; ?>"class="btn btn-danger">ลบ</a></td>
+                    <!-- <a href="controller/delete_disease.php?disease_id=<?php echo $row['disease_id']; ?>"class="btn btn-danger">ลบ</a></td> -->
                 </tr>
                 
                 <?php 

@@ -47,7 +47,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <body>
     <div class="container">
         <div class="left-section">
-            <img src="logo.jpg" alt="CARE Logo" class="logo">
+        <img src="logo.jpg" alt="CARE Logo" class="logo w-24 h-auto" onclick="goBack()">
         </div>
         <div class="right-section">
             <h2>ยินดีต้อนรับ เข้าใช้งานพนักงาน</h2>
@@ -72,4 +72,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </div>
     </div>
 </body>
+
+<script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
 </html>

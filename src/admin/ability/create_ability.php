@@ -26,13 +26,14 @@
             </li>
 
             <li>
-                <a href="../disabled/show_disabled.php"> <!-- ยังต้องเพิ่ม -->
+                <a href="../disabled/show_disabled.php">
                     <span class="icon">
                         <ion-icon name="storefront-outline"></ion-icon>
                     </span>
                     <span class="title">ข้อมูลผู้พิการ</span>
                 </a>
             </li>
+
             <li>
                 <a href="../activity/show_activity.php">
                     <span class="icon">
@@ -70,6 +71,14 @@
             </li>
 
             <li>
+                <a href="">
+                    <span class="icon">
+                        <ion-icon name="storefront-outline"></ion-icon>
+                    </span>
+                    <span class="title">ข้อมูลแบบประเมินผู้พิการ</span>
+                </a>
+
+            <li>
                 <a href="../disease/show_disease.php">
                     <span class="icon">
                         <ion-icon name="storefront-outline"></ion-icon>
@@ -79,7 +88,7 @@
             </li>
 
             <li>
-                <a href="../entrepreneur/show_entrepreneur.php">
+                <a href="">
                     <span class="icon">
                         <ion-icon name="storefront-outline"></ion-icon>
                     </span>
@@ -88,7 +97,7 @@
 
                 <li><a href="../login_admin/logout_admin.php">ออกจากระบบ</a></li>
         </ul>
-</div>
+    </div>
 
 <div class="container mt-5">
     <div class="main-content">

@@ -45,7 +45,7 @@ if (isset($_GET['ability_id'])) {
         <img src="logo.jpg" alt="CARE Logo" class="logo">
         <ul class="nav">
         <li>
-                <a href="">
+                <a href="../homepage/show_homepage.php">
                     <span class="icon">
                         <ion-icon name="storefront-outline"></ion-icon>
                     </span>
@@ -54,13 +54,14 @@ if (isset($_GET['ability_id'])) {
             </li>
 
             <li>
-                <a href="../disabled/show_disabled.php"> <!-- ยังต้องเพิ่ม -->
+                <a href="../disabled/show_disabled.php">
                     <span class="icon">
                         <ion-icon name="storefront-outline"></ion-icon>
                     </span>
                     <span class="title">ข้อมูลผู้พิการ</span>
                 </a>
             </li>
+
             <li>
                 <a href="../activity/show_activity.php">
                     <span class="icon">
@@ -115,7 +116,7 @@ if (isset($_GET['ability_id'])) {
             </li>
 
             <li>
-                <a href="../entrepreneur/show_entrepreneur.php">
+                <a href="">
                     <span class="icon">
                         <ion-icon name="storefront-outline"></ion-icon>
                     </span>
@@ -143,7 +144,7 @@ if (isset($_GET['ability_id'])) {
             // ตรวจสอบว่ามีการส่ง ability_id มาหรือไม่
             if ($ability_id > 0) {
                 // ปรับ SQL query ให้แสดงข้อมูลตาม ability_id
-                $sql = "SELECT abilitydetails.ability_id, ability.ability_name, abilitydetails.disabled_id, disabled.disabled_name 
+                $sql = "SELECT abilitydetails.* , ability.ability_name, disabled.disabled_name
                         FROM abilitydetails 
                         JOIN ability ON abilitydetails.ability_id = ability.ability_id
                         JOIN disabled ON abilitydetails.disabled_id = disabled.disabled_id
@@ -160,7 +161,7 @@ if (isset($_GET['ability_id'])) {
                             <td><?php echo $row['ability_name']; ?></td>
                             <td><?php echo $row['disabled_id']; ?></td>
                             <td><?php echo $row['disabled_name']; ?></td>
-                            <td><a href="delete_ability.php?ability_id=<?php echo $row['ability_id']; ?>" onclick="Del(this.href); return false;"class="btn btn-danger">ลบ</a></td>
+                            <td><a href="delete_ability.php?abilitydetails_id=<?php echo $row['abilitydetails_id']; ?>" onclick="Del(this.href); return false;"class="btn btn-danger">ลบ</a></td>
                         </tr>
             <?php 
                     }
