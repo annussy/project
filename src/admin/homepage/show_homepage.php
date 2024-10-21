@@ -109,7 +109,7 @@ if (!isset($_SESSION['employee_id'])) {
 
         <div class="main-content">
             <div class="header">
-                <div class="alert alert-primary h4 text-center mt-4" role="alert">ข้อมูลส่วนตัว</div>
+                <div class="alert alert-primary h4 text-center mt-4" role="alert">ข้อมูลส่วนตัวพนักงานเข้าใช้ระบบ</div>
             </div>
 
             <!-- แสดงข้อมูลส่วนตัวของผู้ใช้งาน -->

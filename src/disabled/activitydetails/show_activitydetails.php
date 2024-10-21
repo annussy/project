@@ -75,7 +75,7 @@ if (!isset($_SESSION['disabled_id'])) {
                         <span class="icon">
                             <ion-icon name="storefront-outline"></ion-icon>
                         </span>
-                        <span class="title">ลงทะเบียนรับเบี้ยผู้พิการ</span>
+                        <span class="title">รายละเอียดการรับเบี้ย</span>
                     </a>
                 </li>
 
@@ -127,6 +127,7 @@ if (!isset($_SESSION['disabled_id'])) {
                 <li><a href="../login_disabled/logout_disabled.php">ออกจากระบบ</a></li>
             </ul>
         </div>
+
 
         <div class="main-content">
             <div class="header">

@@ -24,7 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_SESSION['employee_id'] = $employee_id;
 
         // ข้อมูลถูกต้อง
-        header("Location: ../activity/show_activity.php"); // เปลี่ยน URL ไปยังหน้าเป้าหมายที่ต้องการ
+        header("Location: ../homepage/show_homepage.php"); // เปลี่ยน URL ไปยังหน้าเป้าหมายที่ต้องการ
         exit();
     } else {
         $error_message = "มีอีเมลหรือรหัสผ่านไม่ถูกต้อง";

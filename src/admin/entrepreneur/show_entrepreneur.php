@@ -54,11 +54,11 @@ $employee_id = $_SESSION['employee_id'];
             gap: 5px;
         }
 </style>
-<body>
-<div class="sidebar">
-        <img src="logo.jpg" alt="CARE Logo" class="logo">
-        <ul class="nav">
-        <li>
+            <body>
+            <div class="sidebar">
+                    <img src="logo.jpg" alt="CARE Logo" class="logo">
+                    <ul class="nav">
+                    <li>
                 <a href="">
                     <span class="icon">
                         <ion-icon name="storefront-outline"></ion-icon>
@@ -68,7 +68,7 @@ $employee_id = $_SESSION['employee_id'];
             </li>
 
             <li>
-                <a href="">
+                <a href="../disabled/show_disabled.php">
                     <span class="icon">
                         <ion-icon name="storefront-outline"></ion-icon>
                     </span>
@@ -77,7 +77,7 @@ $employee_id = $_SESSION['employee_id'];
             </li>
 
             <li>
-                <a href="">
+                <a href="../activity/show_activity.php">
                     <span class="icon">
                         <ion-icon name="storefront-outline"></ion-icon>
                     </span>
@@ -86,7 +86,7 @@ $employee_id = $_SESSION['employee_id'];
             </li>
 
             <li>
-                <a href="">
+                <a href="../money/show_money.php">
                     <span class="icon">
                         <ion-icon name="storefront-outline"></ion-icon>
                     </span>
@@ -95,7 +95,7 @@ $employee_id = $_SESSION['employee_id'];
             </li>
 
             <li>
-                    <a href="">
+                    <a href="../disabilitype/show_disabilitype.php">
                         <span class="icon">
                             <ion-icon name="storefront-outline"></ion-icon>
                         </span>
@@ -104,7 +104,7 @@ $employee_id = $_SESSION['employee_id'];
             </li>
 
             <li>
-                <a href="">
+                <a href="../ability/show_ability.php">
                     <span class="icon">
                         <ion-icon name="storefront-outline"></ion-icon>
                     </span>
@@ -121,7 +121,7 @@ $employee_id = $_SESSION['employee_id'];
                 </a>
 
             <li>
-                <a href="">
+                <a href="../disease/show_disease.php">
                     <span class="icon">
                         <ion-icon name="storefront-outline"></ion-icon>
                     </span>
@@ -130,16 +130,17 @@ $employee_id = $_SESSION['employee_id'];
             </li>
 
             <li>
-                <a href="">
+                <a href="../entrepreneur/show_entrepreneur.php">
                     <span class="icon">
                         <ion-icon name="storefront-outline"></ion-icon>
                     </span>
                     <span class="title">ข้อมูลผู้ประกอบการ</span>
                 </a>
 
-                <li><a href="">ออกจากระบบ</a></li>
+                <li><a href="../login_admin/logout_admin.php">ออกจากระบบ</a></li>
         </ul>
     </div>
+    
 
     <div class="container">    
     <div class="main-content">

@@ -71,11 +71,11 @@ if (!isset($_SESSION['disabled_id'])) {
                 </li>
 
                 <li>
-                    <a href="#">
+                    <a href="../money/show_moneydetails.php">
                         <span class="icon">
                             <ion-icon name="storefront-outline"></ion-icon>
                         </span>
-                        <span class="title">ลงทะเบียนรับเบี้ยผู้พิการ</span>
+                        <span class="title">รายละเอียดการรับเบี้ย</span>
                     </a>
                 </li>
 
